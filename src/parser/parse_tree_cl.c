@@ -69,10 +69,340 @@
 #define MAX_STRING_SEGMENT_LENGTH 254
 #define DONT_PRT_LONG_STRING_LENGTH 256
 
+#include<iomanip>
+#include<iostream>
+#include<string>
+#include <execinfo.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <iostream>
+
+// Function to convert enum to string
+std::string ptNodeTypeToString (PT_NODE_TYPE type)
+{
+  switch (type)
+    {
+    case PT_NODE_NONE:
+      return "PT_NODE_NONE";
+    case PT_ALTER:
+      return "PT_ALTER";
+    case PT_ALTER_INDEX:
+      return "PT_ALTER_INDEX";
+    case PT_ALTER_USER:
+      return "PT_ALTER_USER";
+    case PT_ALTER_SERIAL:
+      return "PT_ALTER_SERIAL";
+    case PT_COMMIT_WORK:
+      return "PT_COMMIT_WORK";
+    case PT_CREATE_ENTITY:
+      return "PT_CREATE_ENTITY";
+    case PT_CREATE_INDEX:
+      return "PT_CREATE_INDEX";
+    case PT_CREATE_USER:
+      return "PT_CREATE_USER";
+    case PT_CREATE_TRIGGER:
+      return "PT_CREATE_TRIGGER";
+    case PT_CREATE_SERIAL:
+      return "PT_CREATE_SERIAL";
+    case PT_DROP:
+      return "PT_DROP";
+    case PT_DROP_INDEX:
+      return "PT_DROP_INDEX";
+    case PT_DROP_USER:
+      return "PT_DROP_USER";
+    case PT_DROP_VARIABLE:
+      return "PT_DROP_VARIABLE";
+    case PT_DROP_TRIGGER:
+      return "PT_DROP_TRIGGER";
+    case PT_DROP_SERIAL:
+      return "PT_DROP_SERIAL";
+    case PT_EVALUATE:
+      return "PT_EVALUATE";
+    case PT_RENAME:
+      return "PT_RENAME";
+    case PT_ROLLBACK_WORK:
+      return "PT_ROLLBACK_WORK";
+    case PT_GRANT:
+      return "PT_GRANT";
+    case PT_REVOKE:
+      return "PT_REVOKE";
+    case PT_UPDATE_STATS:
+      return "PT_UPDATE_STATS";
+    case PT_GET_STATS:
+      return "PT_GET_STATS";
+    case PT_INSERT:
+      return "PT_INSERT";
+    case PT_SELECT:
+      return "PT_SELECT";
+    case PT_UPDATE:
+      return "PT_UPDATE";
+    case PT_DELETE:
+      return "PT_DELETE";
+    case PT_METHOD_CALL:
+      return "PT_METHOD_CALL";
+    case PT_GET_XACTION:
+      return "PT_GET_XACTION";
+    case PT_GET_OPT_LVL:
+      return "PT_GET_OPT_LVL";
+    case PT_SET_OPT_LVL:
+      return "PT_SET_OPT_LVL";
+    case PT_SET_SYS_PARAMS:
+      return "PT_SET_SYS_PARAMS";
+    case PT_SCOPE:
+      return "PT_SCOPE";
+    case PT_SET_TRIGGER:
+      return "PT_SET_TRIGGER";
+    case PT_GET_TRIGGER:
+      return "PT_GET_TRIGGER";
+    case PT_SAVEPOINT:
+      return "PT_SAVEPOINT";
+    case PT_PREPARE_TO_COMMIT:
+      return "PT_PREPARE_TO_COMMIT";
+    case PT_2PC_ATTACH:
+      return "PT_2PC_ATTACH";
+#if defined (ENABLE_UNUSED_FUNCTION)
+    case PT_USE:
+      return "PT_USE";
+#endif
+    case PT_REMOVE_TRIGGER:
+      return "PT_REMOVE_TRIGGER";
+    case PT_RENAME_TRIGGER:
+      return "PT_RENAME_TRIGGER";
+    case PT_CREATE_STORED_PROCEDURE:
+      return "PT_CREATE_STORED_PROCEDURE";
+    case PT_ALTER_STORED_PROCEDURE:
+      return "PT_ALTER_STORED_PROCEDURE";
+    case PT_DROP_STORED_PROCEDURE:
+      return "PT_DROP_STORED_PROCEDURE";
+    case PT_PREPARE_STATEMENT:
+      return "PT_PREPARE_STATEMENT";
+    case PT_EXECUTE_PREPARE:
+      return "PT_EXECUTE_PREPARE";
+    case PT_DEALLOCATE_PREPARE:
+      return "PT_DEALLOCATE_PREPARE";
+    case PT_TRUNCATE:
+      return "PT_TRUNCATE";
+    case PT_DO:
+      return "PT_DO";
+    case PT_SET_SESSION_VARIABLES:
+      return "PT_SET_SESSION_VARIABLES";
+    case PT_DROP_SESSION_VARIABLES:
+      return "PT_DROP_SESSION_VARIABLES";
+    case PT_MERGE:
+      return "PT_MERGE";
+    case PT_SET_NAMES:
+      return "PT_SET_NAMES";
+    case PT_SET_TIMEZONE:
+      return "PT_SET_TIMEZONE";
+    case PT_CREATE_SERVER:
+      return "PT_CREATE_SERVER";
+    case PT_DROP_SERVER:
+      return "PT_DROP_SERVER";
+    case PT_RENAME_SERVER:
+      return "PT_RENAME_SERVER";
+    case PT_ALTER_SERVER:
+      return "PT_ALTER_SERVER";
+    case PT_ALTER_SYNONYM:
+      return "PT_ALTER_SYNONYM";
+    case PT_CREATE_SYNONYM:
+      return "PT_CREATE_SYNONYM";
+    case PT_DROP_SYNONYM:
+      return "PT_DROP_SYNONYM";
+    case PT_RENAME_SYNONYM:
+      return "PT_RENAME_SYNONYM";
+    case PT_DIFFERENCE:
+      return "PT_DIFFERENCE";
+    case PT_INTERSECTION:
+      return "PT_INTERSECTION";
+    case PT_UNION:
+      return "PT_UNION";
+    case PT_ZZ_ERROR_MSG:
+      return "PT_ZZ_ERROR_MSG";
+    case PT_ALTER_TRIGGER:
+      return "PT_ALTER_TRIGGER";
+    case PT_ATTR_DEF:
+      return "PT_ATTR_DEF";
+    case PT_AUTH_CMD:
+      return "PT_AUTH_CMD";
+    case PT_AUTO_INCREMENT:
+      return "PT_AUTO_INCREMENT";
+    case PT_CHECK_OPTION:
+      return "PT_CHECK_OPTION";
+    case PT_CONSTRAINT:
+      return "PT_CONSTRAINT";
+    case PT_CTE:
+      return "PT_CTE";
+    case PT_DATA_DEFAULT:
+      return "PT_DATA_DEFAULT";
+    case PT_DATA_TYPE:
+      return "PT_DATA_TYPE";
+    case PT_DOT_:
+      return "PT_DOT_";
+    case PT_EVENT_OBJECT:
+      return "PT_EVENT_OBJECT";
+    case PT_EVENT_SPEC:
+      return "PT_EVENT_SPEC";
+    case PT_EVENT_TARGET:
+      return "PT_EVENT_TARGET";
+    case PT_EXECUTE_TRIGGER:
+      return "PT_EXECUTE_TRIGGER";
+    case PT_EXPR:
+      return "PT_EXPR";
+    case PT_FILE_PATH:
+      return "PT_FILE_PATH";
+    case PT_FUNCTION:
+      return "PT_FUNCTION";
+    case PT_HOST_VAR:
+      return "PT_HOST_VAR";
+    case PT_ISOLATION_LVL:
+      return "PT_ISOLATION_LVL";
+    case PT_METHOD_DEF:
+      return "PT_METHOD_DEF";
+    case PT_NAME:
+      return "PT_NAME";
+    case PT_PARTITION:
+      return "PT_PARTITION";
+    case PT_PARTS:
+      return "PT_PARTS";
+    case PT_RESOLUTION:
+      return "PT_RESOLUTION";
+    case PT_SET_XACTION:
+      return "PT_SET_XACTION";
+    case PT_SORT_SPEC:
+      return "PT_SORT_SPEC";
+    case PT_SP_PARAMETERS:
+      return "PT_SP_PARAMETERS";
+    case PT_SPEC:
+      return "PT_SPEC";
+    case PT_TIMEOUT:
+      return "PT_TIMEOUT";
+    case PT_TRIGGER_ACTION:
+      return "PT_TRIGGER_ACTION";
+    case PT_TRIGGER_SPEC_LIST:
+      return "PT_TRIGGER_SPEC_LIST";
+    case PT_VALUE:
+      return "PT_VALUE";
+    case PT_NODE_POINTER:
+      return "PT_NODE_POINTER";
+    case PT_NODE_LIST:
+      return "PT_NODE_LIST";
+    case PT_TABLE_OPTION:
+      return "PT_TABLE_OPTION";
+    case PT_ATTR_ORDERING:
+      return "PT_ATTR_ORDERING";
+    case PT_TUPLE_VALUE:
+      return "PT_TUPLE_VALUE";
+    case PT_QUERY_TRACE:
+      return "PT_QUERY_TRACE";
+    case PT_INSERT_VALUE:
+      return "PT_INSERT_VALUE";
+    case PT_NAMED_ARG:
+      return "PT_NAMED_ARG";
+    case PT_SHOWSTMT:
+      return "PT_SHOWSTMT";
+    case PT_KILL_STMT:
+      return "PT_KILL_STMT";
+    case PT_VACUUM:
+      return "PT_VACUUM";
+    case PT_WITH_CLAUSE:
+      return "PT_WITH_CLAUSE";
+    case PT_JSON_TABLE:
+      return "PT_JSON_TABLE";
+    case PT_JSON_TABLE_NODE:
+      return "PT_JSON_TABLE_NODE";
+    case PT_JSON_TABLE_COLUMN:
+      return "PT_JSON_TABLE_COLUMN";
+    case PT_DBLINK_TABLE:
+      return "PT_DBLINK_TABLE";
+    case PT_DBLINK_TABLE_DML:
+      return "PT_DBLINK_TABLE_DML";
+    case PT_SP_BODY:
+      return "PT_SP_BODY";
+    case PT_NODE_NUMBER:
+      return "PT_NODE_NUMBER";
+    default:
+      return "Unknown";
+    }
+}
+
+std::string ptNodeValue (PT_NODE * node)
+{
+  if (node->node_type == PT_NAME)
+    {
+      return " [ " + std::string (node->info.name.original) + " ]";
+    }
+
+  return " ";
+}
+
+void
+printStackTrace ()
+{
+  const int maxFrames = 128;
+  void *addrlist[maxFrames + 1];
+
+  // Retrieve current stack addresses
+  int addrlen = backtrace (addrlist, sizeof (addrlist) / sizeof (void *));
+
+  if (addrlen == 0)
+    {
+      std::cout << "No stack trace available\n";
+      return;
+    }
+
+  // Create readable strings to each frame
+  char **symbollist = backtrace_symbols (addrlist, addrlen);
+
+  // Print the stack trace
+  for (int i = 0; i < addrlen; i++)
+    {
+      std::cout << symbollist[i] << std::endl;
+    }
+
+  free (symbollist);
+}
+
+int pt_walk_recursion_level = -1;
+
+void
+prettyPrintStackTrace ()
+{
+  std::cout << "\n\n##########################################################################################\n\n";
+  printStackTrace ();
+  std::cout << "\n----------------------------------\n\n";
+}
+
+void
+printNode (PT_NODE * node)
+{
+
+  std::string indent (4 * pt_walk_recursion_level, '-');
+  std::string emptyIndent (4 * pt_walk_recursion_level, ' ');
+
+  const int indentWidth = 64;	// Adjust this value based on the expected maximum indent size
+  const int nodeValueWidth = 20;	// Right justify within this width
+
+  std::cout << std::left << std::setw (indentWidth)
+    << indent + ptNodeTypeToString (node->node_type) + ptNodeValue (node) << " with address of " << node << "\n\n";
+}
+
+void
+printCaller (const char *func, const char *ptr_name)
+{
+  std::cout << std::string (pt_walk_recursion_level * 4, ' ') << "At " << func << "(), `" << ptr_name << "` is\n";
+}
+
 #define PT_APPLY_WALK(parser, ptr, arg) do { \
          if((ptr))                           \
            {                                 \
+                pt_walk_recursion_level++; \
+                if (pt_walk_recursion_level == 0) { \
+                  prettyPrintStackTrace(); \
+                } \
+                printCaller((__func__), (#ptr)); \
+                printNode((ptr)); \
                 (ptr) = pt_walk_private ((parser), (ptr), (arg)); \
+                pt_walk_recursion_level--; \
            }                                 \
       } while (0)
 
@@ -950,24 +1280,22 @@ pt_walk_private (PARSER_CONTEXT * parser, PT_NODE * node, void *void_arg)
 
 	  (*apply) (parser, node, walk);
 
-	  if (node->data_type)
-	    {
-	      node->data_type = pt_walk_private (parser, node->data_type, walk);
-	    }
+	  PT_APPLY_WALK (parser, node->data_type, walk);
+
 	}
 
       /* visit rest of list first, follow 'or_next' list */
-      if (node->or_next
-	  && (save_continue == PT_CONTINUE_WALK || save_continue == PT_LEAF_WALK || save_continue == PT_LIST_WALK))
+      if (save_continue == PT_CONTINUE_WALK || save_continue == PT_LEAF_WALK || save_continue == PT_LIST_WALK)
 	{
-	  node->or_next = pt_walk_private (parser, node->or_next, walk);
+	  PT_APPLY_WALK (parser, node->or_next, walk);
 	}
 
       /* then, follow 'next' list */
-      if (node->next && (save_continue == PT_CONTINUE_WALK || save_continue == PT_LIST_WALK))
+      if (save_continue == PT_CONTINUE_WALK || save_continue == PT_LIST_WALK)
 	{
-	  node->next = pt_walk_private (parser, node->next, walk);
+	  PT_APPLY_WALK (parser, node->next, walk);
 	}
+
 
       if (walk->continue_walk != PT_STOP_WALK)
 	{
@@ -1023,7 +1351,7 @@ parser_walk_leaves (PARSER_CONTEXT * parser, PT_NODE * node, PT_NODE_WALK_FUNCTI
 
       if (walk->data_type)
 	{
-	  walk->data_type = pt_walk_private (parser, walk->data_type, &walk_argument);
+	  PT_APPLY_WALK (parser, walk->data_type, &walk_argument);
 	}
     }
 
@@ -1059,7 +1387,8 @@ parser_walk_tree (PARSER_CONTEXT * parser, PT_NODE * node, PT_NODE_WALK_FUNCTION
   walk_argument.post_function = post_function;
   walk_argument.post_argument = post_argument;
 
-  return pt_walk_private (parser, node, &walk_argument);
+  PT_APPLY_WALK (parser, node, &walk_argument);
+  return node;
 }
 
 /*
