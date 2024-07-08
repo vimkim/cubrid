@@ -77,6 +77,12 @@ option(WITH_CMSERVER "Build with Manager server" ON)
 option(UNIT_TESTS "Unit tests" OFF)
 option(WITH_CCI "Build with CCI driver" ON)
 
+# option for developers
+option(ENABLE_PT_TRACE_DEV "Trace Parse Tree: dump pt_trace.log to debug parse trees(PT_NODE*)" OFF)
+if (ENABLE_PT_TRACE_DEV)
+  add_compile_definitions(PT_TRACE_DEV)
+endif()
+
 # Version info
 # TODO: remove BUILD_NUMBER file and replace with VERSION file
 if(EXISTS ${CMAKE_SOURCE_DIR}/VERSION)
