@@ -1016,3 +1016,5 @@ if(WIN32)
 endif(WIN32)
 
 include(CPack)
+
+add_subdirectory(debug_parse_tree)
