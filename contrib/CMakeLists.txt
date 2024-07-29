@@ -113,3 +113,7 @@ if(UNIX)
     ${CMAKE_SOURCE_DIR}/contrib/scripts/check_index_ovfps.sh
     DESTINATION ${CUBRID_DATADIR}/scripts/)
 endif(UNIX)
+
+if(ENABLE_DEBUG_PARSE_TREE)
+  add_subdirectory(debug_parse_tree)
+endif()
