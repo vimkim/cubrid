@@ -12,10 +12,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 add_executable(debug_parse_tree main.cpp)
 add_dependencies(debug_parse_tree cubridsa cubridcs)
 target_link_libraries(debug_parse_tree PRIVATE cubridsa cubridcs)
-target_compile_definitions(debug_parse_tree PRIVATE ${COMMON_DEFS})
 target_include_directories(debug_parse_tree PRIVATE ${EP_INCLUDES})
-target_link_libraries(debug_parse_tree PRIVATE ${CMAKE_DL_LIBS})
-target_link_libraries(debug_parse_tree PRIVATE rt)
 
 install(TARGETS debug_parse_tree DESTINATION bin)
 
