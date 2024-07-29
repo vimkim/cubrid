@@ -19,7 +19,7 @@ auto prefunc(PARSER_CONTEXT *p, PT_NODE *tree, void *arg, int *continue_walk) ->
 
     if (tree->node_type == PT_NAME)
     {
-        std::cout << " : " << tree->info.name.original << std::endl;
+        std::cout << " : " << tree->info.name.original;
     }
     std::cout << '\n';
 
