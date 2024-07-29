@@ -393,9 +393,9 @@ if(CMAKE_BUILD_TYPE MATCHES "Coverage")
 endif(CMAKE_BUILD_TYPE MATCHES "Coverage")
 
 if(CMAKE_BUILD_TYPE MATCHES "Profile")
-  set(CMAKE_CXX_FLAGS_PROFILE "-g -pg -std=c++17"
+  set(CMAKE_CXX_FLAGS_PROFILE "-g -pg -std=c++17 ${CMAKE_CXX_DEBUG_FLAGS}"
     CACHE STRING "Flags used by the c++ compiler during profile build." FORCE)
-  set(CMAKE_C_FLAGS_PROFILE "-g -pg"
+  set(CMAKE_C_FLAGS_PROFILE "-g -pg ${CMAKE_C_DEBUG_FLAGS}"
     CACHE STRING "Flags used by the c compiler during profile build." FORCE)
 
   mark_as_advanced(CMAKE_CXX_FLAGS_PROFILE CMAKE_C_FLAGS_PROFILE)
