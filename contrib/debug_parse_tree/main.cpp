@@ -9,7 +9,7 @@ void printUsage()
 	    << "> select * from code; \n\n-- press enter twice after to finish.\n";
 }
 
-auto depth = 0;
+auto depth = -1;
 
 auto prefunc (PARSER_CONTEXT *p, PT_NODE *tree, void *arg, int *continue_walk) -> PT_NODE *
 {
@@ -54,9 +54,17 @@ int main (int argc, const char *argv[])
     }
 
   std::string statement = buffer.str();
+  std::cout << "User Input:\n";
+  std::cout << "###########\n\n";
+  std::cout << statement << '\n';
 
+  std::cout << "Parser Output:\n";
+  std::cout << "##############\n\n";
   auto node = parser_parse_string (parser, statement.c_str());
+  std::cout<< parser_print_tree (parser, *node) << "\n\n";
 
+  std::cout << "Parser Tree Visualization:\n";
+  std::cout << "##########################\n\n";
   parser_walk_tree (parser, *node, prefunc, nullptr, postfunc, nullptr);
 
   parser_free_parser (parser);
