@@ -1,12 +1,15 @@
 #include <iostream>
+#include <sstream>
 #include "parser.h"
 
 void printUsage()
 {
-  std::cout << "Usage (recommended): \n\n $ debug_parse_tree < a_random_sql_file.sql \n\n"
-	    << "Or, use it directly with stdin. For example,\n\n"
-	    << "$ debug_parse_tree \n"
-	    << "> select * from code; \n\n-- press enter twice after to finish.\n";
+  std::ostringstream oss;
+  oss << "Usage (recommended): \n\n $ debug_parse_tree < a_random_sql_file.sql \n\n"
+      << "Or, use it directly with stdin. For example,\n\n"
+      << "$ debug_parse_tree \n"
+      << "> select * from code; \n\n-- press enter twice after to finish.\n";
+  std::cout << oss.str();
 }
 
 auto depth = -1;
@@ -15,9 +18,9 @@ auto prefunc (PARSER_CONTEXT *p, PT_NODE *tree, void *arg, int *continue_walk) -
 {
   depth++;
   std::string indent (depth * 4, ' ');
-  std::cout << indent << pt_show_node_type (tree);
-
-  std::cout << " : " << parser_print_tree (p, tree) << '\n';
+  std::ostringstream &oss = *static_cast<std::ostringstream*>(arg);
+  oss << indent << pt_show_node_type(tree);
+  oss << " : " << parser_print_tree(p, tree) << '\n';
 
   return tree;
 }
@@ -28,8 +31,21 @@ auto postfunc (PARSER_CONTEXT *p, PT_NODE *tree, void *arg, int *continue_walk) 
   return tree;
 }
 
+std::string debug_parse_tree(PARSER_CONTEXT * parser, PT_NODE * node)
+{
+  std::ostringstream output;
+
+  output << "Parser Tree Visualization:\n";
+  output << "##########################\n\n";
+  parser_walk_tree(parser, node, prefunc, static_cast<void*>(&output), postfunc, nullptr);
+  return output.str();
+
+}
+
 int main (int argc, const char *argv[])
 {
+  std::ostringstream output;
+
   for (int i = 1; i < argc; ++i)
     {
       std::string arg = argv[i];
@@ -42,32 +58,32 @@ int main (int argc, const char *argv[])
 
   auto parser = parser_create_parser();
   lang_init();
-  lang_set_charset (INTL_CODESET_UTF8);
-  lang_set_charset_lang ("en_US");
+  lang_set_charset(INTL_CODESET_UTF8);
+  lang_set_charset_lang("en_US");
 
   std::stringstream buffer;
   std::string line;
 
-  while (std::getline (std::cin, line) && !line.empty())
+  while (std::getline(std::cin, line) && !line.empty())
     {
       buffer << line << "\n";
     }
 
   std::string statement = buffer.str();
-  std::cout << "User Input:\n";
-  std::cout << "###########\n\n";
-  std::cout << statement << '\n';
+  output << "User Input:\n";
+  output << "###########\n\n";
+  output << statement << '\n';
 
-  std::cout << "Parser Output:\n";
-  std::cout << "##############\n\n";
-  auto node = parser_parse_string (parser, statement.c_str());
-  std::cout<< parser_print_tree (parser, *node) << "\n\n";
+  output << "Parser Output:\n";
+  output << "##############\n\n";
+  auto node = parser_parse_string(parser, statement.c_str());
 
-  std::cout << "Parser Tree Visualization:\n";
-  std::cout << "##########################\n\n";
-  parser_walk_tree (parser, *node, prefunc, nullptr, postfunc, nullptr);
+  output << debug_parse_tree(parser, *node) << "\n";
 
-  parser_free_parser (parser);
+  parser_free_parser(parser);
+
+  std::cout << output.str();
 
   return 0;
 }
+
