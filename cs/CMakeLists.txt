@@ -532,6 +532,8 @@ add_library(cubridcs SHARED
   ${API_SOURCES}
   ${API_HEADERS}
   )
+set_target_properties(cubridcs PROPERTIES EXPORT_NAME cubridcs)
+
 set_target_properties(cubridcs PROPERTIES SOVERSION "${CUBRID_MAJOR_VERSION}.${CUBRID_MINOR_VERSION}")
 
 target_compile_definitions(cubridcs PRIVATE CS_MODE CUBRID_EXPORTING ${COMMON_DEFS})

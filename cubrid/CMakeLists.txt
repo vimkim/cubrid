@@ -538,7 +538,9 @@ add_library(cubrid SHARED
   ${CUBRID_LIB_SOURCES}
   ${CUBRID_LIB_HEADERS}
   )
-set_target_properties(cubrid PROPERTIES SOVERSION "${CUBRID_MAJOR_VERSION}.${CUBRID_MINOR_VERSION}")
+
+set_target_properties(cubrid PROPERTIES EXPORT_NAME cubrid)
+
 if(WIN32)
   # change library file name to libcubrid
   set_target_properties(cubrid PROPERTIES OUTPUT_NAME libcubrid)

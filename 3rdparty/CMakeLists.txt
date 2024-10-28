@@ -456,11 +456,27 @@ list(APPEND EP_INCLUDES ${RE2_INCLUDES})
 set(LIBTBB_TARGET libtbb)
 if(WITH_LIBTBB STREQUAL "EXTERNAL")
   if(UNIX)
-    #compile TBB library given an internet url to a TBB archive
-    #e.g. https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2021.11.0.tar.gz
+    # Download and compile TBB library
+    # e.g. https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2021.11.0.tar.gz
     set(LIBTBB_LIBS ${3RDPARTY_LIBS_DIR}/lib/libtbb.a)
-    set(LIBTBB_INCLUDES ${3RDPARTY_LIBS_DIR}/Source/libtbb/include/tbb ${3RDPARTY_LIBS_DIR}/Source/libtbb/include/oneapi ${3RDPARTY_LIBS_DIR}/Source/libtbb/include/oneapi/tbb ${3RDPARTY_LIBS_DIR}/Source/libtbb/include/oneapi/tbb/detail)
-    set(LIBTBB_CONFIGURE -DCMAKE_INSTALL_PREFIX=${3RDPARTY_LIBS_DIR} -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_CXX_FLAGS=-DTBB_ALLOCATOR_TRAITS_BROKEN -D__TBB_DYNAMIC_LOAD_ENABLED=0 -DTBBMALLOC_BUILD=OFF -DTBBMALLOC_PROXY_BUILD=OFF -DTBB_TEST=OFF -DTBB_ENABLE_IPO=OFF -DBUILD_SHARED_LIBS=OFF -DCMAKE_BUILD_TYPE=Release)
+    set(LIBTBB_INCLUDES 
+      ${3RDPARTY_LIBS_DIR}/Source/libtbb/include/tbb
+      ${3RDPARTY_LIBS_DIR}/Source/libtbb/include/oneapi
+      ${3RDPARTY_LIBS_DIR}/Source/libtbb/include/oneapi/tbb
+      ${3RDPARTY_LIBS_DIR}/Source/libtbb/include/oneapi/tbb/detail
+    )
+    set(LIBTBB_CONFIGURE -DCMAKE_INSTALL_PREFIX=${3RDPARTY_LIBS_DIR} 
+                          -DCMAKE_INSTALL_LIBDIR=lib 
+                          -DCMAKE_CXX_FLAGS=-DTBB_ALLOCATOR_TRAITS_BROKEN 
+                          -D__TBB_DYNAMIC_LOAD_ENABLED=0 
+                          -DTBBMALLOC_BUILD=OFF 
+                          -DTBBMALLOC_PROXY_BUILD=OFF 
+                          -DTBB_TEST=OFF 
+                          -DTBB_ENABLE_IPO=OFF 
+                          -DBUILD_SHARED_LIBS=OFF 
+                          -DCMAKE_BUILD_TYPE=Release)
+    
+    # Configure external project for TBB
     ADD_BY_PRODUCTS_VARIABLE ("LIBTBB" ${LIBTBB_LIBS})
     externalproject_add(${LIBTBB_TARGET}
       URL                  ${WITH_LIBTBB_URL}
@@ -475,10 +491,22 @@ if(WITH_LIBTBB STREQUAL "EXTERNAL")
       INSTALL_COMMAND      make -j install
       "${LIBTBB_BYPRODUCTS}"
     )
+    
+    # Append include directories and libraries for cubrid only
     list(APPEND EP_TARGETS ${LIBTBB_TARGET})
     list(APPEND EP_INCLUDES ${LIBTBB_INCLUDES})
     list(APPEND EP_LIBS ${LIBTBB_LIBS})
+    
   endif(UNIX)
+endif()
+
+# Ensure TBB is linked only to cubrid and not to cubridcs
+if (TARGET cubrid)
+	target_link_libraries(cubrid PRIVATE "-Wl,--whole-archive" ${LIBTBB_LIBS} "-Wl,--no-whole-archive")
+endif()
+
+if (TARGET cubridcs)
+	target_link_libraries(cubridcs PRIVATE "-Wl,--exclude-libs,ALL")
 endif()
 
 # [FIXME!] Expose variables for other CMakeLists
