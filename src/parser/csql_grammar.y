@@ -1382,6 +1382,7 @@ static char *g_plcsql_text;
 %token SELECT
 %token SENSITIVE
 %token SEQUENCE
+%token VECTOR
 %token SEQUENCE_OF
 %token SERIALIZABLE
 %token SESSION
@@ -1936,6 +1937,7 @@ stmt
 stmt_
 	: create_stmt
 		{ DBG_TRACE_GRAMMAR(stmt_, : create_stmt);
+                  printf("create_stmt\n");
                   $$ = $1; }
 	| alter_stmt
 		{ DBG_TRACE_GRAMMAR(stmt_, | alter_stmt);
@@ -22437,6 +22439,10 @@ set_type
 			$$ = PT_TYPE_SEQUENCE;
 
 		DBG_PRINT}}
+    | VECTOR
+        {{
+            $$ = PT_TYPE_VECTOR;
+        }}
 	| of_container opt_of
 		{{ DBG_TRACE_GRAMMAR(set_type, | of_container opt_of );
 

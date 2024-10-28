@@ -879,7 +879,8 @@ IDL       [a-zA-Z0-9_]
 [sS][eE][pP][aA][rR][aA][tT][oO][rR]					{ begin_token(yytext);
 										csql_yylval.cptr = pt_makename(yytext);
 										return SEPARATOR; }
-[sS][eE][qQ][uU][eE][nN][cC][eE]					{ begin_token(yytext);   return SEQUENCE; }
+[sS][eE][qQ][uU][eE][nN][cC][eE]					{ begin_token(yytext);   return SEQUENCE; } // vector { begin_token(yytext); return VECTOR; }
+vector { begin_token(yytext); return VECTOR; }
 [sS][eE][qQ][uU][eE][nN][cC][eE]_[oO][fF]			 	{ begin_token(yytext);   return SEQUENCE_OF; }
 [sS][eE][rR][iI][aA][lL]						{ begin_token(yytext);
 										csql_yylval.cptr = pt_makename(yytext);
