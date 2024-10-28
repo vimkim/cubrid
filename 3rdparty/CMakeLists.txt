@@ -491,22 +491,14 @@ if(WITH_LIBTBB STREQUAL "EXTERNAL")
       INSTALL_COMMAND      make -j install
       "${LIBTBB_BYPRODUCTS}"
     )
-    
-    # Append include directories and libraries for cubrid only
-    list(APPEND EP_TARGETS ${LIBTBB_TARGET})
-    list(APPEND EP_INCLUDES ${LIBTBB_INCLUDES})
-    list(APPEND EP_LIBS ${LIBTBB_LIBS})
-    
   endif(UNIX)
 endif()
 
 # Ensure TBB is linked only to cubrid and not to cubridcs
 if (TARGET cubrid)
-	target_link_libraries(cubrid PRIVATE "-Wl,--whole-archive" ${LIBTBB_LIBS} "-Wl,--no-whole-archive")
-endif()
-
-if (TARGET cubridcs)
-	target_link_libraries(cubridcs PRIVATE "-Wl,--exclude-libs,ALL")
+    # Adding LIBTBB_LIBS and LIBTBB_TARGET directly to cubrid
+    target_link_libraries(cubrid PRIVATE ${LIBTBB_LIBS})
+    target_include_directories(cubrid PRIVATE ${LIBTBB_INCLUDES})
 endif()
 
 # [FIXME!] Expose variables for other CMakeLists
