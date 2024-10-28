@@ -650,3 +650,7 @@ if(WIN32)
     FILES_MATCHING PATTERN "*.pdb"
     )
 endif(WIN32)
+
+target_link_libraries(cubrid PRIVATE "-Wl,--whole-archive" mylibtbb
+"-Wl,--no-whole-archive")
+
