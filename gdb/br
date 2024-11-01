@@ -1,0 +1,4 @@
+del
+br csql_execute_statements
+b do_prepare_select
+# b parser_print_tree
