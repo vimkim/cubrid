@@ -1,0 +1,11 @@
+dashboard source
+
+dashboard variable -output /dev/pts/5
+dashboard stack -output /dev/pts/8
+dashboard source -output /dev/pts/22
+dashboard breakpoints -output /dev/pts/18
+
+
+dashboard source -style height 100
+# dashboard assembly -style height 40
+
