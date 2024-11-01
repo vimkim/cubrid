@@ -1399,6 +1399,7 @@ pt_string_to_data_type (PARSER_CONTEXT * parser, const char *s, PT_NODE * node)
     {
     case PT_TYPE_OBJECT:
     case PT_TYPE_SET:
+    case PT_TYPE_SEQUENCE:
     case PT_TYPE_VECTOR:
     case PT_TYPE_MULTISET:
     case PT_TYPE_NUMERIC:
@@ -2396,6 +2397,10 @@ pt_type_enum_to_db (const PT_TYPE_ENUM t)
       db_type = DB_TYPE_MULTISET;
       break;
 
+    case PT_TYPE_SEQUENCE:
+      db_type = DB_TYPE_SEQUENCE;
+      break;
+
     case PT_TYPE_VECTOR:
       db_type = DB_TYPE_SEQUENCE;
       break;
@@ -2670,7 +2675,8 @@ pt_db_to_type_enum (const DB_TYPE t)
       pt_type = PT_TYPE_MULTISET;
       break;
     case DB_TYPE_SEQUENCE:
-      pt_type = PT_TYPE_VECTOR;
+      // pt_type = PT_TYPE_VECTOR; // TODO
+      pt_type = PT_TYPE_SEQUENCE;
       break;
 
     case DB_TYPE_CHAR:
@@ -3271,6 +3277,7 @@ pt_db_value_initialize (PARSER_CONTEXT * parser, PT_NODE * value, DB_VALUE * db_
       value->info.value.db_value_is_in_workspace = true;
       break;
 
+    case PT_TYPE_SEQUENCE:
     case PT_TYPE_VECTOR:
       seq = db_seq_create (NULL, NULL, 0);
       if (seq == NULL)
