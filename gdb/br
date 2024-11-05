@@ -1,4 +1,52 @@
 del
 br csql_execute_statements
-b do_prepare_select
+# b pt_compile
+# b do_prepare_select
+# b pt_fillin_type_size
+# b mq_optimize
+
+# compat/db_macro.c
+b db_value_domain_init
+
+# object
+## object_domain.c
+b tp_domain_init
+b tp_value_cast_internal
+b tp_check_value_size
+
+## object_domain.h
+## object_primitive.c
+## object_printer.cpp
+b object_printer::describe_domain
+## schema_system_catalog.c
+
+
+# parser
+## csql_grammar.y
+## parste_dbi.c
+b pt_type_enum_to_db_domain
+b pt_data_type_to_db_domain
+
+## semantic_check.c
+b pt_check_cast_op
+
+# query
+## execute_schema.c
+b validate_attribute_domain
+
+## query_opfunc.c
+b qdata_get_dbval_from_constant_regu_variable
+
+## string_opfunc.c
+b qstr_make_typed_string
+b qstr_get_category
+
+## string_opfunc.h
+
+# storage
+## statistics_cl.c
+
+
+# b pt_xasl_node_to_domain
+# b tp_domain_new
 # b parser_print_tree
