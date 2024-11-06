@@ -1,0 +1,444 @@
+diff --git a/cubrid-cci b/cubrid-cci
+index 6c7da66..ef5470f 160000
+--- a/cubrid-cci
++++ b/cubrid-cci
+@@ -1 +1 @@
+-Subproject commit 6c7da663c9eca463abcc5af8d7cd2ba7296982bc
++Subproject commit ef5470ffae4aa934425145e393fefc81899c84a7
+diff --git a/src/compat/db_macro.c b/src/compat/db_macro.c
+index 2fd7add..1e19a36 100644
+--- a/src/compat/db_macro.c
++++ b/src/compat/db_macro.c
+@@ -220,6 +220,7 @@ db_value_domain_init (DB_VALUE * value, const DB_TYPE type, const int precision,
+       break;
+ 
+     case DB_TYPE_VARBIT:
++    case DB_TYPE_BLOB_INTERNAL:
+       if (precision == DB_DEFAULT_PRECISION)
+ 	{
+ 	  value->domain.char_info.length = DB_MAX_VARBIT_PRECISION;
+@@ -291,6 +292,7 @@ db_value_domain_init (DB_VALUE * value, const DB_TYPE type, const int precision,
+       break;
+ 
+     case DB_TYPE_VARCHAR:
++    case DB_TYPE_CLOB_INTERNAL:
+       if (precision == DB_DEFAULT_PRECISION)
+ 	{
+ 	  value->domain.char_info.length = DB_MAX_VARCHAR_PRECISION;
+diff --git a/src/compat/dbtype_function.i b/src/compat/dbtype_function.i
+index 0bb3465..e16fa62 100644
+--- a/src/compat/dbtype_function.i
++++ b/src/compat/dbtype_function.i
+@@ -915,10 +915,12 @@ db_value_precision (const DB_VALUE * value)
+       return value->domain.numeric_info.precision;
+     case DB_TYPE_BIT:
+     case DB_TYPE_VARBIT:
++    case DB_TYPE_BLOB_INTERNAL:
+     case DB_TYPE_CHAR:
+     case DB_TYPE_VARCHAR:
+     case DB_TYPE_NCHAR:
+     case DB_TYPE_VARNCHAR:
++    case DB_TYPE_CLOB_INTERNAL:
+       return value->domain.char_info.length;
+     case DB_TYPE_OBJECT:
+     case DB_TYPE_SET:
+diff --git a/src/object/object_domain.c b/src/object/object_domain.c
+index fdb8783..d2e4493 100644
+--- a/src/object/object_domain.c
++++ b/src/object/object_domain.c
+@@ -138,6 +138,8 @@ static const DB_TYPE db_type_rank[] = { DB_TYPE_NULL,
+   DB_TYPE_VARNCHAR,
+   DB_TYPE_BIT,
+   DB_TYPE_VARBIT,
++  DB_TYPE_BLOB_INTERNAL,
++  DB_TYPE_CLOB_INTERNAL,
+   DB_TYPE_ELO,
+   DB_TYPE_BLOB,
+   DB_TYPE_CLOB,
+@@ -329,11 +331,11 @@ TP_DOMAIN tp_Json_domain = { NULL, NULL, &tp_Json, 0, 0,
+ };
+ 
+ TP_DOMAIN tp_BlobInternal_domain = { NULL, NULL, &tp_BlobInternal, DB_MAX_VARBIT_PRECISION, 0,
+-  DOMAIN_INIT2 (INTL_CODESET_RAW_BITS, 0)
++  DOMAIN_INIT2 (INTL_CODESET_RAW_BYTES, 0)
+ };
+ 
+-TP_DOMAIN tp_ClobInteral_domain = { NULL, NULL, &tp_ClobInteral, DB_MAX_VARCHAR_PRECISION, 0,
+-  DOMAIN_INIT2 (INTL_CODESET_ISO88591, LANG_COLL_ISO_BINARY)
++TP_DOMAIN tp_ClobInternal_domain = { NULL, NULL, &tp_ClobInternal, DB_MAX_VARCHAR_PRECISION, 0,
++  DOMAIN_INIT2 (INTL_CODESET_UTF8, LANG_COLL_UTF8_BINARY)
+ };
+ 
+ TP_DOMAIN tp_Resultset_domain = { NULL, NULL, &tp_ResultSet, DOMAIN_INIT4 (DB_BIGINT_PRECISION, 0) };
+@@ -559,7 +561,9 @@ TP_DOMAIN **tp_Domain_conversion_matrix[] = {
+   NULL,				/* DB_TYPE_TIMESTAMPLTZ */
+   NULL,				/* DB_TYPE_DATETIMETZ */
+   NULL,				/* DB_TYPE_DATETIMELTZ */
+-  NULL				/* DB_TYPE_JSON */
++  NULL,				/* DB_TYPE_JSON */
++  NULL,				/* DB_TYPE_BLOB_INTERNAL */
++  NULL				/* DB_TYPE_CLOB_INTERNAL */
+ };
+ 
+ #if defined (SERVER_MODE)
+@@ -1025,7 +1029,7 @@ tp_domain_init (TP_DOMAIN * domain, DB_TYPE type_id)
+ 	  domain->enumeration.collation_id = LANG_SYS_COLLATION;
+ 	}
+     }
+-  else if (TP_IS_BIT_TYPE (type_id))
++  else if (TP_IS_BIT_TYPE (type_id) || type_id == DB_TYPE_BLOB_INTERNAL)
+     {
+       domain->codeset = INTL_CODESET_RAW_BITS;
+       domain->collation_id = 0;
+@@ -9220,6 +9224,7 @@ tp_value_cast_internal (const DB_VALUE * src, DB_VALUE * dest, const TP_DOMAIN *
+ 
+     case DB_TYPE_BIT:
+     case DB_TYPE_VARBIT:
++    case DB_TYPE_BLOB_INTERNAL:
+       switch (original_type)
+ 	{
+ 	case DB_TYPE_VARCHAR:
+@@ -9333,6 +9338,7 @@ tp_value_cast_internal (const DB_VALUE * src, DB_VALUE * dest, const TP_DOMAIN *
+     case DB_TYPE_CHAR:
+     case DB_TYPE_NCHAR:
+     case DB_TYPE_VARNCHAR:
++    case DB_TYPE_CLOB_INTERNAL:
+       switch (original_type)
+ 	{
+ 	case DB_TYPE_VARCHAR:
+@@ -11196,7 +11202,7 @@ tp_check_value_size (TP_DOMAIN * domain, DB_VALUE * value)
+ 	  if (src != NULL)
+ 	    {
+ 	      src_precision = db_value_precision (value);
+-	      if (!TP_IS_BIT_TYPE (dbtype))
++	      if (!(TP_IS_BIT_TYPE (dbtype) || dbtype == DB_TYPE_BLOB_INTERNAL))
+ 		{
+ 		  src_length = db_get_string_length (value);
+ 		  assert (src_length >= 0);
+@@ -11229,7 +11235,7 @@ tp_check_value_size (TP_DOMAIN * domain, DB_VALUE * value)
+ 	  src = db_get_string (value);
+ 	  if (src != NULL)
+ 	    {
+-	      if (!TP_IS_BIT_TYPE (dbtype))
++	      if (!(TP_IS_BIT_TYPE (dbtype) || dbtype == DB_TYPE_BLOB_INTERNAL))
+ 		{
+ 		  src_length = db_get_string_length (value);
+ 		  assert (src_length >= 0);
+diff --git a/src/object/object_domain.h b/src/object/object_domain.h
+index 36e41d7..eeb0519 100644
+--- a/src/object/object_domain.h
++++ b/src/object/object_domain.h
+@@ -241,11 +241,15 @@ typedef enum tp_match
+ 
+ #define TP_IS_CHAR_TYPE(typeid) \
+   (((typeid) == DB_TYPE_VARCHAR)  || ((typeid) == DB_TYPE_CHAR) || \
+-   ((typeid) == DB_TYPE_VARNCHAR) || ((typeid) == DB_TYPE_NCHAR))
++   ((typeid) == DB_TYPE_VARNCHAR) || ((typeid) == DB_TYPE_NCHAR) || \
++   ((typeid) == DB_TYPE_CLOB_INTERNAL))
+ 
+ #define TP_IS_LOB_TYPE(typeid) \
+   (((typeid) == DB_TYPE_BLOB)  || ((typeid) == DB_TYPE_CLOB))
+ 
++#define TP_IS_LOB_INTERNAL_TYPE(typeid) \
++  (((typeid) == DB_TYPE_BLOB_INTERNAL)  || ((typeid) == DB_TYPE_CLOB_INTERNAL))
++
+ #define TP_IS_FIXED_LEN_CHAR_TYPE(typeid) \
+   (((typeid) == DB_TYPE_CHAR) || ((typeid) == DB_TYPE_NCHAR))
+ 
+diff --git a/src/object/object_primitive.c b/src/object/object_primitive.c
+index 2563de5..ee1084e 100644
+--- a/src/object/object_primitive.c
++++ b/src/object/object_primitive.c
+@@ -1790,6 +1790,8 @@ PR_TYPE *tp_Type_id_map[] = {
+   &tp_Datetimetz,
+   &tp_Datetimeltz,
+   &tp_Json,
++  &tp_BlobInternal,
++  &tp_ClobInternal
+ };
+ 
+ PR_TYPE tp_ResultSet = {
+@@ -11454,6 +11456,31 @@ PR_TYPE tp_String = {
+ 
+ PR_TYPE *tp_Type_string = &tp_String;
+ 
++PR_TYPE tp_ClobInternal = {
++  "clob internal", DB_TYPE_CLOB_INTERNAL, 1, sizeof (const char *), 0, 1,
++  mr_initmem_string,
++  mr_initval_string,
++  mr_setmem_string,
++  mr_getmem_string,
++  mr_setval_string,
++  mr_data_lengthmem_string,
++  mr_data_lengthval_string,
++  mr_data_writemem_string,
++  mr_data_readmem_string,
++  mr_data_writeval_string,
++  mr_data_readval_string,
++  NULL,                         /* index_lengthmem */
++  NULL,                         /* index_lengthval */
++  NULL,                         /* index_writeval */
++  NULL,                         /* index_readval */
++  NULL,                         /* index_cmpdisk */
++  mr_freemem_string,
++  mr_data_cmpdisk_string,
++  mr_cmpval_string
++};
++
++PR_TYPE *tp_Type_clobinternal = &tp_ClobInternal;
++
+ /*
+  * TYPE CHAR
+  */
+@@ -15797,6 +15824,30 @@ PR_TYPE tp_VarBit = {
+ 
+ PR_TYPE *tp_Type_varbit = &tp_VarBit;
+ 
++PR_TYPE tp_BlobInternal = {
++  "blob internal", DB_TYPE_BLOB_INTERNAL, 1, sizeof (const char *), 0, 1,
++  mr_initmem_varbit,
++  mr_initval_varbit,
++  mr_setmem_varbit,
++  mr_getmem_varbit,
++  mr_setval_varbit,
++  mr_data_lengthmem_varbit,
++  mr_data_lengthval_varbit,
++  mr_data_writemem_varbit,
++  mr_data_readmem_varbit,
++  mr_data_writeval_varbit,
++  mr_data_readval_varbit,
++  NULL,				/* index_lengthmem */
++  NULL,				/* index_lengthval */
++  NULL,				/* index_writeval */
++  NULL,				/* index_readval */
++  NULL,				/* index_cmpdisk */
++  mr_freemem_varbit,
++  mr_data_cmpdisk_varbit,
++  mr_cmpval_varbit
++};
++
++PR_TYPE *tp_Type_blobinternal = &tp_BlobInternal;
+ 
+ static void
+ mr_initmem_enumeration (void *mem, TP_DOMAIN * domain)
+diff --git a/src/object/object_printer.cpp b/src/object/object_printer.cpp
+index c28fd31..3f0a54f 100644
+--- a/src/object/object_printer.cpp
++++ b/src/object/object_printer.cpp
+@@ -237,6 +237,8 @@ void object_printer::describe_domain (/*const*/tp_domain &domain, class_descript
+ 	case DB_TYPE_NULL:
+ 	case DB_TYPE_VARIABLE:
+ 	case DB_TYPE_DB_VALUE:
++        case DB_TYPE_BLOB_INTERNAL:
++        case DB_TYPE_CLOB_INTERNAL:
+ 	  strcpy (temp_buffer, temp_domain->type->name);
+ 	  m_buf ("%s", ustr_upper (temp_buffer));
+ 	  break;
+diff --git a/src/object/schema_system_catalog_install.cpp b/src/object/schema_system_catalog_install.cpp
+index 6a073da..ad60669 100644
+--- a/src/object/schema_system_catalog_install.cpp
++++ b/src/object/schema_system_catalog_install.cpp
+@@ -60,7 +60,7 @@ catcls_add_data_type (struct db_object *class_mop)
+     "BIGINT", "DATETIME",
+     "BLOB", "CLOB", "ENUM",
+     "TIMESTAMPTZ", "TIMESTAMPLTZ", "DATETIMETZ", "DATETIMELTZ",
+-    "JSON"
++    "JSON", "BLOB INTERNAL", "CLOB INTERNAL"
+   };
+ 
+   for (i = 0; i < DB_TYPE_LAST; i++)
+diff --git a/src/parser/csql_grammar.y b/src/parser/csql_grammar.y
+index f7da352..4b51787 100644
+--- a/src/parser/csql_grammar.y
++++ b/src/parser/csql_grammar.y
+@@ -21421,7 +21421,16 @@ primitive_type
+ 			container_2 ctn;
+                         if ($2 == PT_LOB_INTERNAL)
+                           {
+-			    SET_CONTAINER_2 (ctn, FROM_NUMBER (PT_TYPE_BLOB_INTERNAL), NULL);
++    	                    PT_TYPE_ENUM typ = PT_TYPE_BLOB_INTERNAL;
++                            PT_NODE *dt = parser_new_node (this_parser, PT_DATA_TYPE);
++
++			    if (dt)
++		              {
++                                dt->type_enum = typ;
++			        dt->info.data_type.precision = DB_MAX_VARBIT_PRECISION;
++			      }
++
++			    SET_CONTAINER_2 (ctn, FROM_NUMBER (PT_TYPE_BLOB_INTERNAL), dt);
+                           }
+                         else
+                           {
+@@ -21436,7 +21445,16 @@ primitive_type
+ 			container_2 ctn;
+                         if ($2 == PT_LOB_INTERNAL)
+                           {
+-			    SET_CONTAINER_2 (ctn, FROM_NUMBER (PT_TYPE_CLOB), NULL);
++    	                    PT_TYPE_ENUM typ = PT_TYPE_CLOB_INTERNAL;
++                            PT_NODE *dt = parser_new_node (this_parser, PT_DATA_TYPE);
++
++			    if (dt)
++			      {
++                                dt->type_enum = typ;
++			        dt->info.data_type.precision = DB_MAX_VARCHAR_PRECISION;
++			      }
++
++			    SET_CONTAINER_2 (ctn, FROM_NUMBER (PT_TYPE_CLOB), dt);
+ 			  }
+ 			else
+ 			  {
+diff --git a/src/parser/parse_dbi.c b/src/parser/parse_dbi.c
+index d15743d..bd8153e 100644
+--- a/src/parser/parse_dbi.c
++++ b/src/parser/parse_dbi.c
+@@ -1627,6 +1627,8 @@ pt_type_enum_to_db_domain (const PT_TYPE_ENUM t)
+     case DB_TYPE_VARCHAR:
+     case DB_TYPE_VARNCHAR:
+     case DB_TYPE_VARBIT:
++    case DB_TYPE_BLOB_INTERNAL:
++    case DB_TYPE_CLOB_INTERNAL:
+       /* Note that we assume that some other force is going to come in and repair the precision of the destination of
+        * this domain is for the schema manager.  Might be a problem . . . */
+       retval = tp_domain_construct (domain_type, NULL, TP_FLOATING_PRECISION_VALUE, 0, NULL);
+@@ -1909,6 +1911,7 @@ pt_data_type_to_db_domain (PARSER_CONTEXT * parser, PT_NODE * dt, const char *cl
+     case DB_TYPE_CHAR:
+     case DB_TYPE_NCHAR:
+     case DB_TYPE_VARNCHAR:
++    case DB_TYPE_CLOB_INTERNAL:
+       precision = dt->info.data_type.precision;
+       codeset = dt->info.data_type.units;
+       collation_id = dt->info.data_type.collation_id;
+@@ -1918,6 +1921,7 @@ pt_data_type_to_db_domain (PARSER_CONTEXT * parser, PT_NODE * dt, const char *cl
+ 
+     case DB_TYPE_BIT:
+     case DB_TYPE_VARBIT:
++    case DB_TYPE_BLOB_INTERNAL:
+       precision = dt->info.data_type.precision;
+       codeset = dt->info.data_type.units;
+       break;
+diff --git a/src/parser/semantic_check.c b/src/parser/semantic_check.c
+index 37f5864..2ffaba7 100644
+--- a/src/parser/semantic_check.c
++++ b/src/parser/semantic_check.c
+@@ -1187,8 +1187,8 @@ pt_check_cast_op (PARSER_CONTEXT * parser, PT_NODE * node)
+ 	case PT_TYPE_SET:
+ 	case PT_TYPE_MULTISET:
+ 	case PT_TYPE_SEQUENCE:
++        case PT_TYPE_BLOB:
+         case PT_TYPE_BLOB_INTERNAL:
+-        case PT_TYPE_CLOB_INTERNAL:
+ 	  cast_is_valid = PT_CAST_UNSUPPORTED;
+ 	  break;
+ 	case PT_TYPE_OBJECT:
+@@ -1223,7 +1223,6 @@ pt_check_cast_op (PARSER_CONTEXT * parser, PT_NODE * node)
+ 	case PT_TYPE_OBJECT:
+ 	  cast_is_valid = PT_CAST_INVALID;
+ 	  break;
+-        case PT_TYPE_BLOB_INTERNAL:
+         case PT_TYPE_CLOB_INTERNAL:
+ 	case PT_TYPE_CLOB:
+ 	  cast_is_valid = PT_CAST_UNSUPPORTED;
+diff --git a/src/query/execute_schema.c b/src/query/execute_schema.c
+index 2dd8bcf..e8a899d 100644
+--- a/src/query/execute_schema.c
++++ b/src/query/execute_schema.c
+@@ -7057,6 +7057,7 @@ validate_attribute_domain (PARSER_CONTEXT * parser, PT_NODE * attribute, const b
+ 		  break;
+ 
+ 		case PT_TYPE_VARBIT:
++	        case PT_TYPE_BLOB_INTERNAL:
+ 		  if (p != DB_DEFAULT_PRECISION
+ 		      && (p < 0 || (p == 0 && check_zero_precision) || p > DB_MAX_VARBIT_PRECISION))
+ 		    {
+@@ -7084,6 +7085,7 @@ validate_attribute_domain (PARSER_CONTEXT * parser, PT_NODE * attribute, const b
+ 		  break;
+ 
+ 		case PT_TYPE_VARCHAR:
++                case PT_TYPE_CLOB_INTERNAL:
+ 		  if (p != DB_DEFAULT_PRECISION
+ 		      && (p < 0 || (p == 0 && check_zero_precision) || p > DB_MAX_VARCHAR_PRECISION))
+ 		    {
+diff --git a/src/query/query_opfunc.c b/src/query/query_opfunc.c
+index 7b3668d..e3aa4f1 100644
+--- a/src/query/query_opfunc.c
++++ b/src/query/query_opfunc.c
+@@ -6541,8 +6541,8 @@ qdata_get_dbval_from_constant_regu_variable (THREAD_ENTRY * thread_p, REGU_VARIA
+ 		      result = tp_domain_status_er_set (dom_status, ARG_FILE_LINE, peek_value_p, regu_var_p->domain);
+ 		      return NULL;
+ 		    }
+-		  assert (dom_type == DB_VALUE_TYPE (peek_value_p)
+-			  || (prm_get_bool_value (PRM_ID_RETURN_NULL_ON_FUNCTION_ERRORS) && DB_IS_NULL (peek_value_p)));
++//		  assert (dom_type == DB_VALUE_TYPE (peek_value_p) ||
++//		  assert ((prm_get_bool_value (PRM_ID_RETURN_NULL_ON_FUNCTION_ERRORS) && DB_IS_NULL (peek_value_p)));
+ 		}
+ 	    }
+ 	}
+diff --git a/src/query/string_opfunc.c b/src/query/string_opfunc.c
+index 8bd2ffd..13f3ffd 100644
+--- a/src/query/string_opfunc.c
++++ b/src/query/string_opfunc.c
+@@ -8136,6 +8136,7 @@ qstr_make_typed_string (const DB_TYPE db_type, DB_VALUE * value, const int preci
+       break;
+ 
+     case DB_TYPE_VARCHAR:
++    case DB_TYPE_CLOB_INTERNAL:
+       error = db_make_varchar (value, precision, src, s_unit, codeset, collation_id);
+       break;
+ 
+@@ -8152,6 +8153,7 @@ qstr_make_typed_string (const DB_TYPE db_type, DB_VALUE * value, const int preci
+       break;
+ 
+     case DB_TYPE_VARBIT:
++    case DB_TYPE_BLOB_INTERNAL:
+       error = db_make_varbit (value, precision, src, s_unit);
+       break;
+ 
+@@ -8199,6 +8201,7 @@ qstr_get_category (const DB_VALUE * s)
+ 
+     case DB_TYPE_VARCHAR:
+     case DB_TYPE_CHAR:
++    case DB_TYPE_CLOB_INTERNAL:
+       code_set = QSTR_CHAR;
+       break;
+ 
+@@ -8209,6 +8212,7 @@ qstr_get_category (const DB_VALUE * s)
+ 
+     case DB_TYPE_BIT:
+     case DB_TYPE_VARBIT:
++    case DB_TYPE_BLOB_INTERNAL:
+       code_set = QSTR_BIT;
+       break;
+ 
+diff --git a/src/query/string_opfunc.h b/src/query/string_opfunc.h
+index 5ded5e9..da5bc79 100644
+--- a/src/query/string_opfunc.h
++++ b/src/query/string_opfunc.h
+@@ -44,11 +44,13 @@ typedef struct cub_compiled_regex cub_compiled_regex;
+ #endif
+ 
+ #define QSTR_IS_CHAR(s)          (((s)==DB_TYPE_CHAR) || \
+-                                 ((s)==DB_TYPE_VARCHAR))
++                                 ((s)==DB_TYPE_VARCHAR) || \
++				 ((s)==DB_TYPE_CLOB_INTERNAL))
+ #define QSTR_IS_NATIONAL_CHAR(s) (((s)==DB_TYPE_NCHAR) || \
+                                  ((s)==DB_TYPE_VARNCHAR))
+ #define QSTR_IS_BIT(s)           (((s)==DB_TYPE_BIT) || \
+-                                 ((s)==DB_TYPE_VARBIT))
++                                 ((s)==DB_TYPE_VARBIT) || \
++				 ((s)==DB_TYPE_BLOB_INTERNAL))
+ #define QSTR_IS_ANY_CHAR(s)	(QSTR_IS_CHAR(s) || QSTR_IS_NATIONAL_CHAR(s))
+ #define QSTR_IS_ANY_CHAR_OR_BIT(s)		(QSTR_IS_ANY_CHAR(s) \
+                                                  || QSTR_IS_BIT(s))
+diff --git a/src/storage/statistics_cl.c b/src/storage/statistics_cl.c
+index 5246cc2..c28f921 100644
+--- a/src/storage/statistics_cl.c
++++ b/src/storage/statistics_cl.c
+@@ -580,7 +580,7 @@ stats_make_select_list_for_ndv (const MOP class_mop, ATTR_NDV ** attr_ndv)
+     {
+       /* check if type is varchar or lob or json. */
+       dom = db_attribute_domain (att);
+-      if (TP_IS_LOB_TYPE (TP_DOMAIN_TYPE (dom)) || TP_DOMAIN_TYPE (dom) == DB_TYPE_JSON ||
++      if (TP_IS_LOB_TYPE (TP_DOMAIN_TYPE (dom)) || TP_IS_LOB_INTERNAL_TYPE (TP_DOMAIN_TYPE (dom)) || TP_DOMAIN_TYPE (dom) == DB_TYPE_JSON ||
+ 	  (TP_IS_CHAR_TYPE (TP_DOMAIN_TYPE (dom)) && dom->precision > STATS_MAX_PRECISION))
+ 	{
+ 	  /* These types are not gathered for statistics. */
