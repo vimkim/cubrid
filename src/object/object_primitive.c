@@ -1640,6 +1640,32 @@ PR_TYPE tp_Sequence = {
 
 PR_TYPE *tp_Type_sequence = &tp_Sequence;
 
+PR_TYPE tp_Vector = {
+  "sequence", DB_TYPE_SEQUENCE, 1, sizeof (SETOBJ *), 0, 4,
+  mr_initmem_set,
+  mr_initval_sequence,
+  mr_setmem_set,
+  mr_getmem_sequence,
+  mr_setval_sequence,
+  mr_data_lengthmem_set,
+  mr_data_lengthval_set,
+  mr_data_writemem_set,
+  mr_data_readmem_set,
+  mr_data_writeval_set,
+  mr_data_readval_set,
+  NULL,				/* index_lengthmem */
+  NULL,				/* index_lengthval */
+  NULL,				/* index_writeval */
+  NULL,				/* index_readval */
+  NULL,				/* index_cmpdisk */
+  mr_freemem_set,
+  mr_data_cmpdisk_sequence,
+  mr_cmpval_sequence
+};
+
+PR_TYPE *tp_Type_vector = &tp_Sequence;
+
+
 PR_TYPE tp_Midxkey = {
   "midxkey", DB_TYPE_MIDXKEY, 1, 0, 0, 1,
   NULL,				/* initmem */
@@ -1790,6 +1816,7 @@ PR_TYPE *tp_Type_id_map[] = {
   &tp_Datetimetz,
   &tp_Datetimeltz,
   &tp_Json,
+  &tp_Vector,
 };
 
 PR_TYPE tp_ResultSet = {

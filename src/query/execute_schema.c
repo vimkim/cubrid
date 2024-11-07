@@ -7103,6 +7103,7 @@ validate_attribute_domain (PARSER_CONTEXT * parser, PT_NODE * attribute, const b
 		case PT_TYPE_SET:
 		case PT_TYPE_MULTISET:
 		case PT_TYPE_SEQUENCE:
+		case PT_TYPE_VECTOR:
 		  {
 		    PT_NODE *elem;
 		    for (elem = dtyp; elem != NULL; elem = elem->next)
@@ -13390,6 +13391,7 @@ get_hard_default_for_type (PT_TYPE_ENUM type)
     case PT_TYPE_SET:
     case PT_TYPE_MULTISET:
     case PT_TYPE_SEQUENCE:
+    case PT_TYPE_VECTOR:
       return empty_set;
 
     case PT_TYPE_BIT:

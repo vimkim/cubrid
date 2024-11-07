@@ -1608,6 +1608,7 @@ pt_type_enum_to_db_domain (const PT_TYPE_ENUM t)
     case DB_TYPE_SET:
     case DB_TYPE_MULTISET:
     case DB_TYPE_SEQUENCE:
+    case DB_TYPE_VECTOR:
     case DB_TYPE_MIDXKEY:
     case DB_TYPE_ENUMERATION:
     case DB_TYPE_JSON:
@@ -1927,6 +1928,7 @@ pt_data_type_to_db_domain (PARSER_CONTEXT * parser, PT_NODE * dt, const char *cl
     case DB_TYPE_SET:
     case DB_TYPE_MULTISET:
     case DB_TYPE_SEQUENCE:
+    case DB_TYPE_VECTOR:
     case DB_TYPE_MIDXKEY:
       return pt_node_to_db_domain (parser, dt, class_name);
 
@@ -2148,6 +2150,7 @@ pt_node_data_type_to_db_domain (PARSER_CONTEXT * parser, PT_NODE * dt, PT_TYPE_E
     case DB_TYPE_SET:
     case DB_TYPE_MULTISET:
     case DB_TYPE_SEQUENCE:
+    case DB_TYPE_VECTOR:
       while (dt && (error == NO_ERROR))
 	{
 	  domain = pt_data_type_to_db_domain (parser, dt, NULL);
@@ -2265,6 +2268,7 @@ pt_node_to_db_domain (PARSER_CONTEXT * parser, PT_NODE * node, const char *class
 	case DB_TYPE_SET:
 	case DB_TYPE_MULTISET:
 	case DB_TYPE_SEQUENCE:
+	case DB_TYPE_VECTOR:
 	case DB_TYPE_MIDXKEY:
 	  /* Recursively build the setdomain */
 	  dt = node->data_type;
@@ -2402,7 +2406,7 @@ pt_type_enum_to_db (const PT_TYPE_ENUM t)
       break;
 
     case PT_TYPE_VECTOR:
-      db_type = DB_TYPE_SEQUENCE;
+      db_type = DB_TYPE_VECTOR;
       break;
 
     case PT_TYPE_MIDXKEY:

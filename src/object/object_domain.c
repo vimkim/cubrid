@@ -1614,6 +1614,7 @@ tp_domain_match_internal (const TP_DOMAIN * dom1, const TP_DOMAIN * dom2, TP_MAT
     case DB_TYPE_SET:
     case DB_TYPE_MULTISET:
     case DB_TYPE_SEQUENCE:
+    case DB_TYPE_VECTOR:
 #if 1
       /* >>>>> NEED MORE CONSIDERATION <<<<< do not check order must be rollback with tp_domain_add() */
       if (dom1->setdomain == dom2->setdomain)
@@ -2048,6 +2049,7 @@ tp_is_domain_cached (TP_DOMAIN * dlist, TP_DOMAIN * transient, TP_MATCH exact, T
     case DB_TYPE_SET:
     case DB_TYPE_MULTISET:
     case DB_TYPE_SEQUENCE:
+    case DB_TYPE_VECTOR:
       {
 	int dsize2;
 
@@ -3461,6 +3463,7 @@ tp_domain_resolve_value (const DB_VALUE * val, TP_DOMAIN * dbuf)
 	case DB_TYPE_SET:
 	case DB_TYPE_MULTISET:
 	case DB_TYPE_SEQUENCE:
+	case DB_TYPE_VECTOR:
 	case DB_TYPE_MIDXKEY:
 	  break;
 	case DB_TYPE_TABLE:
