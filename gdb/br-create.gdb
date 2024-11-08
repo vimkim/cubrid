@@ -1,0 +1,12 @@
+b execute_statement_local
+b pt_node_to_db_domain
+b do_create_local
+b do_add_attribute
+b do_add_attributes
+b get_attr_name
+b pt_data_type_to_db_domain
+b pt_type_enum_to_db
+b pt_type_enum_to_db_domain
+b smt_find_attribute
+
+

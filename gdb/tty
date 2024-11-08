@@ -1,11 +1,17 @@
-dashboard source
+# dashboard source
+# dashboard variables -style compact False
 
-dashboard variable -output /dev/pts/5
-dashboard stack -output /dev/pts/8
-dashboard source -output /dev/pts/22
-dashboard breakpoints -output /dev/pts/18
-
+dashboard variables -output /dev/pts/15
+dashboard stack -output /dev/pts/13
+# dashboard source -output /dev/pts/
+# dashboard breakpoints -output /dev/pts/7
 
 dashboard source -style height 100
+# dashboard source -output /dev/pts/15
 # dashboard assembly -style height 40
+
+dashboard -style max_value_length 300
+# dashboard -style compact_values False
+# dashboard variables -style compact False
+
 

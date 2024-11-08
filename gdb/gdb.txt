@@ -1,0 +1,1330 @@
+$35 = {
+  node_type = PT_NAME,
+  parser_id = 366,
+  line_number = 1,
+  column_number = 18,
+  buffer_pos = -1,
+  sql_user_text = 0x5555558739e0 "select * from t2 where vec = {'a', 'b', 'c'};\n",
+  sql_user_text_len = 44,
+  next = 0x0,
+  or_next = 0x0,
+  next_row = 0x0,
+  etc = 0x5555555d23a0,
+  spec_ident = 0,
+  expected_domain = 0x0,
+  data_type = 0x55555a2c8870,
+  xasl_id = 0x0,
+  alias_print = 0x0,
+  expr_before_const_folding = 0x0,
+  type_enum = PT_TYPE_SEQUENCE,
+  cache_time = {
+    sec = 0,
+    usec = 0
+  },
+  sub_host_var_count = 0,
+  sub_host_var_index = 0x0,
+  info = {
+    error_msg = {
+      error_message = 0x55555a2c7748 "f",
+      statement_number = 1512665303
+    },
+    alter = {
+      entity_name = 0x55555a2c7748,
+      code = 1512665303,
+      entity_type = 21845,
+      super = {
+        sup_class_list = 0x55555a2970c9,
+        resolution_list = 0x0
+      },
+      alter_clause = {
+        query = {
+          query = 0xffffffff,
+          query_no_list = 0x0,
+          attr_def_list = 0x0,
+          view_comment = 0x0
+        },
+        attr_mthd = {
+          attr_def_list = 0xffffffff,
+          attr_old_name = 0x0,
+          attr_mthd_name_list = 0x0,
+          mthd_def_list = 0x0,
+          mthd_file_list = 0xbc800000000,
+          mthd_name_list = 0x0,
+          attr_type = PT_MISC_NONE
+        },
+        ch_attr_def = {
+          attr_name_list = 0xffffffff,
+          data_default_list = 0x0
+        },
+        rename = {
+          element_type = 4294967295,
+          meta = PT_MISC_NONE,
+          old_name = 0x0,
+          new_name = 0x0,
+          mthd_name = 0x0,
+          mthd_type = PT_MISC_NONE
+        },
+        partition = {
+          info = 0xffffffff,
+          name_list = 0x0,
+          parts = 0x0,
+          size = 0x0
+        },
+        collation = {
+          charset = -1,
+          collation_id = 0
+        },
+        index = {
+          reverse = 255,
+          unique = 255
+        },
+        auto_increment = {
+          start_value = 0xffffffff
+        },
+        user = {
+          user_name = 0xffffffff
+        },
+        comment = {
+          tbl_comment = 0xffffffff
+        }
+      },
+      constraint_list = 0x0,
+      create_index = 0x4,
+      internal_stmts = 0x0,
+      hint = 0
+    },
+    alter_trigger = {
+      trigger_spec_list = 0x55555a2c7748,
+      trigger_priority = 0x55555a2970d7,
+      trigger_owner = 0x55555a2970c9,
+      trigger_status = PT_MISC_NONE,
+      comment = 0xffffffff
+    },
+    alter_user = {
+      user_name = 0x55555a2c7748,
+      password = 0x55555a2970d7,
+      comment = 0x55555a2970c9,
+      code = 0,
+      members = 0xffffffff
+    },
+    alter_server = {
+      server_name = 0x55555a2c7748,
+      current_owner_name = 0x55555a2970d7,
+      host = 0x55555a2970c9,
+      port = 0x0,
+      dbname = 0xffffffff,
+      user = 0x0,
+      pwd = 0x0,
+      prop = 0x0,
+      comment = 0xbc800000000,
+      owner_name = 0x0,
+      xbits = {
+        bit_host = 0,
+        bit_port = 0,
+        bit_dbname = 0,
+        bit_user = 0,
+        bit_pwd = 0,
+        bit_prop = 0,
+        bit_comment = 0,
+        bit_owner = 0
+      }
+    },
+    attach = {
+      trans_id = 1512863560
+    },
+    attr_def = {
+      attr_name = 0x55555a2c7748,
+      data_default = 0x55555a2970d7,
+      on_update = 1512665289,
+      auto_increment = 0x0,
+      ordering_info = 0xffffffff,
+      comment = 0x0,
+      attr_type = PT_MISC_NONE,
+      size_constraint = 0,
+      constrain_not_null = 0
+    },
+    attr_ordering = {
+      after = 0x55555a2c7748,
+      first = 215
+    },
+    auth_cmd = {
+      attr_mthd_list = 0x55555a2c7748,
+      auth_cmd = 1512665303
+    },
+    auto_increment = {
+      start_val = 0x55555a2c7748,
+      increment_val = 0x55555a2970d7
+    },
+    check_option = {
+      spec_id = 93825073444680,
+      expr = 0x55555a2970d7
+    },
+    commit_work = {
+      retain_lock = 0
+    },
+    constraint = {
+      name = 0x55555a2c7748,
+      type = 1512665303,
+      deferrable = 21845,
+      initially_deferred = 0,
+      un = {
+        primary_key = {
+          attrs = 0x55555a2970c9
+        },
+        foreign_key = {
+          attrs = 0x55555a2970c9,
+          referenced_class = 0x0,
+          referenced_attrs = 0xffffffff,
+          match_type = PT_MISC_NONE,
+          delete_action = PT_MISC_NONE,
+          update_action = PT_MISC_NONE,
+          deduplicate_level = 0
+        },
+        not_null = {
+          attr = 0x55555a2970c9
+        },
+        unique = {
+          attrs = 0x55555a2970c9
+        },
+        check = {
+          expr = 0x55555a2970c9
+        }
+      },
+      comment = 0x0
+    },
+    create_entity = {
+      entity_type = 1512863560,
+      with_check_option = 21845,
+      entity_name = 0x55555a2970d7,
+      supclass_list = 0x55555a2970c9,
+      class_attr_def_list = 0x0,
+      attr_def_list = 0xffffffff,
+      table_option_list = 0x0,
+      method_def_list = 0x0,
+      method_file_list = 0x0,
+      resolution_list = 0xbc800000000,
+      as_query_list = 0x0,
+      object_id_list = 0x0,
+      update = 0x0,
+      constraint_list = 0x4,
+      create_index = 0x0,
+      partition_info = 0x0,
+      internal_stmts = 0x0,
+      create_like = 0x0,
+      create_select = 0x0,
+      vclass_comment = 0x0,
+      create_select_action = PT_CREATE_SELECT_NO_ACTION,
+      or_replace = 0,
+      if_not_exists = 0
+    },
+    create_server = {
+      server_name = 0x55555a2c7748,
+      owner_name = 0x55555a2970d7,
+      host = 0x55555a2970c9,
+      port = 0x0,
+      dbname = 0xffffffff,
+      user = 0x0,
+      pwd = 0x0,
+      prop = 0x0,
+      comment = 0xbc800000000
+    },
+    create_trigger = {
+      trigger_name = 0x55555a2c7748,
+      trigger_priority = 0x55555a2970d7,
+      trigger_status = 1512665289,
+      condition_time = 21845,
+      trigger_event = 0x0,
+      trigger_reference = 0xffffffff,
+      trigger_condition = 0x0,
+      trigger_action = 0x0,
+      action_time = PT_MISC_NONE,
+      comment = 0xbc800000000
+    },
+    create_user = {
+      user_name = 0x55555a2c7748,
+      password = 0x55555a2970d7,
+      groups = 0x55555a2970c9,
+      members = 0x0,
+      comment = 0xffffffff
+    },
+    cte = {
+      name = 0x55555a2c7748,
+      as_attr_list = 0x55555a2970d7,
+      non_recursive_part = 0x55555a2970c9,
+      recursive_part = 0x0,
+      only_all = 4294967295,
+      xasl = 0x0
+    },
+    data_default = {
+      default_value = 0x55555a2c7748,
+      shared = 1512665303,
+      default_expr_type = 21845
+    },
+    data_type = {
+      entity = 0x55555a2c7748,
+      enumeration = 0x55555a2970d7,
+      virt_object = 0x55555a2970c9,
+      table_column = 0x0,
+      virt_type_enum = 4294967295,
+      precision = 0,
+      dec_precision = 0,
+      units = 0,
+      collation_id = 0,
+      collation_flag = TP_DOMAIN_COLL_NORMAL,
+      has_coll_spec = false,
+      has_cs_spec = false,
+      inout = PT_MISC_NONE,
+      json_schema = 0xbc800000000
+    },
+    dblink_table = {
+      conn = 0x55555a2c7748,
+      owner_name = 0x55555a2970d7,
+      url = 0x55555a2970c9,
+      user = 0x0,
+      pwd = 0xffffffff,
+      qstr = 0x0,
+      cols = 0x0,
+      pushed_pred = 0x0,
+      rewritten = 0xbc800000000,
+      host_vars = {
+        count = 0,
+        index = 0x0
+      },
+      is_name = false,
+      remote_table_name = 0x4 <error: Cannot access memory at address 0x4>,
+      sel_list = 0x0,
+      owner_list = 0x0,
+      remote_col_list = 0x0
+    },
+    delete_ = {
+      target_classes = 0x55555a2c7748,
+      spec = 0x55555a2970d7,
+      class_specs = 0x55555a2970c9,
+      search_cond = 0x0,
+      using_index = 0xffffffff,
+      cursor_name = 0x0,
+      internal_stmts = 0x0,
+      waitsecs_hint = 0x0,
+      leading_hint = 0xbc800000000,
+      use_nl_hint = 0x0,
+      use_idx_hint = 0x0,
+      use_merge_hint = 0x0,
+      no_use_hash_hint = 0x4,
+      use_hash_hint = 0x0,
+      limit = 0x0,
+      del_stmt_list = 0x0,
+      hint = 0,
+      with = 0x0,
+      has_trigger = 0,
+      server_delete = 0,
+      rewrite_limit = 0,
+      execute_with_commit_allowed = 0
+    },
+    do_ = {
+      expr = 0x55555a2c7748
+    },
+    dot = {
+      arg1 = 0x55555a2c7748,
+      arg2 = 0x55555a2970d7,
+      selector = 0x55555a2970c9,
+      tag_click_counter = 0,
+      coll_modifier = 0
+    },
+    drop = {
+      spec_list = 0x55555a2c7748,
+      internal_stmts = 0x55555a2970d7,
+      entity_type = 1512665289,
+      if_exists = 85,
+      is_cascade_constraints = 85
+    },
+    drop_session_var = {
+      variables = 0x55555a2c7748
+    },
+    drop_server = {
+      if_exists = 72,
+      owner_name = 0x55555a2970d7,
+      server_name = 0x55555a2970c9
+    },
+    drop_trigger = {
+      trigger_spec_list = 0x55555a2c7748
+    },
+    drop_user = {
+      user_name = 0x55555a2c7748
+    },
+    drop_variable = {
+      var_names = 0x55555a2c7748
+    },
+    evaluate = {
+      expression = 0x55555a2c7748,
+      into_var = 0x55555a2970d7
+    },
+    event_object = {
+      event_object = 0x55555a2c7748,
+      correlation_name = 0x55555a2970d7
+    },
+    event_spec = {
+      event_target = 0x55555a2c7748,
+      event_type = 1512665303
+    },
+    event_target = {
+      class_name = 0x55555a2c7748,
+      attribute = 0x55555a2970d7
+    },
+    execute = {
+      name = 0x55555a2c7748,
+      query = 0x55555a2970d7,
+      using_list = 0x55555a2970c9,
+      into_list = 0x0,
+      xasl_id = {
+        sha1 = {
+          h = {[0] = -1, [1] = 0, [2] = 0, [3] = 0, [4] = 0}
+        },
+        cache_flag = 0,
+        time_stored = {
+          sec = 0,
+          usec = 0
+        }
+      },
+      stmt_type = CUBRID_STMT_ALTER_CLASS,
+      recompile = 3016,
+      do_cache = 0,
+      column_count = 0,
+      oids_included = 0
+    },
+    execute_trigger = {
+      trigger_spec_list = 0x55555a2c7748
+    },
+    expr = {
+      arg1 = 0x55555a2c7748,
+      arg2 = 0x55555a2970d7,
+      value = 0x55555a2970c9,
+      op = 0,
+      paren_type = 0,
+      arg3 = 0xffffffff,
+      cast_type = 0x0,
+      qualifier = PT_MISC_NONE,
+      flag = 0,
+      continued_case = 0,
+      location = 0,
+      is_order_dependent = false,
+      recursive_type = 0,
+      coll_modifier = 3016,
+      pred_order = 0
+    },
+    file_path = {
+      string = 0x55555a2c7748
+    },
+    function = {
+      arg_list = 0x55555a2c7748,
+      function_type = 1512665303,
+      all_or_distinct = 21845,
+      generic_name = 0x55555a2970c9 "dba.t2",
+      hidden_column = 0 '\000',
+      order_by = 0xffffffff,
+      percentile = 0x0,
+      is_order_dependent = false,
+      is_type_checked = false,
+      coll_modifier = 0,
+      analytic = {
+        partition_by = 0x0,
+        order_by = 0xbc800000000,
+        default_value = 0x0,
+        offset = 0x0,
+        expanded_list = 0x0,
+        adjusted = 4,
+        from_last = false,
+        ignore_nulls = false,
+        is_analytic = false
+      }
+    },
+    get_opt_lvl = {
+      args = 0x55555a2c7748,
+      into_var = 0x55555a2970d7,
+      option = 1512665289
+    },
+    get_stats = {
+      class_ = 0x55555a2c7748,
+      args = 0x55555a2970d7,
+      into_var = 0x55555a2970c9
+    },
+    get_trigger = {
+      into_var = 0x55555a2c7748,
+      option = 1512665303
+    },
+    get_xaction = {
+      into_var = 0x55555a2c7748,
+      option = 1512665303
+    },
+    grant = {
+      auth_cmd_list = 0x55555a2c7748,
+      user_list = 0x55555a2970d7,
+      spec_list = 0x55555a2970c9,
+      grant_option = PT_MISC_NONE
+    },
+    host_var = {
+      str = 0x55555a2c7748 "f",
+      var_type = 1512665303,
+      index = 21845,
+      label = 0x55555a2970c9 "dba.t2",
+      saved = 0,
+      next = 0xffffffff
+    },
+    index = {
+      indexed_class = 0x55555a2c7748,
+      column_names = 0x55555a2970d7,
+      index_name = 0x55555a2970c9,
+      prefix_length = 0x0,
+      where = 0xffffffff,
+      function_expr = 0x0,
+      comment = 0x0,
+      code = 0,
+      func_pos = 0,
+      func_no_args = 0,
+      reverse = 200,
+      unique = 11,
+      index_status = SM_NO_INDEX,
+      ib_threads = 0,
+      deduplicate_level = 0
+    },
+    insert = {
+      spec = 0x55555a2c7748,
+      class_specs = 0x55555a2970d7,
+      attr_list = 0x55555a2970c9,
+      value_clauses = 0x0,
+      into_var = 0xffffffff,
+      is_subinsert = PT_MISC_NONE,
+      where = 0x0,
+      internal_stmts = 0x0,
+      waitsecs_hint = 0xbc800000000,
+      hint = 0,
+      odku_assignments = 0x0,
+      do_replace = false,
+      insert_mode = 0x4,
+      non_null_attrs = 0x0,
+      odku_non_null_attrs = 0x0,
+      has_uniques = 0,
+      server_allowed = SERVER_INSERT_NOT_CHECKED,
+      execute_with_commit_allowed = 0
+    },
+    insert_value = {
+      original_node = 0x55555a2c7748,
+      value = {
+        domain = {
+          general_info = {
+            is_null = 215 '\327',
+            type = 112 'p'
+          },
+          numeric_info = {
+            is_null = 215 '\327',
+            type = 112 'p',
+            precision = 41 ')',
+            scale = 90 'Z'
+          },
+          char_info = {
+            is_null = 215 '\327',
+            type = 112 'p',
+            length = 21845,
+            collation_id = 1512665289
+          }
+        },
+        data = {
+          i = 0,
+          sh = 0,
+          bigint = 0,
+          f = 0,
+          d = 0,
+          p = 0x0,
+          op = 0x0,
+          time = 0,
+          date = 0,
+          utime = 0,
+          timestamptz = {
+            timestamp = 0,
+            tz_id = 0
+          },
+          datetime = {
+            date = 0,
+            time = 0
+          },
+          datetimetz = {
+            datetime = {
+              date = 0,
+              time = 0
+            },
+            tz_id = 4294967295
+          },
+          money = {
+            amount = 0,
+            type = 4294967295
+          },
+          set = 0x0,
+          collect = 0x0,
+          midxkey = {
+            size = 0,
+            ncolumns = 0,
+            domain = 0xffffffff,
+            buf = 0x0,
+            min_max_val = {
+              position = 0,
+              type = MIN_COLUMN
+            }
+          },
+          elo = {
+            size = 0,
+            locator = 0xffffffff "",
+            meta_data = 0x0,
+            type = ELO_NULL,
+            es_type = 0
+          },
+          error = 0,
+          oid = {
+            pageid = 0,
+            slotid = 0,
+            volid = 0
+          },
+          num = {
+            d = {
+              digits = 0x0,
+              buf = "\000\000\000\000\000\000\000\000\377\377\377\377\000\000\000"
+            }
+          },
+          ch = {
+            info = {
+              style = 0 '\000',
+              codeset = 0 '\000',
+              is_max_string = 0 '\000',
+              compressed_need_clear = 0 '\000'
+            },
+            sm = {
+              style = 0 '\000',
+              codeset = 0 '\000',
+              is_max_string = 0 '\000',
+              compressed_need_clear = 0 '\000',
+              size = 0 '\000',
+              buf = "\000\000\000\377\377\377\377\000\000\000\000\000"
+            },
+            medium = {
+              style = 0 '\000',
+              codeset = 0 '\000',
+              is_max_string = 0 '\000',
+              compressed_need_clear = 0 '\000',
+              size = 0,
+              buf = 0xffffffff "",
+              compressed_size = 0,
+              compressed_buf = 0x0,
+              length = 0
+            },
+            large = {
+              style = 0 '\000',
+              codeset = 0 '\000',
+              is_max_string = 0 '\000',
+              compressed_need_clear = 0 '\000',
+              str = 0xffffffff
+            }
+          },
+          rset = 0,
+          enumeration = {
+            short_val = 0,
+            str_val = {
+              info = {
+                style = 255 '\377',
+                codeset = 255 '\377',
+                is_max_string = 255 '\377',
+                compressed_need_clear = 255 '\377'
+              },
+              sm = {
+                style = 255 '\377',
+                codeset = 255 '\377',
+                is_max_string = 255 '\377',
+                compressed_need_clear = 255 '\377',
+                size = 0 '\000',
+                buf = '\000' <repeats 12 times>
+              },
+              medium = {
+                style = 255 '\377',
+                codeset = 255 '\377',
+                is_max_string = 255 '\377',
+                compressed_need_clear = 255 '\377',
+                size = 0,
+                buf = 0x0,
+                compressed_size = 0,
+                compressed_buf = 0x0,
+                length = 0
+              },
+              large = {
+                style = 255 '\377',
+                codeset = 255 '\377',
+                is_max_string = 255 '\377',
+                compressed_need_clear = 255 '\377',
+                str = 0x0
+              }
+            }
+          },
+          json = {
+            schema_raw = 0x0,
+            document = 0xffffffff
+          }
+        },
+        need_clear = false
+      },
+      is_evaluated = 0,
+      replace_names = 0
+    },
+    isolation_lvl = {
+      schema = 1512863560,
+      instances = 21845,
+      level = 0x55555a2970d7,
+      async_ws = 1
+    },
+    json_table_info = {
+      expr = 0x55555a2c7748,
+      tree = 0x55555a2970d7,
+      is_correlated = 201
+    },
+    json_table_node_info = {
+      columns = 0x55555a2c7748,
+      nested_paths = 0x55555a2970d7,
+      path = 0x55555a2970c9 "dba.t2"
+    },
+    json_table_column_info = {
+      name = 0x55555a2c7748,
+      path = 0x55555a2970d7 "vec",
+      index = 93825073246409,
+      func = JSON_TABLE_EXTRACT,
+      on_error = {
+        m_behavior = (JSON_TABLE_THROW_ERROR | JSON_TABLE_DEFAULT_VALUE | unknown: 0xfffffffc),
+        m_default_value = 0x0
+      },
+      on_empty = {
+        m_behavior = JSON_TABLE_RETURN_NULL,
+        m_default_value = 0x0
+      }
+    },
+    merge = {
+      into = 0x55555a2c7748,
+      using_clause = 0x55555a2970d7,
+      search_cond = 0x55555a2970c9,
+      update = {
+        assignment = 0x0,
+        search_cond = 0xffffffff,
+        del_search_cond = 0x0,
+        index_hint = 0x0,
+        do_class_attrs = false,
+        has_delete = false
+      },
+      insert = {
+        attr_list = 0xbc800000000,
+        value_clauses = 0x0,
+        search_cond = 0x0,
+        class_where = 0x0,
+        index_hint = 0x4
+      },
+      check_where = 0x0,
+      waitsecs_hint = 0x0,
+      hint = 0,
+      flags = 0
+    },
+    method_call = {
+      method_name = 0x55555a2c7748,
+      arg_list = 0x55555a2970d7,
+      on_call_target = 0x55555a2970c9,
+      to_return_var = 0x0,
+      call_or_expr = 4294967295,
+      method_type = PT_MISC_NONE,
+      method_id = 0
+    },
+    method_def = {
+      method_name = 0x55555a2c7748,
+      method_args_list = 0x55555a2970d7,
+      function_name = 0x55555a2970c9,
+      mthd_type = PT_MISC_NONE
+    },
+    name = {
+      spec_id = 93825073444680,
+      original = 0x55555a2970d7 "vec",
+      resolved = 0x55555a2970c9 "dba.t2",
+      db_object = 0x0,
+      db_object_chn = -1,
+      virt_object = 0x0,
+      partition = 0x0,
+      path_correlation = 0x0,
+      virt_type_enum = 0,
+      meta_class = PT_NORMAL,
+      default_value = 0x0,
+      constant_value = 0x0,
+      custom_print = 0,
+      correlation_level = 0,
+      hidden_column = 0 '\000',
+      flag = 4,
+      location = 0,
+      tag_click_counter = 0,
+      indx_key_limit = 0x0,
+      coll_modifier = 0,
+      reserved_id = RESERVED_T_PAGEID,
+      json_table_column_index = 0
+    },
+    named_arg = {
+      name = 0x55555a2c7748,
+      value = 0x55555a2970d7
+    },
+    node_list = {
+      list_type = 1512863560,
+      list = 0x55555a2970d7
+    },
+    partition = {
+      expr = 0x55555a2c7748,
+      keycol = 0x55555a2970d7,
+      hashsize = 0x55555a2970c9,
+      parts = 0x0,
+      type = (PT_PARTITION_RANGE | PT_PARTITION_LIST | unknown: 0xfffffffc)
+    },
+    parts = {
+      name = 0x55555a2c7748,
+      values = 0x55555a2970d7,
+      type = (PT_PARTITION_RANGE | unknown: 0x5a2970c8),
+      comment = 0x0
+    },
+    prepare = {
+      name = 0x55555a2c7748,
+      statement = 0x55555a2970d7,
+      using_list = 0x55555a2970c9
+    },
+    prepare_to_commit = {
+      trans_id = 1512863560
+    },
+    query = {
+      correlation_level = 1512863560,
+      all_distinct = 21845,
+      is_subquery = 1512665303,
+      is_view_spec = 85 'U',
+      oids_included = 85 'U',
+      scan_op_type = 1512665289,
+      upd_del_class_cnt = 21845,
+      mvcc_reev_extra_cls_cnt = 0,
+      flag = {
+        has_outer_spec = 0,
+        is_sort_spec = 0,
+        is_insert_select = 0,
+        single_tuple = 0,
+        vspec_as_derived = 0,
+        reexecute = 0,
+        do_cache = 0,
+        do_not_cache = 0,
+        order_siblings = 0,
+        rewrite_limit = 0,
+        has_system_class = 0,
+        subquery_cached = 0
+      },
+      order_by = 0xffffffff,
+      orderby_for = 0x0,
+      into_list = 0x0,
+      qcache_hint = 0x0,
+      limit = 0xbc800000000,
+      xasl = 0x0,
+      sub_xasl_id = 0x0,
+      id = 0,
+      hint = 4,
+      is_order_dependent = false,
+      with = 0x0,
+      q = {
+        select = {
+          list = 0x0,
+          from = 0x0,
+          where = 0x0,
+          group_by = 0x0,
+          connect_by = 0x0,
+          start_with = 0x0,
+          after_cb_filter = 0x0,
+          having = 0x0,
+          using_index = 0x0,
+          with_increment = 0x0,
+          leading = 0x0,
+          use_nl = 0x0,
+          use_idx = 0x0,
+          index_ss = 0x0,
+          index_ls = 0x0,
+          use_merge = 0x0,
+          no_use_hash = 0x0,
+          use_hash = 0x0,
+          waitsecs_hint = 0x0,
+          jdbc_life_time = 0x0,
+          qo_summary = 0x0,
+          check_where = 0x0,
+          for_update = 0x0,
+          push_list = 0x0,
+          hint = 0,
+          flavor = 0,
+          flag = 0,
+          check_cycles = CONNECT_BY_CYCLES_ERROR,
+          single_table_opt = 0
+        },
+        union_ = {
+          arg1 = 0x0,
+          arg2 = 0x0,
+          select_list = 0x0,
+          is_leaf_node = 0
+        }
+      }
+    },
+    remove_trigger = {
+      trigger_spec_list = 0x55555a2c7748
+    },
+    rename = {
+      old_name = 0x55555a2c7748,
+      in_class = 0x55555a2970d7,
+      new_name = 0x55555a2970c9,
+      meta = PT_MISC_NONE,
+      attr_or_mthd = PT_MISC_NONE,
+      entity_type = 4294967295
+    },
+    rename_server = {
+      old_name = 0x55555a2c7748,
+      owner_name = 0x55555a2970d7,
+      new_name = 0x55555a2970c9
+    },
+    rename_trigger = {
+      old_name = 0x55555a2c7748,
+      new_name = 0x55555a2970d7
+    },
+    resolution = {
+      attr_mthd_name = 0x55555a2c7748,
+      of_sup_class_name = 0x55555a2970d7,
+      as_attr_mthd_name = 0x55555a2970c9,
+      attr_type = PT_MISC_NONE
+    },
+    revoke = {
+      auth_cmd_list = 0x55555a2c7748,
+      user_list = 0x55555a2970d7,
+      spec_list = 0x55555a2970c9
+    },
+    rollback_work = {
+      save_name = 0x55555a2c7748
+    },
+    savepoint = {
+      save_name = 0x55555a2c7748
+    },
+    scope = {
+      from = 0x55555a2c7748,
+      stmt = 0x55555a2970d7
+    },
+    serial = {
+      serial_name = 0x55555a2c7748,
+      start_val = 0x55555a2970d7,
+      increment_val = 0x55555a2970c9,
+      max_val = 0x0,
+      min_val = 0xffffffff,
+      cached_num_val = 0x0,
+      owner_name = 0x0,
+      comment = 0x0,
+      code = 0,
+      cyclic = 3016,
+      no_max = 0,
+      no_min = 0,
+      no_cyclic = 0,
+      no_cache = 0,
+      if_exists = 0
+    },
+    set_names = {
+      charset_node = 0x55555a2c7748,
+      collation_node = 0x55555a2970d7
+    },
+    set_timezone = {
+      timezone_node = 0x55555a2c7748
+    },
+    set_opt_lvl = {
+      val = 0x55555a2c7748,
+      option = 1512665303
+    },
+    set_sys_params = {
+      val = 0x55555a2c7748
+    },
+    set_trigger = {
+      val = 0x55555a2c7748,
+      option = 1512665303
+    },
+    set_variables = {
+      assignments = 0x55555a2c7748
+    },
+    set_xaction = {
+      xaction_modes = 0x55555a2c7748
+    },
+    showstmt = {
+      show_type = 1512863560,
+      show_args = 0x55555a2970d7
+    },
+    sort_spec = {
+      expr = 0x55555a2c7748,
+      pos_descr = {
+        dom = 0x55555a2970d7,
+        original_domain = 0x55555a2970c9,
+        pos_no = 0
+      },
+      asc_or_desc = 4294967295,
+      nulls_first_or_last = PT_MISC_NONE
+    },
+    sp = {
+      name = 0x55555a2c7748,
+      param_list = 0x55555a2970d7,
+      body = 0x55555a2970c9,
+      comment = 0x0,
+      owner = 0xffffffff,
+      type = PT_MISC_NONE,
+      or_replace = 0,
+      ret_type = 0,
+      ret_data_type = 0x0
+    },
+    sp_param = {
+      name = 0x55555a2c7748,
+      mode = 1512665303,
+      comment = 0x55555a2970c9
+    },
+    spec = {
+      entity_name = 0x55555a2c7748,
+      remote_server_name = 0x55555a2970d7,
+      cte_name = 0x55555a2970c9,
+      cte_pointer = 0x0,
+      except_list = 0xffffffff,
+      derived_table = 0x0,
+      range_var = 0x0,
+      as_attr_list = 0x0,
+      referenced_attrs = 0xbc800000000,
+      path_entities = 0x0,
+      path_conjuncts = 0x0,
+      flat_entity_list = 0x0,
+      method_list = 0x4,
+      partition = 0x0,
+      json_table = 0x0,
+      id = 0,
+      only_all = PT_MISC_NONE,
+      meta_class = PT_MISC_NONE,
+      derived_table_type = PT_MISC_NONE,
+      flavor = PT_MISC_NONE,
+      on_cond = 0x0,
+      using_cond = 0x0,
+      join_type = PT_JOIN_NONE,
+      location = 0,
+      natural = false,
+      auth_bypass_mask = DB_AUTH_NONE,
+      flag = PT_SPEC_FLAG_NONE
+    },
+    synonym = {
+      synonym_name = 0x55555a2c7748,
+      synonym_owner_name = 0x55555a2970d7,
+      old_synonym_name = 0x55555a2970c9,
+      old_synonym_owner_name = 0x0,
+      new_synonym_name = 0xffffffff,
+      new_synonym_owner_name = 0x0,
+      target_name = 0x0,
+      target_owner_name = 0x0,
+      access_modifier = PT_MISC_NONE,
+      comment = 0x0,
+      or_replace = 0,
+      if_exists = 0,
+      is_dblinked = 0
+    },
+    table_option = {
+      option = 1512863560,
+      val = 0x55555a2970d7
+    },
+    timeout = {
+      val = 0x55555a2c7748
+    },
+    trigger_action = {
+      expression = 0x55555a2c7748,
+      string = 0x55555a2970d7,
+      action_type = 1512665289
+    },
+    trigger_spec_list = {
+      trigger_name_list = 0x55555a2c7748,
+      event_list = 0x55555a2970d7,
+      all_triggers = 1512665289
+    },
+    truncate = {
+      spec = 0x55555a2c7748,
+      is_cascade = 215
+    },
+    tuple_value = {
+      name = 0x55555a2c7748,
+      cursor_p = 0x55555a2970d7,
+      index = 1512665289
+    },
+    update = {
+      spec = 0x55555a2c7748,
+      class_specs = 0x55555a2970d7,
+      assignment = 0x55555a2970c9,
+      search_cond = 0x0,
+      using_index = 0xffffffff,
+      object = 0x0,
+      object_parameter = 0x0,
+      cursor_name = 0x0,
+      check_where = 0xbc800000000,
+      internal_stmts = 0x0,
+      waitsecs_hint = 0x0,
+      leading_hint = 0x0,
+      use_nl_hint = 0x4,
+      use_idx_hint = 0x0,
+      use_merge_hint = 0x0,
+      no_use_hash_hint = 0x0,
+      use_hash_hint = 0x0,
+      limit = 0x0,
+      order_by = 0x0,
+      orderby_for = 0x0,
+      hint = 0,
+      with = 0x0,
+      has_trigger = 0,
+      has_unique = 0,
+      server_update = 0,
+      do_class_attrs = 0,
+      rewrite_limit = 0,
+      execute_with_commit_allowed = 0
+    },
+    update_stats = {
+      class_list = 0x55555a2c7748,
+      all_classes = 1512665303,
+      with_fullscan = 21845
+    },
+    value = {
+      text = 0x55555a2c7748 "f",
+      data_value = {
+        i = 93825073246423,
+        bigint = 93825073246423,
+        f = 1.19233349e+16,
+        d = 4.6355745409596242e-310,
+        str = 0x55555a2970d7,
+        p = 0x55555a2970d7,
+        op = 0x55555a2970d7,
+        time = 93825073246423,
+        date = 93825073246423,
+        utime = 93825073246423,
+        timestamptz = {
+          timestamp = 1512665303,
+          tz_id = 21845
+        },
+        datetime = {
+          date = 1512665303,
+          time = 21845
+        },
+        datetimetz = {
+          datetime = {
+            date = 1512665303,
+            time = 21845
+          },
+          tz_id = 1512665289
+        },
+        money = {
+          amount = 4.6355745409596242e-310,
+          type = 1512665289
+        },
+        set = 0x55555a2970d7,
+        elo = {
+          size = 93825073246423,
+          locator = 0x55555a2970c9 "dba.t2",
+          meta_data = 0x0,
+          type = (ELO_FBO | unknown: 0xfffffffe),
+          es_type = 0
+        },
+        b = 1512665303,
+        enumeration = {
+          short_val = 28887,
+          str_val = 0x55555a2970c9
+        }
+      },
+      db_value = {
+        domain = {
+          general_info = {
+            is_null = 0 '\000',
+            type = 0 '\000'
+          },
+          numeric_info = {
+            is_null = 0 '\000',
+            type = 0 '\000',
+            precision = 0 '\000',
+            scale = 0 '\000'
+          },
+          char_info = {
+            is_null = 0 '\000',
+            type = 0 '\000',
+            length = 0,
+            collation_id = 0
+          }
+        },
+        data = {
+          i = 0,
+          sh = 0,
+          bigint = 0,
+          f = 0,
+          d = 0,
+          p = 0x0,
+          op = 0x0,
+          time = 0,
+          date = 0,
+          utime = 0,
+          timestamptz = {
+            timestamp = 0,
+            tz_id = 0
+          },
+          datetime = {
+            date = 0,
+            time = 0
+          },
+          datetimetz = {
+            datetime = {
+              date = 0,
+              time = 0
+            },
+            tz_id = 0
+          },
+          money = {
+            amount = 0,
+            type = DB_CURRENCY_DOLLAR
+          },
+          set = 0x0,
+          collect = 0x0,
+          midxkey = {
+            size = 0,
+            ncolumns = 0,
+            domain = 0xbc800000000,
+            buf = 0x0,
+            min_max_val = {
+              position = 0,
+              type = MIN_COLUMN
+            }
+          },
+          elo = {
+            size = 0,
+            locator = 0xbc800000000 <error: Cannot access memory at address 0xbc800000000>,
+            meta_data = 0x0,
+            type = ELO_NULL,
+            es_type = 0
+          },
+          error = 0,
+          oid = {
+            pageid = 0,
+            slotid = 0,
+            volid = 0
+          },
+          num = {
+            d = {
+              digits = 0x0,
+              buf = '\000' <repeats 12 times>, "\310\v\000"
+            }
+          },
+          ch = {
+            info = {
+              style = 0 '\000',
+              codeset = 0 '\000',
+              is_max_string = 0 '\000',
+              compressed_need_clear = 0 '\000'
+            },
+            sm = {
+              style = 0 '\000',
+              codeset = 0 '\000',
+              is_max_string = 0 '\000',
+              compressed_need_clear = 0 '\000',
+              size = 0 '\000',
+              buf = "\000\000\000\000\000\000\000\310\v\000\000\000"
+            },
+            medium = {
+              style = 0 '\000',
+              codeset = 0 '\000',
+              is_max_string = 0 '\000',
+              compressed_need_clear = 0 '\000',
+              size = 0,
+              buf = 0xbc800000000 <error: Cannot access memory at address 0xbc800000000>,
+              compressed_size = 0,
+              compressed_buf = 0x0,
+              length = 0
+            },
+            large = {
+              style = 0 '\000',
+              codeset = 0 '\000',
+              is_max_string = 0 '\000',
+              compressed_need_clear = 0 '\000',
+              str = 0xbc800000000
+            }
+          },
+          rset = 0,
+          enumeration = {
+            short_val = 0,
+            str_val = {
+              info = {
+                style = 0 '\000',
+                codeset = 0 '\000',
+                is_max_string = 0 '\000',
+                compressed_need_clear = 0 '\000'
+              },
+              sm = {
+                style = 0 '\000',
+                codeset = 0 '\000',
+                is_max_string = 0 '\000',
+                compressed_need_clear = 0 '\000',
+                size = 200 '\310',
+                buf = "\v", '\000' <repeats 11 times>
+              },
+              medium = {
+                style = 0 '\000',
+                codeset = 0 '\000',
+                is_max_string = 0 '\000',
+                compressed_need_clear = 0 '\000',
+                size = 3016,
+                buf = 0x0,
+                compressed_size = 0,
+                compressed_buf = 0x0,
+                length = 4
+              },
+              large = {
+                style = 0 '\000',
+                codeset = 0 '\000',
+                is_max_string = 0 '\000',
+                compressed_need_clear = 0 '\000',
+                str = 0x0
+              }
+            }
+          },
+          json = {
+            schema_raw = 0x0,
+            document = 0xbc800000000
+          }
+        },
+        need_clear = false
+      },
+      db_value_is_initialized = 0,
+      db_value_is_in_workspace = 0,
+      location = 0,
+      string_type = 0 '\000',
+      print_charset = false,
+      print_collation = false,
+      has_cs_introducer = false,
+      is_collate_allowed = false,
+      is_false_where = false,
+      coll_modifier = 0,
+      host_var_index = 0
+    },
+    pointer = {
+      node = 0x55555a2c7748,
+      type = (PT_POINTER_REF | unknown: 0x5a2970d6),
+      sel = 4.6355745409589325e-310,
+      rank = 0,
+      pred_order = 0,
+      do_walk = 255
+    },
+    trace = {
+      on_off = 1512863560,
+      format = 21845
+    },
+    killstmt = {
+      kill_type = (unknown: 0x5a2c7748),
+      tran_id_list = 0x55555a2970d7
+    },
+    with_clause = {
+      recursive = 1512863560,
+      cte_definition_list = 0x55555a2970d7
+    },
+    sp_body = {
+      lang = 1512863560,
+      decl = 0x55555a2970d7,
+      impl = 0x55555a2970c9,
+      direct = false
+    }
+  }
+}

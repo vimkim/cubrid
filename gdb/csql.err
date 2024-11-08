@@ -1,0 +1,2075 @@
+
+Time: 11/06/24 13:17:23.460 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_cl.c, line 1119
+boot_restart_client: register client { type 2 db demodb user dba password (null) program /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/install.out/myprofile/bin/csql login vimkim host iusewslbtw pid 222587 }
+
+Time: 11/06/24 13:17:39.573 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/06/24 13:17:39.573 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/06/24 13:17:39.575 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1060
+LOG INITIALIZE
+	db_fullname = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb 
+	logpath = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb 
+	prefix_logname = demodb 
+	ismedia_crash = 0 
+
+Time: 11/06/24 13:17:39.783 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 775
+RECOVERY: start with 823|9160 and stop at -1
+Time: 11/06/24 13:17:39.783 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 817  CODE = -1128, Tran = -1, EID = 1
+Log recovery is started.
+
+Time: 11/06/24 13:17:39.784 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 2747
+log_recovery_analysis: log page 823, checksum 232077980
+
+Time: 11/06/24 13:17:39.785 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 824  CODE = -1300, Tran = -1, EID = 2
+Log recovery: ANALYSIS Phase is finished.
+
+Time: 11/06/24 13:17:39.785 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 860  CODE = -1297, Tran = -1, EID = 3
+Log recovery: REDO Phase is started. Log pages to redo: 1, Log records to redo: 0.
+
+Time: 11/06/24 13:17:39.785 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 3909  CODE = -1299, Tran = -1, EID = 4
+Log recovery: REDO Phase is being finished up.
+
+Time: 11/06/24 13:17:39.787 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 865  CODE = -1300, Tran = -1, EID = 5
+Log recovery: REDO Phase is finished.
+
+Time: 11/06/24 13:17:39.787 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 4507  CODE = -1298, Tran = -1, EID = 6
+Log recovery: UNDO Phase is started. Log pages to undo: 0, transactions to undo: 0.
+
+Time: 11/06/24 13:17:39.787 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 4951  CODE = -1299, Tran = -1, EID = 7
+Log recovery: UNDO Phase is being finished up.
+
+Time: 11/06/24 13:17:39.788 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 878  CODE = -1300, Tran = -1, EID = 8
+Log recovery: UNDO Phase is finished.
+
+Time: 11/06/24 13:17:39.788 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 6931  CODE = -977, Tran = -1, EID = 9
+Checkpoint started (previous checkpoint page id: 823, previous redo page id: 823).
+
+Time: 11/06/24 13:17:39.788 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 6933
+start checkpoint
+
+Time: 11/06/24 13:17:39.790 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/page_buffer.c, line 9970
+flushing page 0|0 to disk without logging.
+
+Time: 11/06/24 13:17:39.792 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 7364  CODE = -978, Tran = -1, EID = 10
+Checkpoint finished (checkpoint page id: 823, checkpoint redo page id: 823, flushed page count: 0).
+
+Time: 11/06/24 13:17:39.792 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 7366
+end checkpoint
+
+Time: 11/06/24 13:17:39.795 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 950  CODE = -1129, Tran = -1, EID = 11
+Log recovery is finished.
+
+Time: 11/06/24 13:17:39.795 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/06/24 13:17:39.796 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/06/24 13:17:39.829 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1500
+log_initialize_internal: end of log initializaton, append_lsa = (823|9352) 
+
+Time: 11/06/24 13:18:49.705 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_cl.c, line 1119
+boot_restart_client: register client { type 2 db demodb user dba password (null) program /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/install.out/myprofile/bin/csql login vimkim host iusewslbtw pid 229572 }
+
+Time: 11/06/24 13:18:59.317 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/06/24 13:18:59.317 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/06/24 13:18:59.322 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1060
+LOG INITIALIZE
+	db_fullname = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb 
+	logpath = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb 
+	prefix_logname = demodb 
+	ismedia_crash = 0 
+
+Time: 11/06/24 13:18:59.773 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 775
+RECOVERY: start with 823|9272 and stop at -1
+Time: 11/06/24 13:18:59.773 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 817  CODE = -1128, Tran = -1, EID = 1
+Log recovery is started.
+
+Time: 11/06/24 13:18:59.773 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 2747
+log_recovery_analysis: log page 823, checksum 232077980
+
+Time: 11/06/24 13:18:59.773 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 824  CODE = -1300, Tran = -1, EID = 2
+Log recovery: ANALYSIS Phase is finished.
+
+Time: 11/06/24 13:18:59.773 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 860  CODE = -1297, Tran = -1, EID = 3
+Log recovery: REDO Phase is started. Log pages to redo: 1, Log records to redo: 0.
+
+Time: 11/06/24 13:18:59.773 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 3909  CODE = -1299, Tran = -1, EID = 4
+Log recovery: REDO Phase is being finished up.
+
+Time: 11/06/24 13:18:59.784 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 865  CODE = -1300, Tran = -1, EID = 5
+Log recovery: REDO Phase is finished.
+
+Time: 11/06/24 13:18:59.784 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 4507  CODE = -1298, Tran = -1, EID = 6
+Log recovery: UNDO Phase is started. Log pages to undo: 0, transactions to undo: 0.
+
+Time: 11/06/24 13:18:59.784 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 4951  CODE = -1299, Tran = -1, EID = 7
+Log recovery: UNDO Phase is being finished up.
+
+Time: 11/06/24 13:18:59.784 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 878  CODE = -1300, Tran = -1, EID = 8
+Log recovery: UNDO Phase is finished.
+
+Time: 11/06/24 13:18:59.784 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 6931  CODE = -977, Tran = -1, EID = 9
+Checkpoint started (previous checkpoint page id: 823, previous redo page id: 823).
+
+Time: 11/06/24 13:18:59.784 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 6933
+start checkpoint
+
+Time: 11/06/24 13:18:59.787 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/page_buffer.c, line 9970
+flushing page 0|0 to disk without logging.
+
+Time: 11/06/24 13:18:59.789 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 7364  CODE = -978, Tran = -1, EID = 10
+Checkpoint finished (checkpoint page id: 823, checkpoint redo page id: 823, flushed page count: 0).
+
+Time: 11/06/24 13:18:59.789 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 7366
+end checkpoint
+
+Time: 11/06/24 13:18:59.791 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 950  CODE = -1129, Tran = -1, EID = 11
+Log recovery is finished.
+
+Time: 11/06/24 13:18:59.792 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/06/24 13:18:59.792 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/06/24 13:18:59.807 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1500
+log_initialize_internal: end of log initializaton, append_lsa = (823|9464) 
+
+Time: 11/06/24 13:18:59.836 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 993  CODE = -1190, Tran = -1, EID = 12
+Stand-alone vacuum execution is started.
+
+Time: 11/06/24 13:18:59.836 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 994
+Stand-alone vacuum start.
+
+Time: 11/06/24 13:18:59.838 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 1086  CODE = -1191, Tran = -1, EID = 13
+Stand-alone vacuum execution is ended.
+
+Time: 11/06/24 13:18:59.838 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 1087
+Stand-alone vacuum end.
+
+Time: 11/06/24 13:18:59.838 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/partition.c, line 717
+creating partition cache
+
+Time: 11/06/24 13:18:59.838 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 238  CODE = -973, Tran = -1, EID = 14
+Server status is UP.
+
+Time: 11/06/24 13:18:59.877 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/06/24 13:18:59.878 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 238  CODE = -973, Tran = 1, EID = 16
+Server status is DOWN.
+
+Time: 11/06/24 13:18:59.878 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/partition.c, line 752
+deleting partition cache
+
+Time: 11/06/24 13:19:04.691 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_cl.c, line 1119
+boot_restart_client: register client { type 2 db demodb user dba password (null) program /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/install.out/myprofile/bin/csql login vimkim host iusewslbtw pid 230509 }
+
+Time: 11/06/24 13:19:18.561 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/06/24 13:19:18.565 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1060
+LOG INITIALIZE
+	db_fullname = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb 
+	logpath = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb 
+	prefix_logname = demodb 
+	ismedia_crash = 0 
+
+Time: 11/06/24 13:19:19.032 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/06/24 13:19:19.032 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/06/24 13:19:19.051 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1500
+log_initialize_internal: end of log initializaton, append_lsa = (823|9632) 
+
+Time: 11/06/24 15:59:27.757 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_cl.c, line 1119
+boot_restart_client: register client { type 2 db demodb user dba password (null) program /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/install.out/myprofile/bin/csql login vimkim host iusewslbtw pid 46606 }
+
+Time: 11/06/24 16:00:15.870 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_cl.c, line 1119
+boot_restart_client: register client { type 2 db demodb user dba password (null) program /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/install.out/myprofile/bin/csql login vimkim host iusewslbtw pid 54914 }
+
+Time: 11/06/24 16:02:14.326 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_cl.c, line 1119
+boot_restart_client: register client { type 2 db demodb user dba password (null) program /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/install.out/myprofile/bin/csql login vimkim host iusewslbtw pid 64292 }
+
+Time: 11/06/24 16:02:20.785 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/06/24 16:02:20.786 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/06/24 16:02:20.787 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1060
+LOG INITIALIZE
+	db_fullname = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb 
+	logpath = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb 
+	prefix_logname = demodb 
+	ismedia_crash = 0 
+
+Time: 11/06/24 16:02:20.952 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 775
+RECOVERY: start with 823|9632 and stop at -1
+Time: 11/06/24 16:02:20.953 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 817  CODE = -1128, Tran = -1, EID = 1
+Log recovery is started.
+
+Time: 11/06/24 16:02:20.954 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 2747
+log_recovery_analysis: log page 823, checksum 232077980
+
+Time: 11/06/24 16:02:20.955 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 824  CODE = -1300, Tran = -1, EID = 2
+Log recovery: ANALYSIS Phase is finished.
+
+Time: 11/06/24 16:02:20.955 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 860  CODE = -1297, Tran = -1, EID = 3
+Log recovery: REDO Phase is started. Log pages to redo: 0, Log records to redo: 0.
+
+Time: 11/06/24 16:02:20.955 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 3909  CODE = -1299, Tran = -1, EID = 4
+Log recovery: REDO Phase is being finished up.
+
+Time: 11/06/24 16:02:20.957 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 865  CODE = -1300, Tran = -1, EID = 5
+Log recovery: REDO Phase is finished.
+
+Time: 11/06/24 16:02:20.957 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 4507  CODE = -1298, Tran = -1, EID = 6
+Log recovery: UNDO Phase is started. Log pages to undo: 0, transactions to undo: 0.
+
+Time: 11/06/24 16:02:20.957 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 4951  CODE = -1299, Tran = -1, EID = 7
+Log recovery: UNDO Phase is being finished up.
+
+Time: 11/06/24 16:02:20.958 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 878  CODE = -1300, Tran = -1, EID = 8
+Log recovery: UNDO Phase is finished.
+
+Time: 11/06/24 16:02:20.958 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 6931  CODE = -977, Tran = -1, EID = 9
+Checkpoint started (previous checkpoint page id: 823, previous redo page id: 823).
+
+Time: 11/06/24 16:02:20.958 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 6933
+start checkpoint
+
+Time: 11/06/24 16:02:20.961 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/page_buffer.c, line 9970
+flushing page 0|0 to disk without logging.
+
+Time: 11/06/24 16:02:20.964 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 7364  CODE = -978, Tran = -1, EID = 10
+Checkpoint finished (checkpoint page id: 823, checkpoint redo page id: 823, flushed page count: 0).
+
+Time: 11/06/24 16:02:20.964 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 7366
+end checkpoint
+
+Time: 11/06/24 16:02:20.968 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 950  CODE = -1129, Tran = -1, EID = 11
+Log recovery is finished.
+
+Time: 11/06/24 16:02:20.969 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/06/24 16:02:20.969 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/06/24 16:02:20.011 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1500
+log_initialize_internal: end of log initializaton, append_lsa = (823|9744) 
+
+Time: 11/06/24 16:03:24.824 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_cl.c, line 1119
+boot_restart_client: register client { type 2 db demodb user dba password (null) program /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/install.out/myprofile/bin/csql login vimkim host iusewslbtw pid 67585 }
+
+Time: 11/06/24 16:03:37.462 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_cl.c, line 1119
+boot_restart_client: register client { type 2 db demodb user dba password (null) program /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/install.out/myprofile/bin/csql login vimkim host iusewslbtw pid 68173 }
+
+Time: 11/06/24 16:04:02.479 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_cl.c, line 1119
+boot_restart_client: register client { type 2 db demodb user dba password (null) program csql login vimkim host iusewslbtw pid 69596 }
+
+Time: 11/06/24 16:04:02.829 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/06/24 16:04:02.829 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/06/24 16:04:02.830 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1060
+LOG INITIALIZE
+	db_fullname = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb 
+	logpath = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb 
+	prefix_logname = demodb 
+	ismedia_crash = 0 
+
+Time: 11/06/24 16:04:02.956 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 775
+RECOVERY: start with 823|9664 and stop at -1
+Time: 11/06/24 16:04:02.956 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 817  CODE = -1128, Tran = -1, EID = 1
+Log recovery is started.
+
+Time: 11/06/24 16:04:02.958 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 2747
+log_recovery_analysis: log page 823, checksum 232077980
+
+Time: 11/06/24 16:04:02.958 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 824  CODE = -1300, Tran = -1, EID = 2
+Log recovery: ANALYSIS Phase is finished.
+
+Time: 11/06/24 16:04:02.958 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 860  CODE = -1297, Tran = -1, EID = 3
+Log recovery: REDO Phase is started. Log pages to redo: 1, Log records to redo: 0.
+
+Time: 11/06/24 16:04:02.958 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 3909  CODE = -1299, Tran = -1, EID = 4
+Log recovery: REDO Phase is being finished up.
+
+Time: 11/06/24 16:04:02.961 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 865  CODE = -1300, Tran = -1, EID = 5
+Log recovery: REDO Phase is finished.
+
+Time: 11/06/24 16:04:02.961 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 4507  CODE = -1298, Tran = -1, EID = 6
+Log recovery: UNDO Phase is started. Log pages to undo: 0, transactions to undo: 0.
+
+Time: 11/06/24 16:04:02.961 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 4951  CODE = -1299, Tran = -1, EID = 7
+Log recovery: UNDO Phase is being finished up.
+
+Time: 11/06/24 16:04:02.961 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 878  CODE = -1300, Tran = -1, EID = 8
+Log recovery: UNDO Phase is finished.
+
+Time: 11/06/24 16:04:02.961 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 6931  CODE = -977, Tran = -1, EID = 9
+Checkpoint started (previous checkpoint page id: 823, previous redo page id: 823).
+
+Time: 11/06/24 16:04:02.961 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 6933
+start checkpoint
+
+Time: 11/06/24 16:04:02.964 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/page_buffer.c, line 9970
+flushing page 0|0 to disk without logging.
+
+Time: 11/06/24 16:04:02.967 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 7364  CODE = -978, Tran = -1, EID = 10
+Checkpoint finished (checkpoint page id: 823, checkpoint redo page id: 823, flushed page count: 0).
+
+Time: 11/06/24 16:04:02.967 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 7366
+end checkpoint
+
+Time: 11/06/24 16:04:02.970 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 950  CODE = -1129, Tran = -1, EID = 11
+Log recovery is finished.
+
+Time: 11/06/24 16:04:02.971 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/06/24 16:04:02.971 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/06/24 16:04:02.994 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1500
+log_initialize_internal: end of log initializaton, append_lsa = (823|9856) 
+
+Time: 11/06/24 16:04:02.015 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 993  CODE = -1190, Tran = -1, EID = 12
+Stand-alone vacuum execution is started.
+
+Time: 11/06/24 16:04:02.015 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 994
+Stand-alone vacuum start.
+
+Time: 11/06/24 16:04:03.016 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 1086  CODE = -1191, Tran = -1, EID = 13
+Stand-alone vacuum execution is ended.
+
+Time: 11/06/24 16:04:03.016 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 1087
+Stand-alone vacuum end.
+
+Time: 11/06/24 16:04:03.017 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/partition.c, line 717
+creating partition cache
+
+Time: 11/06/24 16:04:03.017 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 238  CODE = -973, Tran = -1, EID = 14
+Server status is UP.
+
+Time: 11/06/24 16:04:03.050 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/06/24 16:04:03.051 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 238  CODE = -973, Tran = 1, EID = 16
+Server status is DOWN.
+
+Time: 11/06/24 16:04:03.051 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/partition.c, line 752
+deleting partition cache
+
+Time: 11/06/24 16:04:16.860 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_cl.c, line 1119
+boot_restart_client: register client { type 2 db demodb user dba password (null) program /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/install.out/myprofile/bin/csql login vimkim host iusewslbtw pid 70511 }
+
+Time: 11/06/24 16:04:19.864 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/06/24 16:04:19.866 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1060
+LOG INITIALIZE
+	db_fullname = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb 
+	logpath = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb 
+	prefix_logname = demodb 
+	ismedia_crash = 0 
+
+Time: 11/06/24 16:04:19.972 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/06/24 16:04:19.972 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/06/24 16:04:19.981 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1500
+log_initialize_internal: end of log initializaton, append_lsa = (823|10024) 
+
+Time: 11/06/24 16:04:19.995 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 993  CODE = -1190, Tran = -1, EID = 1
+Stand-alone vacuum execution is started.
+
+Time: 11/06/24 16:04:19.995 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 994
+Stand-alone vacuum start.
+
+Time: 11/06/24 16:04:19.000 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 1086  CODE = -1191, Tran = -1, EID = 2
+Stand-alone vacuum execution is ended.
+
+Time: 11/06/24 16:04:19.000 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 1087
+Stand-alone vacuum end.
+
+Time: 11/06/24 16:04:19.000 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/partition.c, line 717
+creating partition cache
+
+Time: 11/06/24 16:04:19.000 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 238  CODE = -973, Tran = -1, EID = 3
+Server status is UP.
+
+Time: 11/06/24 16:04:20.022 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/06/24 16:04:20.023 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 238  CODE = -973, Tran = 1, EID = 5
+Server status is DOWN.
+
+Time: 11/06/24 16:04:20.023 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/partition.c, line 752
+deleting partition cache
+
+Time: 11/06/24 16:04:27.582 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_cl.c, line 1119
+boot_restart_client: register client { type 2 db demodb user dba password (null) program /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/install.out/myprofile/bin/csql login vimkim host iusewslbtw pid 70921 }
+
+Time: 11/06/24 16:04:41.469 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/06/24 16:04:41.470 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1060
+LOG INITIALIZE
+	db_fullname = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb 
+	logpath = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb 
+	prefix_logname = demodb 
+	ismedia_crash = 0 
+
+Time: 11/06/24 16:04:41.601 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/06/24 16:04:41.602 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/06/24 16:04:41.610 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1500
+log_initialize_internal: end of log initializaton, append_lsa = (823|10192) 
+
+Time: 11/06/24 16:32:43.302 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_cl.c, line 1119
+boot_restart_client: register client { type 2 db demodb user dba password (null) program /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/install.out/myprofile/bin/csql login vimkim host iusewslbtw pid 174779 }
+
+Time: 11/06/24 16:32:47.811 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/06/24 16:32:47.812 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/06/24 16:32:47.813 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1060
+LOG INITIALIZE
+	db_fullname = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb 
+	logpath = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb 
+	prefix_logname = demodb 
+	ismedia_crash = 0 
+
+Time: 11/06/24 16:32:47.941 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 775
+RECOVERY: start with 823|10192 and stop at -1
+Time: 11/06/24 16:32:47.941 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 817  CODE = -1128, Tran = -1, EID = 1
+Log recovery is started.
+
+Time: 11/06/24 16:32:47.941 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 2747
+log_recovery_analysis: log page 823, checksum 232077980
+
+Time: 11/06/24 16:32:47.941 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 824  CODE = -1300, Tran = -1, EID = 2
+Log recovery: ANALYSIS Phase is finished.
+
+Time: 11/06/24 16:32:47.941 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 860  CODE = -1297, Tran = -1, EID = 3
+Log recovery: REDO Phase is started. Log pages to redo: 0, Log records to redo: 0.
+
+Time: 11/06/24 16:32:47.941 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 3909  CODE = -1299, Tran = -1, EID = 4
+Log recovery: REDO Phase is being finished up.
+
+Time: 11/06/24 16:32:47.943 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 865  CODE = -1300, Tran = -1, EID = 5
+Log recovery: REDO Phase is finished.
+
+Time: 11/06/24 16:32:47.943 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 4507  CODE = -1298, Tran = -1, EID = 6
+Log recovery: UNDO Phase is started. Log pages to undo: 0, transactions to undo: 0.
+
+Time: 11/06/24 16:32:47.943 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 4951  CODE = -1299, Tran = -1, EID = 7
+Log recovery: UNDO Phase is being finished up.
+
+Time: 11/06/24 16:32:47.944 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 878  CODE = -1300, Tran = -1, EID = 8
+Log recovery: UNDO Phase is finished.
+
+Time: 11/06/24 16:32:47.944 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 6931  CODE = -977, Tran = -1, EID = 9
+Checkpoint started (previous checkpoint page id: 823, previous redo page id: 823).
+
+Time: 11/06/24 16:32:47.944 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 6933
+start checkpoint
+
+Time: 11/06/24 16:32:47.946 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/page_buffer.c, line 9970
+flushing page 0|0 to disk without logging.
+
+Time: 11/06/24 16:32:47.948 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 7364  CODE = -978, Tran = -1, EID = 10
+Checkpoint finished (checkpoint page id: 823, checkpoint redo page id: 823, flushed page count: 0).
+
+Time: 11/06/24 16:32:47.948 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 7366
+end checkpoint
+
+Time: 11/06/24 16:32:47.951 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 950  CODE = -1129, Tran = -1, EID = 11
+Log recovery is finished.
+
+Time: 11/06/24 16:32:47.951 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/06/24 16:32:47.952 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/06/24 16:32:47.976 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1500
+log_initialize_internal: end of log initializaton, append_lsa = (823|10304) 
+
+Time: 11/06/24 16:53:24.865 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_cl.c, line 1119
+boot_restart_client: register client { type 2 db demodb user dba password (null) program /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/install.out/myprofile/bin/csql login vimkim host iusewslbtw pid 282473 }
+
+Time: 11/06/24 16:53:37.288 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/06/24 16:53:37.288 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/06/24 16:53:37.295 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1060
+LOG INITIALIZE
+	db_fullname = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb 
+	logpath = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb 
+	prefix_logname = demodb 
+	ismedia_crash = 0 
+
+Time: 11/06/24 16:53:37.877 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 775
+RECOVERY: start with 823|10224 and stop at -1
+Time: 11/06/24 16:53:37.877 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 817  CODE = -1128, Tran = -1, EID = 1
+Log recovery is started.
+
+Time: 11/06/24 16:53:37.877 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 2747
+log_recovery_analysis: log page 823, checksum 232077980
+
+Time: 11/06/24 16:53:37.877 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 824  CODE = -1300, Tran = -1, EID = 2
+Log recovery: ANALYSIS Phase is finished.
+
+Time: 11/06/24 16:53:37.877 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 860  CODE = -1297, Tran = -1, EID = 3
+Log recovery: REDO Phase is started. Log pages to redo: 1, Log records to redo: 0.
+
+Time: 11/06/24 16:53:37.877 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 3909  CODE = -1299, Tran = -1, EID = 4
+Log recovery: REDO Phase is being finished up.
+
+Time: 11/06/24 16:53:37.889 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 865  CODE = -1300, Tran = -1, EID = 5
+Log recovery: REDO Phase is finished.
+
+Time: 11/06/24 16:53:37.889 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 4507  CODE = -1298, Tran = -1, EID = 6
+Log recovery: UNDO Phase is started. Log pages to undo: 0, transactions to undo: 0.
+
+Time: 11/06/24 16:53:37.889 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 4951  CODE = -1299, Tran = -1, EID = 7
+Log recovery: UNDO Phase is being finished up.
+
+Time: 11/06/24 16:53:37.890 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 878  CODE = -1300, Tran = -1, EID = 8
+Log recovery: UNDO Phase is finished.
+
+Time: 11/06/24 16:53:37.890 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 6931  CODE = -977, Tran = -1, EID = 9
+Checkpoint started (previous checkpoint page id: 823, previous redo page id: 823).
+
+Time: 11/06/24 16:53:37.890 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 6933
+start checkpoint
+
+Time: 11/06/24 16:53:37.892 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/page_buffer.c, line 9970
+flushing page 0|0 to disk without logging.
+
+Time: 11/06/24 16:53:37.893 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 7364  CODE = -978, Tran = -1, EID = 10
+Checkpoint finished (checkpoint page id: 823, checkpoint redo page id: 823, flushed page count: 0).
+
+Time: 11/06/24 16:53:37.893 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 7366
+end checkpoint
+
+Time: 11/06/24 16:53:37.897 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 950  CODE = -1129, Tran = -1, EID = 11
+Log recovery is finished.
+
+Time: 11/06/24 16:53:37.898 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/06/24 16:53:37.898 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/06/24 16:53:37.908 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1500
+log_initialize_internal: end of log initializaton, append_lsa = (823|10416) 
+
+Time: 11/06/24 18:02:23.677 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_cl.c, line 1119
+boot_restart_client: register client { type 2 db demodb user dba password (null) program /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/install.out/myprofile/bin/csql login vimkim host iusewslbtw pid 367438 }
+
+Time: 11/06/24 18:02:41.684 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/06/24 18:02:41.684 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/06/24 18:02:41.685 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1060
+LOG INITIALIZE
+	db_fullname = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb 
+	logpath = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb 
+	prefix_logname = demodb 
+	ismedia_crash = 0 
+
+Time: 11/06/24 18:02:43.323 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 775
+RECOVERY: start with 823|10336 and stop at -1
+Time: 11/06/24 18:02:43.323 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 817  CODE = -1128, Tran = -1, EID = 1
+Log recovery is started.
+
+Time: 11/06/24 18:02:43.332 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 2747
+log_recovery_analysis: log page 823, checksum 232077980
+
+Time: 11/06/24 18:02:43.333 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 824  CODE = -1300, Tran = -1, EID = 2
+Log recovery: ANALYSIS Phase is finished.
+
+Time: 11/06/24 18:02:43.333 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 860  CODE = -1297, Tran = -1, EID = 3
+Log recovery: REDO Phase is started. Log pages to redo: 1, Log records to redo: 0.
+
+Time: 11/06/24 18:02:43.333 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 3909  CODE = -1299, Tran = -1, EID = 4
+Log recovery: REDO Phase is being finished up.
+
+Time: 11/06/24 18:02:43.334 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 865  CODE = -1300, Tran = -1, EID = 5
+Log recovery: REDO Phase is finished.
+
+Time: 11/06/24 18:02:43.334 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 4507  CODE = -1298, Tran = -1, EID = 6
+Log recovery: UNDO Phase is started. Log pages to undo: 0, transactions to undo: 0.
+
+Time: 11/06/24 18:02:43.334 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 4951  CODE = -1299, Tran = -1, EID = 7
+Log recovery: UNDO Phase is being finished up.
+
+Time: 11/06/24 18:02:43.335 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 878  CODE = -1300, Tran = -1, EID = 8
+Log recovery: UNDO Phase is finished.
+
+Time: 11/06/24 18:02:43.335 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 6931  CODE = -977, Tran = -1, EID = 9
+Checkpoint started (previous checkpoint page id: 823, previous redo page id: 823).
+
+Time: 11/06/24 18:02:43.335 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 6933
+start checkpoint
+
+Time: 11/06/24 18:02:43.336 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/page_buffer.c, line 9970
+flushing page 0|0 to disk without logging.
+
+Time: 11/06/24 18:02:43.338 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 7364  CODE = -978, Tran = -1, EID = 10
+Checkpoint finished (checkpoint page id: 823, checkpoint redo page id: 823, flushed page count: 0).
+
+Time: 11/06/24 18:02:43.338 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 7366
+end checkpoint
+
+Time: 11/06/24 18:02:43.341 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 950  CODE = -1129, Tran = -1, EID = 11
+Log recovery is finished.
+
+Time: 11/06/24 18:02:43.341 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/06/24 18:02:43.341 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/06/24 18:02:43.368 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1500
+log_initialize_internal: end of log initializaton, append_lsa = (823|10528) 
+
+Time: 11/06/24 18:09:09.569 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 993  CODE = -1190, Tran = -1, EID = 12
+Stand-alone vacuum execution is started.
+
+Time: 11/06/24 18:09:09.570 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 994
+Stand-alone vacuum start.
+
+Time: 11/06/24 18:09:09.575 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 1086  CODE = -1191, Tran = -1, EID = 13
+Stand-alone vacuum execution is ended.
+
+Time: 11/06/24 18:09:09.575 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 1087
+Stand-alone vacuum end.
+
+Time: 11/06/24 18:09:09.576 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/partition.c, line 717
+creating partition cache
+
+Time: 11/06/24 18:09:09.576 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 238  CODE = -973, Tran = -1, EID = 14
+Server status is UP.
+
+*** The previous error message is the last one. ***
+
+
+Time: 11/06/24 18:13:44.751 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_cl.c, line 1119
+boot_restart_client: register client { type 2 db demodb user dba password (null) program /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/install.out/myprofile/bin/csql login vimkim host iusewslbtw pid 410007 }
+
+Time: 11/06/24 18:13:50.802 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/06/24 18:13:50.802 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/06/24 18:13:50.803 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1060
+LOG INITIALIZE
+	db_fullname = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb 
+	logpath = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb 
+	prefix_logname = demodb 
+	ismedia_crash = 0 
+
+Time: 11/06/24 18:13:50.940 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 775
+RECOVERY: start with 823|10448 and stop at -1
+Time: 11/06/24 18:13:50.940 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 817  CODE = -1128, Tran = -1, EID = 1
+Log recovery is started.
+
+Time: 11/06/24 18:13:50.941 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 2747
+log_recovery_analysis: log page 823, checksum 232077980
+
+Time: 11/06/24 18:13:50.941 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 824  CODE = -1300, Tran = -1, EID = 2
+Log recovery: ANALYSIS Phase is finished.
+
+Time: 11/06/24 18:13:50.941 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 860  CODE = -1297, Tran = -1, EID = 3
+Log recovery: REDO Phase is started. Log pages to redo: 1, Log records to redo: 1.
+
+Time: 11/06/24 18:13:50.942 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 3909  CODE = -1299, Tran = -1, EID = 4
+Log recovery: REDO Phase is being finished up.
+
+Time: 11/06/24 18:13:50.944 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 865  CODE = -1300, Tran = -1, EID = 5
+Log recovery: REDO Phase is finished.
+
+Time: 11/06/24 18:13:50.944 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 4507  CODE = -1298, Tran = -1, EID = 6
+Log recovery: UNDO Phase is started. Log pages to undo: 0, transactions to undo: 1.
+
+Time: 11/06/24 18:13:50.944 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 4951  CODE = -1299, Tran = -1, EID = 7
+Log recovery: UNDO Phase is being finished up.
+
+Time: 11/06/24 18:13:50.944 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 878  CODE = -1300, Tran = -1, EID = 8
+Log recovery: UNDO Phase is finished.
+
+Time: 11/06/24 18:13:50.944 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 6931  CODE = -977, Tran = -1, EID = 9
+Checkpoint started (previous checkpoint page id: 823, previous redo page id: 823).
+
+Time: 11/06/24 18:13:50.944 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 6933
+start checkpoint
+
+Time: 11/06/24 18:13:50.949 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/page_buffer.c, line 9970
+flushing page 0|0 to disk without logging.
+
+Time: 11/06/24 18:13:50.950 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 7364  CODE = -978, Tran = -1, EID = 10
+Checkpoint finished (checkpoint page id: 823, checkpoint redo page id: 823, flushed page count: 0).
+
+Time: 11/06/24 18:13:50.950 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 7366
+end checkpoint
+
+Time: 11/06/24 18:13:50.954 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 950  CODE = -1129, Tran = -1, EID = 11
+Log recovery is finished.
+
+Time: 11/06/24 18:13:50.955 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/06/24 18:13:50.955 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/06/24 18:13:50.981 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1500
+log_initialize_internal: end of log initializaton, append_lsa = (823|10696) 
+
+Time: 11/06/24 18:13:50.000 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 993  CODE = -1190, Tran = -1, EID = 12
+Stand-alone vacuum execution is started.
+
+Time: 11/06/24 18:13:50.000 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 994
+Stand-alone vacuum start.
+
+Time: 11/06/24 18:13:50.002 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 1086  CODE = -1191, Tran = -1, EID = 13
+Stand-alone vacuum execution is ended.
+
+Time: 11/06/24 18:13:50.002 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 1087
+Stand-alone vacuum end.
+
+Time: 11/06/24 18:13:50.002 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/partition.c, line 717
+creating partition cache
+
+Time: 11/06/24 18:13:50.002 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 238  CODE = -973, Tran = -1, EID = 14
+Server status is UP.
+
+*** The previous error message is the last one. ***
+
+
+Time: 11/06/24 18:20:17.437 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_cl.c, line 1119
+boot_restart_client: register client { type 2 db demodb user dba password (null) program /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/install.out/myprofile/bin/csql login vimkim host iusewslbtw pid 435205 }
+
+Time: 11/06/24 18:20:24.985 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/06/24 18:20:24.985 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/06/24 18:20:24.986 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1060
+LOG INITIALIZE
+	db_fullname = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb 
+	logpath = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb 
+	prefix_logname = demodb 
+	ismedia_crash = 0 
+
+Time: 11/06/24 18:20:25.121 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 775
+RECOVERY: start with 823|10616 and stop at -1
+Time: 11/06/24 18:20:25.121 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 817  CODE = -1128, Tran = -1, EID = 1
+Log recovery is started.
+
+Time: 11/06/24 18:20:25.122 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 2747
+log_recovery_analysis: log page 823, checksum 232077980
+
+Time: 11/06/24 18:20:25.122 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 824  CODE = -1300, Tran = -1, EID = 2
+Log recovery: ANALYSIS Phase is finished.
+
+Time: 11/06/24 18:20:25.122 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 860  CODE = -1297, Tran = -1, EID = 3
+Log recovery: REDO Phase is started. Log pages to redo: 1, Log records to redo: 1.
+
+Time: 11/06/24 18:20:25.122 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 3909  CODE = -1299, Tran = -1, EID = 4
+Log recovery: REDO Phase is being finished up.
+
+Time: 11/06/24 18:20:25.124 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 865  CODE = -1300, Tran = -1, EID = 5
+Log recovery: REDO Phase is finished.
+
+Time: 11/06/24 18:20:25.124 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 4507  CODE = -1298, Tran = -1, EID = 6
+Log recovery: UNDO Phase is started. Log pages to undo: 0, transactions to undo: 1.
+
+Time: 11/06/24 18:20:25.124 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 4951  CODE = -1299, Tran = -1, EID = 7
+Log recovery: UNDO Phase is being finished up.
+
+Time: 11/06/24 18:20:25.124 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 878  CODE = -1300, Tran = -1, EID = 8
+Log recovery: UNDO Phase is finished.
+
+Time: 11/06/24 18:20:25.124 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 6931  CODE = -977, Tran = -1, EID = 9
+Checkpoint started (previous checkpoint page id: 823, previous redo page id: 823).
+
+Time: 11/06/24 18:20:25.124 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 6933
+start checkpoint
+
+Time: 11/06/24 18:20:25.128 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/page_buffer.c, line 9970
+flushing page 0|0 to disk without logging.
+
+Time: 11/06/24 18:20:25.130 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 7364  CODE = -978, Tran = -1, EID = 10
+Checkpoint finished (checkpoint page id: 823, checkpoint redo page id: 823, flushed page count: 0).
+
+Time: 11/06/24 18:20:25.130 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 7366
+end checkpoint
+
+Time: 11/06/24 18:20:25.133 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 950  CODE = -1129, Tran = -1, EID = 11
+Log recovery is finished.
+
+Time: 11/06/24 18:20:25.134 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/06/24 18:20:25.134 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/06/24 18:20:25.162 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1500
+log_initialize_internal: end of log initializaton, append_lsa = (823|10864) 
+
+Time: 11/06/24 18:20:25.184 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 993  CODE = -1190, Tran = -1, EID = 12
+Stand-alone vacuum execution is started.
+
+Time: 11/06/24 18:20:25.184 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 994
+Stand-alone vacuum start.
+
+Time: 11/06/24 18:20:25.185 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 1086  CODE = -1191, Tran = -1, EID = 13
+Stand-alone vacuum execution is ended.
+
+Time: 11/06/24 18:20:25.185 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 1087
+Stand-alone vacuum end.
+
+Time: 11/06/24 18:20:25.186 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/partition.c, line 717
+creating partition cache
+
+Time: 11/06/24 18:20:25.186 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 238  CODE = -973, Tran = -1, EID = 14
+Server status is UP.
+
+*** The previous error message is the last one. ***
+
+
+Time: 11/06/24 18:50:57.376 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_cl.c, line 1119
+boot_restart_client: register client { type 2 db demodb user dba password (null) program /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/install.out/myprofile/bin/csql login vimkim host iusewslbtw pid 527309 }
+
+Time: 11/06/24 18:51:05.875 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/06/24 18:51:05.875 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/06/24 18:51:05.877 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1060
+LOG INITIALIZE
+	db_fullname = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb 
+	logpath = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb 
+	prefix_logname = demodb 
+	ismedia_crash = 0 
+
+Time: 11/06/24 18:51:06.096 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 775
+RECOVERY: start with 823|10784 and stop at -1
+Time: 11/06/24 18:51:06.096 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 817  CODE = -1128, Tran = -1, EID = 1
+Log recovery is started.
+
+Time: 11/06/24 18:51:06.097 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 2747
+log_recovery_analysis: log page 823, checksum 232077980
+
+Time: 11/06/24 18:51:06.097 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 824  CODE = -1300, Tran = -1, EID = 2
+Log recovery: ANALYSIS Phase is finished.
+
+Time: 11/06/24 18:51:06.097 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 860  CODE = -1297, Tran = -1, EID = 3
+Log recovery: REDO Phase is started. Log pages to redo: 1, Log records to redo: 1.
+
+Time: 11/06/24 18:51:06.098 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 3909  CODE = -1299, Tran = -1, EID = 4
+Log recovery: REDO Phase is being finished up.
+
+Time: 11/06/24 18:51:06.100 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 865  CODE = -1300, Tran = -1, EID = 5
+Log recovery: REDO Phase is finished.
+
+Time: 11/06/24 18:51:06.100 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 4507  CODE = -1298, Tran = -1, EID = 6
+Log recovery: UNDO Phase is started. Log pages to undo: 0, transactions to undo: 1.
+
+Time: 11/06/24 18:51:06.101 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 4951  CODE = -1299, Tran = -1, EID = 7
+Log recovery: UNDO Phase is being finished up.
+
+Time: 11/06/24 18:51:06.101 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 878  CODE = -1300, Tran = -1, EID = 8
+Log recovery: UNDO Phase is finished.
+
+Time: 11/06/24 18:51:06.101 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 6931  CODE = -977, Tran = -1, EID = 9
+Checkpoint started (previous checkpoint page id: 823, previous redo page id: 823).
+
+Time: 11/06/24 18:51:06.101 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 6933
+start checkpoint
+
+Time: 11/06/24 18:51:06.108 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/page_buffer.c, line 9970
+flushing page 0|0 to disk without logging.
+
+Time: 11/06/24 18:51:06.110 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 7364  CODE = -978, Tran = -1, EID = 10
+Checkpoint finished (checkpoint page id: 823, checkpoint redo page id: 823, flushed page count: 0).
+
+Time: 11/06/24 18:51:06.110 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 7366
+end checkpoint
+
+Time: 11/06/24 18:51:06.116 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 950  CODE = -1129, Tran = -1, EID = 11
+Log recovery is finished.
+
+Time: 11/06/24 18:51:06.116 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/06/24 18:51:06.116 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/06/24 18:51:06.168 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1500
+log_initialize_internal: end of log initializaton, append_lsa = (823|11032) 
+
+Time: 11/06/24 18:51:12.186 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_cl.c, line 1119
+boot_restart_client: register client { type 2 db demodb user dba password (null) program /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/install.out/myprofile/bin/csql login vimkim host iusewslbtw pid 527883 }
+
+Time: 11/06/24 18:51:24.254 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/06/24 18:51:24.254 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/06/24 18:51:24.255 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1060
+LOG INITIALIZE
+	db_fullname = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb 
+	logpath = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb 
+	prefix_logname = demodb 
+	ismedia_crash = 0 
+
+Time: 11/06/24 18:51:24.446 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 775
+RECOVERY: start with 823|10952 and stop at -1
+Time: 11/06/24 18:51:24.446 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 817  CODE = -1128, Tran = -1, EID = 1
+Log recovery is started.
+
+Time: 11/06/24 18:51:24.446 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 2747
+log_recovery_analysis: log page 823, checksum 232077980
+
+Time: 11/06/24 18:51:24.446 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 824  CODE = -1300, Tran = -1, EID = 2
+Log recovery: ANALYSIS Phase is finished.
+
+Time: 11/06/24 18:51:24.446 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 860  CODE = -1297, Tran = -1, EID = 3
+Log recovery: REDO Phase is started. Log pages to redo: 1, Log records to redo: 0.
+
+Time: 11/06/24 18:51:24.446 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 3909  CODE = -1299, Tran = -1, EID = 4
+Log recovery: REDO Phase is being finished up.
+
+Time: 11/06/24 18:51:24.449 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 865  CODE = -1300, Tran = -1, EID = 5
+Log recovery: REDO Phase is finished.
+
+Time: 11/06/24 18:51:24.449 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 4507  CODE = -1298, Tran = -1, EID = 6
+Log recovery: UNDO Phase is started. Log pages to undo: 0, transactions to undo: 0.
+
+Time: 11/06/24 18:51:24.449 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 4951  CODE = -1299, Tran = -1, EID = 7
+Log recovery: UNDO Phase is being finished up.
+
+Time: 11/06/24 18:51:24.449 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 878  CODE = -1300, Tran = -1, EID = 8
+Log recovery: UNDO Phase is finished.
+
+Time: 11/06/24 18:51:24.449 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 6931  CODE = -977, Tran = -1, EID = 9
+Checkpoint started (previous checkpoint page id: 823, previous redo page id: 823).
+
+Time: 11/06/24 18:51:24.449 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 6933
+start checkpoint
+
+Time: 11/06/24 18:51:24.451 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/page_buffer.c, line 9970
+flushing page 0|0 to disk without logging.
+
+Time: 11/06/24 18:51:24.454 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 7364  CODE = -978, Tran = -1, EID = 10
+Checkpoint finished (checkpoint page id: 823, checkpoint redo page id: 823, flushed page count: 0).
+
+Time: 11/06/24 18:51:24.454 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 7366
+end checkpoint
+
+Time: 11/06/24 18:51:24.456 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 950  CODE = -1129, Tran = -1, EID = 11
+Log recovery is finished.
+
+Time: 11/06/24 18:51:24.457 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/06/24 18:51:24.457 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/06/24 18:51:24.468 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1500
+log_initialize_internal: end of log initializaton, append_lsa = (823|11144) 
+
+Time: 11/06/24 18:51:24.493 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 993  CODE = -1190, Tran = -1, EID = 12
+Stand-alone vacuum execution is started.
+
+Time: 11/06/24 18:51:24.493 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 994
+Stand-alone vacuum start.
+
+Time: 11/06/24 18:51:24.495 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 1086  CODE = -1191, Tran = -1, EID = 13
+Stand-alone vacuum execution is ended.
+
+Time: 11/06/24 18:51:24.495 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 1087
+Stand-alone vacuum end.
+
+Time: 11/06/24 18:51:24.495 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/partition.c, line 717
+creating partition cache
+
+Time: 11/06/24 18:51:24.495 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 238  CODE = -973, Tran = -1, EID = 14
+Server status is UP.
+
+Time: 11/06/24 18:51:24.539 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/06/24 18:51:24.539 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 238  CODE = -973, Tran = 1, EID = 16
+Server status is DOWN.
+
+Time: 11/06/24 18:51:24.539 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/partition.c, line 752
+deleting partition cache
+
+Time: 11/06/24 18:51:28.412 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_cl.c, line 1119
+boot_restart_client: register client { type 2 db demodb user dba password (null) program /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/install.out/myprofile/bin/csql login vimkim host iusewslbtw pid 528676 }
+
+Time: 11/06/24 18:51:40.256 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/06/24 18:51:40.257 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1060
+LOG INITIALIZE
+	db_fullname = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb 
+	logpath = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb 
+	prefix_logname = demodb 
+	ismedia_crash = 0 
+
+Time: 11/06/24 18:51:40.433 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/06/24 18:51:40.433 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/06/24 18:51:40.444 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1500
+log_initialize_internal: end of log initializaton, append_lsa = (823|11312) 
+
+Time: 11/06/24 18:51:40.466 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 993  CODE = -1190, Tran = -1, EID = 1
+Stand-alone vacuum execution is started.
+
+Time: 11/06/24 18:51:40.466 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 994
+Stand-alone vacuum start.
+
+Time: 11/06/24 18:51:40.478 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 1086  CODE = -1191, Tran = -1, EID = 2
+Stand-alone vacuum execution is ended.
+
+Time: 11/06/24 18:51:40.478 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 1087
+Stand-alone vacuum end.
+
+Time: 11/06/24 18:51:40.478 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/partition.c, line 717
+creating partition cache
+
+Time: 11/06/24 18:51:40.478 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 238  CODE = -973, Tran = -1, EID = 3
+Server status is UP.
+
+*** The previous error message is the last one. ***
+
+
+Time: 11/06/24 18:55:19.242 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_cl.c, line 1119
+boot_restart_client: register client { type 2 db demodb user dba password (null) program /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/install.out/myprofile/bin/csql login vimkim host iusewslbtw pid 538144 }
+
+Time: 11/06/24 18:55:23.760 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/06/24 18:55:23.760 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/06/24 18:55:23.761 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1060
+LOG INITIALIZE
+	db_fullname = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb 
+	logpath = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb 
+	prefix_logname = demodb 
+	ismedia_crash = 0 
+
+Time: 11/06/24 18:55:23.912 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 775
+RECOVERY: start with 823|11312 and stop at -1
+Time: 11/06/24 18:55:23.912 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 817  CODE = -1128, Tran = -1, EID = 1
+Log recovery is started.
+
+Time: 11/06/24 18:55:23.913 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 2747
+log_recovery_analysis: log page 823, checksum 232077980
+
+Time: 11/06/24 18:55:23.913 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 824  CODE = -1300, Tran = -1, EID = 2
+Log recovery: ANALYSIS Phase is finished.
+
+Time: 11/06/24 18:55:23.913 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 860  CODE = -1297, Tran = -1, EID = 3
+Log recovery: REDO Phase is started. Log pages to redo: 1, Log records to redo: 1.
+
+Time: 11/06/24 18:55:23.914 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 3909  CODE = -1299, Tran = -1, EID = 4
+Log recovery: REDO Phase is being finished up.
+
+Time: 11/06/24 18:55:23.916 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 865  CODE = -1300, Tran = -1, EID = 5
+Log recovery: REDO Phase is finished.
+
+Time: 11/06/24 18:55:23.916 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 4507  CODE = -1298, Tran = -1, EID = 6
+Log recovery: UNDO Phase is started. Log pages to undo: 0, transactions to undo: 1.
+
+Time: 11/06/24 18:55:23.916 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 4951  CODE = -1299, Tran = -1, EID = 7
+Log recovery: UNDO Phase is being finished up.
+
+Time: 11/06/24 18:55:23.916 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 878  CODE = -1300, Tran = -1, EID = 8
+Log recovery: UNDO Phase is finished.
+
+Time: 11/06/24 18:55:23.916 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 6931  CODE = -977, Tran = -1, EID = 9
+Checkpoint started (previous checkpoint page id: 823, previous redo page id: 823).
+
+Time: 11/06/24 18:55:23.916 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 6933
+start checkpoint
+
+Time: 11/06/24 18:55:23.921 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/page_buffer.c, line 9970
+flushing page 0|0 to disk without logging.
+
+Time: 11/06/24 18:55:23.922 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 7364  CODE = -978, Tran = -1, EID = 10
+Checkpoint finished (checkpoint page id: 823, checkpoint redo page id: 823, flushed page count: 0).
+
+Time: 11/06/24 18:55:23.922 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 7366
+end checkpoint
+
+Time: 11/06/24 18:55:23.926 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 950  CODE = -1129, Tran = -1, EID = 11
+Log recovery is finished.
+
+Time: 11/06/24 18:55:23.926 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/06/24 18:55:23.926 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/06/24 18:55:23.954 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1500
+log_initialize_internal: end of log initializaton, append_lsa = (823|11480) 
+
+Time: 11/06/24 18:55:23.972 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 993  CODE = -1190, Tran = -1, EID = 12
+Stand-alone vacuum execution is started.
+
+Time: 11/06/24 18:55:23.972 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 994
+Stand-alone vacuum start.
+
+Time: 11/06/24 18:55:23.973 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 1086  CODE = -1191, Tran = -1, EID = 13
+Stand-alone vacuum execution is ended.
+
+Time: 11/06/24 18:55:23.973 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 1087
+Stand-alone vacuum end.
+
+Time: 11/06/24 18:55:23.973 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/partition.c, line 717
+creating partition cache
+
+Time: 11/06/24 18:55:23.973 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 238  CODE = -973, Tran = -1, EID = 14
+Server status is UP.
+
+*** The previous error message is the last one. ***
+
+
+Time: 11/07/24 13:08:48.608 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_cl.c, line 1119
+boot_restart_client: register client { type 2 db demodb user dba password (null) program csql login vimkim host iusewslbtw pid 422830 }
+
+Time: 11/07/24 13:08:48.840 - ERROR *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 1305 ERROR CODE = -11, Tran = -1, EID = 1
+Unable to mount disk volume "/home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgat". The database "/home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb", to which the disk volume belongs, is in use by user vimkim on process 388792 of host iusewslbtw since Thu Nov  7 13:03:07 2024.
+
+Time: 11/07/24 13:08:48.840 - ERROR *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 2803 ERROR CODE = -113, Tran = -1, EID = 2
+Unable to restart/initialize the database server. Unable to mount disk volume "/home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgat". The database "/home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb", to which the disk volume belongs, is in use by user vimkim on process 388792 of host iusewslbtw since Thu Nov  7 13:03:07 2024.
+
+Time: 11/07/24 13:08:48.840 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 238  CODE = -973, Tran = -1, EID = 3
+Server status is DOWN.
+
+Time: 11/07/24 13:08:48.840 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/partition.c, line 752
+deleting partition cache
+
+Time: 11/07/24 20:07:54.633 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_cl.c, line 1119
+boot_restart_client: register client { type 2 db demodb user dba password (null) program /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/install.out/myprofile/bin/csql login vimkim host iusewslbtw pid 1655502 }
+
+Time: 11/07/24 20:08:04.428 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/07/24 20:08:04.428 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/07/24 20:08:04.430 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1060
+LOG INITIALIZE
+	db_fullname = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb 
+	logpath = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb 
+	prefix_logname = demodb 
+	ismedia_crash = 0 
+
+Time: 11/07/24 20:08:04.582 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 775
+RECOVERY: start with 824|3136 and stop at -1
+Time: 11/07/24 20:08:04.583 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 817  CODE = -1128, Tran = -1, EID = 1
+Log recovery is started.
+
+Time: 11/07/24 20:08:04.584 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 2747
+log_recovery_analysis: log page 824, checksum -1103093008
+
+Time: 11/07/24 20:08:04.584 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 824  CODE = -1300, Tran = -1, EID = 2
+Log recovery: ANALYSIS Phase is finished.
+
+Time: 11/07/24 20:08:04.584 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 860  CODE = -1297, Tran = -1, EID = 3
+Log recovery: REDO Phase is started. Log pages to redo: 1, Log records to redo: 1.
+
+Time: 11/07/24 20:08:04.585 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 3909  CODE = -1299, Tran = -1, EID = 4
+Log recovery: REDO Phase is being finished up.
+
+Time: 11/07/24 20:08:04.587 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 865  CODE = -1300, Tran = -1, EID = 5
+Log recovery: REDO Phase is finished.
+
+Time: 11/07/24 20:08:04.587 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 4507  CODE = -1298, Tran = -1, EID = 6
+Log recovery: UNDO Phase is started. Log pages to undo: 0, transactions to undo: 1.
+
+Time: 11/07/24 20:08:04.587 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 4951  CODE = -1299, Tran = -1, EID = 7
+Log recovery: UNDO Phase is being finished up.
+
+Time: 11/07/24 20:08:04.587 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 878  CODE = -1300, Tran = -1, EID = 8
+Log recovery: UNDO Phase is finished.
+
+Time: 11/07/24 20:08:04.587 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 6931  CODE = -977, Tran = -1, EID = 9
+Checkpoint started (previous checkpoint page id: 824, previous redo page id: 824).
+
+Time: 11/07/24 20:08:04.587 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 6933
+start checkpoint
+
+Time: 11/07/24 20:08:04.590 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/page_buffer.c, line 9970
+flushing page 0|0 to disk without logging.
+
+Time: 11/07/24 20:08:04.591 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 7364  CODE = -978, Tran = -1, EID = 10
+Checkpoint finished (checkpoint page id: 824, checkpoint redo page id: 824, flushed page count: 0).
+
+Time: 11/07/24 20:08:04.591 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 7366
+end checkpoint
+
+Time: 11/07/24 20:08:04.594 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 950  CODE = -1129, Tran = -1, EID = 11
+Log recovery is finished.
+
+Time: 11/07/24 20:08:04.594 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/07/24 20:08:04.594 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/07/24 20:08:04.626 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1500
+log_initialize_internal: end of log initializaton, append_lsa = (824|3384) 
+
+Time: 11/07/24 20:08:04.663 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 993  CODE = -1190, Tran = -1, EID = 12
+Stand-alone vacuum execution is started.
+
+Time: 11/07/24 20:08:04.663 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 994
+Stand-alone vacuum start.
+
+Time: 11/07/24 20:08:04.664 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 1086  CODE = -1191, Tran = -1, EID = 13
+Stand-alone vacuum execution is ended.
+
+Time: 11/07/24 20:08:04.664 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 1087
+Stand-alone vacuum end.
+
+Time: 11/07/24 20:08:04.664 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/partition.c, line 717
+creating partition cache
+
+Time: 11/07/24 20:08:04.664 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 238  CODE = -973, Tran = -1, EID = 14
+Server status is UP.
+
+Time: 11/07/24 20:08:53.523 - SYNTAX ERROR *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/parser/query_result.c, line 377 ERROR CODE = -494, Tran = 1, EID = 16
+Semantic: before END OF STATEMENT
+Unknown class "dba.vt". drop [dba.vt]
+
+Time: 11/07/24 20:08:53.523 - SYNTAX ERROR *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/compat/db_vdb.c, line 1050 ERROR CODE = -492, Tran = 1, EID = 17
+before END OF STATEMENT
+Unknown class "dba.vt".
+
+Time: 11/07/24 20:09:12.788 - SYNTAX ERROR *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/compat/db_vdb.c, line 1050 ERROR CODE = -492, Tran = 1, EID = 18
+In line 1, column 9 before END OF STATEMENT
+Syntax error: unexpected '\', expecting SELECT or VALUE or VALUES or '('
+
+Time: 11/07/24 20:09:14.272 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_t32766
+
+Time: 11/07/24 20:09:35.153 - SYNTAX ERROR *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/compat/db_vdb.c, line 1050 ERROR CODE = -492, Tran = 1, EID = 19
+In line 1, column 1 before ' br-create.gdb
+c '
+Syntax error: unexpected 'so', expecting SELECT or VALUE or VALUES or '('
+
+Time: 11/07/24 20:10:39.639 - SYNTAX ERROR *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/compat/db_vdb.c, line 1050 ERROR CODE = -492, Tran = 1, EID = 20
+In line 1, column 1 before END OF STATEMENT
+Syntax error: unexpected 'c', expecting SELECT or VALUE or VALUES or '('
+
+*** The previous error message is the last one. ***
+
+
+Time: 11/07/24 20:16:18.421 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_cl.c, line 1119
+boot_restart_client: register client { type 2 db demodb user dba password (null) program /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/install.out/myprofile/bin/csql login vimkim host iusewslbtw pid 1688053 }
+
+Time: 11/07/24 20:16:27.432 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/07/24 20:16:27.434 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1060
+LOG INITIALIZE
+	db_fullname = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb 
+	logpath = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb 
+	prefix_logname = demodb 
+	ismedia_crash = 0 
+
+Time: 11/07/24 20:16:27.588 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/07/24 20:16:27.588 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/07/24 20:16:27.601 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1500
+log_initialize_internal: end of log initializaton, append_lsa = (820|9160) 
+
+Time: 11/07/24 20:16:27.616 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 993  CODE = -1190, Tran = -1, EID = 1
+Stand-alone vacuum execution is started.
+
+Time: 11/07/24 20:16:27.616 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 994
+Stand-alone vacuum start.
+
+Time: 11/07/24 20:16:27.617 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 1086  CODE = -1191, Tran = -1, EID = 2
+Stand-alone vacuum execution is ended.
+
+Time: 11/07/24 20:16:27.618 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 1087
+Stand-alone vacuum end.
+
+Time: 11/07/24 20:16:27.618 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/partition.c, line 717
+creating partition cache
+
+Time: 11/07/24 20:16:27.618 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 238  CODE = -973, Tran = -1, EID = 3
+Server status is UP.
+
+Time: 11/07/24 20:19:46.990 - SYNTAX ERROR *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/compat/db_vdb.c, line 1050 ERROR CODE = -492, Tran = 1, EID = 5
+In line 1, column 1 before END OF STATEMENT
+Syntax error: unexpected 'n', expecting SELECT or VALUE or VALUES or '('
+
+Time: 11/07/24 20:20:28.694 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_t32766
+
+Time: 11/07/24 20:23:13.346 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_cl.c, line 1119
+boot_restart_client: register client { type 2 db demodb user dba password (null) program csql login vimkim host iusewslbtw pid 1705593 }
+
+Time: 11/07/24 20:23:13.609 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/07/24 20:23:13.609 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/07/24 20:23:13.610 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1060
+LOG INITIALIZE
+	db_fullname = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb 
+	logpath = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb 
+	prefix_logname = demodb 
+	ismedia_crash = 0 
+
+Time: 11/07/24 20:23:13.767 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 775
+RECOVERY: start with 820|9160 and stop at -1
+Time: 11/07/24 20:23:13.767 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 817  CODE = -1128, Tran = -1, EID = 1
+Log recovery is started.
+
+Time: 11/07/24 20:23:13.767 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 2747
+log_recovery_analysis: log page 820, checksum 496548896
+
+Time: 11/07/24 20:23:13.767 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 2747
+log_recovery_analysis: log page 821, checksum -918084742
+
+Time: 11/07/24 20:23:13.767 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 824  CODE = -1300, Tran = -1, EID = 2
+Log recovery: ANALYSIS Phase is finished.
+
+Time: 11/07/24 20:23:13.767 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 860  CODE = -1297, Tran = -1, EID = 3
+Log recovery: REDO Phase is started. Log pages to redo: 2, Log records to redo: 67.
+
+Time: 11/07/24 20:23:13.768 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 3909  CODE = -1299, Tran = -1, EID = 4
+Log recovery: REDO Phase is being finished up.
+
+Time: 11/07/24 20:23:13.770 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 865  CODE = -1300, Tran = -1, EID = 5
+Log recovery: REDO Phase is finished.
+
+Time: 11/07/24 20:23:13.770 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 4507  CODE = -1298, Tran = -1, EID = 6
+Log recovery: UNDO Phase is started. Log pages to undo: 1, transactions to undo: 1.
+
+Time: 11/07/24 20:23:13.770 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 4951  CODE = -1299, Tran = -1, EID = 7
+Log recovery: UNDO Phase is being finished up.
+
+Time: 11/07/24 20:23:13.770 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 878  CODE = -1300, Tran = -1, EID = 8
+Log recovery: UNDO Phase is finished.
+
+Time: 11/07/24 20:23:13.771 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 6931  CODE = -977, Tran = -1, EID = 9
+Checkpoint started (previous checkpoint page id: 820, previous redo page id: 820).
+
+Time: 11/07/24 20:23:13.771 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 6933
+start checkpoint
+
+Time: 11/07/24 20:23:13.773 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/page_buffer.c, line 9970
+flushing page 0|0 to disk without logging.
+
+Time: 11/07/24 20:23:13.775 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 7364  CODE = -978, Tran = -1, EID = 10
+Checkpoint finished (checkpoint page id: 821, checkpoint redo page id: 821, flushed page count: 0).
+
+Time: 11/07/24 20:23:13.775 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_page_buffer.c, line 7366
+end checkpoint
+
+Time: 11/07/24 20:23:13.776 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_recovery.c, line 950  CODE = -1129, Tran = -1, EID = 11
+Log recovery is finished.
+
+Time: 11/07/24 20:23:13.777 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/07/24 20:23:13.777 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/07/24 20:23:13.789 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1500
+log_initialize_internal: end of log initializaton, append_lsa = (821|4896) 
+
+Time: 11/07/24 20:23:13.803 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_t32766
+
+Time: 11/07/24 20:23:13.804 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 993  CODE = -1190, Tran = -1, EID = 12
+Stand-alone vacuum execution is started.
+
+Time: 11/07/24 20:23:13.804 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 994
+Stand-alone vacuum start.
+
+Time: 11/07/24 20:23:13.805 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 1086  CODE = -1191, Tran = -1, EID = 13
+Stand-alone vacuum execution is ended.
+
+Time: 11/07/24 20:23:13.805 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 1087
+Stand-alone vacuum end.
+
+Time: 11/07/24 20:23:13.805 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/partition.c, line 717
+creating partition cache
+
+Time: 11/07/24 20:23:13.805 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 238  CODE = -973, Tran = -1, EID = 14
+Server status is UP.
+
+Time: 11/07/24 20:23:19.364 - SYNTAX ERROR *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/parser/query_result.c, line 372 ERROR CODE = -493, Tran = 1, EID = 16
+Syntax: before ' ; '
+Unknown class "dba.vt". show  columns from [dba.vt]
+
+Time: 11/07/24 20:23:19.364 - SYNTAX ERROR *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/compat/db_vdb.c, line 1050 ERROR CODE = -492, Tran = 1, EID = 17
+before ' ; '
+Unknown class "dba.vt".
+
+Time: 11/07/24 20:23:24.650 - SYNTAX ERROR *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/parser/query_result.c, line 372 ERROR CODE = -493, Tran = 1, EID = 18
+Syntax: before ' ; '
+Unknown class "dba.vt". select [columns] from [dba.vt]
+
+Time: 11/07/24 20:23:24.650 - SYNTAX ERROR *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/compat/db_vdb.c, line 1050 ERROR CODE = -492, Tran = 1, EID = 19
+before ' ; '
+Unknown class "dba.vt".
+
+Time: 11/07/24 20:24:01.932 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/page_buffer.c, line 9970
+flushing page 0|193 to disk without logging.
+
+Time: 11/07/24 20:24:01.933 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/page_buffer.c, line 9970
+flushing page 0|1345 to disk without logging.
+
+Time: 11/07/24 20:24:01.933 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/page_buffer.c, line 9970
+flushing page 0|1473 to disk without logging.
+
+Time: 11/07/24 20:24:01.933 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/page_buffer.c, line 9970
+flushing page 0|1665 to disk without logging.
+
+Time: 11/07/24 20:24:01.943 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/07/24 20:24:01.943 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 238  CODE = -973, Tran = 1, EID = 20
+Server status is DOWN.
+
+Time: 11/07/24 20:24:01.943 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/partition.c, line 752
+deleting partition cache
+
+Time: 11/07/24 20:33:26.561 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_cl.c, line 1119
+boot_restart_client: register client { type 2 db demodb user dba password (null) program csql login vimkim host iusewslbtw pid 1743951 }
+
+Time: 11/07/24 20:33:26.810 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/07/24 20:33:26.811 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1060
+LOG INITIALIZE
+	db_fullname = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb 
+	logpath = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb 
+	prefix_logname = demodb 
+	ismedia_crash = 0 
+
+Time: 11/07/24 20:33:26.960 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/07/24 20:33:26.960 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/07/24 20:33:26.974 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1500
+log_initialize_internal: end of log initializaton, append_lsa = (820|9160) 
+
+Time: 11/07/24 20:33:26.991 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 993  CODE = -1190, Tran = -1, EID = 1
+Stand-alone vacuum execution is started.
+
+Time: 11/07/24 20:33:26.991 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 994
+Stand-alone vacuum start.
+
+Time: 11/07/24 20:33:26.993 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 1086  CODE = -1191, Tran = -1, EID = 2
+Stand-alone vacuum execution is ended.
+
+Time: 11/07/24 20:33:26.993 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 1087
+Stand-alone vacuum end.
+
+Time: 11/07/24 20:33:26.993 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/partition.c, line 717
+creating partition cache
+
+Time: 11/07/24 20:33:26.993 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 238  CODE = -973, Tran = -1, EID = 3
+Server status is UP.
+
+Time: 11/07/24 20:33:27.014 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/page_buffer.c, line 9970
+flushing page 0|193 to disk without logging.
+
+Time: 11/07/24 20:33:27.014 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/page_buffer.c, line 9970
+flushing page 0|1345 to disk without logging.
+
+Time: 11/07/24 20:33:27.014 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/page_buffer.c, line 9970
+flushing page 0|1473 to disk without logging.
+
+Time: 11/07/24 20:33:27.014 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/page_buffer.c, line 9970
+flushing page 0|1665 to disk without logging.
+
+Time: 11/07/24 20:33:27.025 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/07/24 20:33:27.026 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 238  CODE = -973, Tran = 1, EID = 5
+Server status is DOWN.
+
+Time: 11/07/24 20:33:27.026 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/partition.c, line 752
+deleting partition cache
+
+Time: 11/07/24 21:00:55.881 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_cl.c, line 1119
+boot_restart_client: register client { type 2 db demodb user dba password (null) program csql login vimkim host iusewslbtw pid 1837600 }
+
+Time: 11/07/24 21:00:56.201 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/07/24 21:00:56.202 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1060
+LOG INITIALIZE
+	db_fullname = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb 
+	logpath = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb 
+	prefix_logname = demodb 
+	ismedia_crash = 0 
+
+Time: 11/07/24 21:00:56.368 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/07/24 21:00:56.368 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/07/24 21:00:56.391 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1500
+log_initialize_internal: end of log initializaton, append_lsa = (820|9168) 
+
+Time: 11/07/24 21:00:56.411 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 993  CODE = -1190, Tran = -1, EID = 1
+Stand-alone vacuum execution is started.
+
+Time: 11/07/24 21:00:56.412 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 994
+Stand-alone vacuum start.
+
+Time: 11/07/24 21:00:56.413 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 1086  CODE = -1191, Tran = -1, EID = 2
+Stand-alone vacuum execution is ended.
+
+Time: 11/07/24 21:00:56.413 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 1087
+Stand-alone vacuum end.
+
+Time: 11/07/24 21:00:56.413 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/partition.c, line 717
+creating partition cache
+
+Time: 11/07/24 21:00:56.413 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 238  CODE = -973, Tran = -1, EID = 3
+Server status is UP.
+
+Time: 11/07/24 21:00:56.444 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/page_buffer.c, line 9970
+flushing page 0|193 to disk without logging.
+
+Time: 11/07/24 21:00:56.445 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/page_buffer.c, line 9970
+flushing page 0|1345 to disk without logging.
+
+Time: 11/07/24 21:00:56.445 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/page_buffer.c, line 9970
+flushing page 0|1473 to disk without logging.
+
+Time: 11/07/24 21:00:56.445 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/page_buffer.c, line 9970
+flushing page 0|1665 to disk without logging.
+
+Time: 11/07/24 21:00:56.460 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/07/24 21:00:56.461 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 238  CODE = -973, Tran = 1, EID = 5
+Server status is DOWN.
+
+Time: 11/07/24 21:00:56.461 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/partition.c, line 752
+deleting partition cache
+
+Time: 11/07/24 21:03:26.675 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_cl.c, line 1119
+boot_restart_client: register client { type 2 db demodb user dba password (null) program csql login vimkim host iusewslbtw pid 1850509 }
+
+Time: 11/07/24 21:03:26.905 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/07/24 21:03:26.906 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1060
+LOG INITIALIZE
+	db_fullname = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb 
+	logpath = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb 
+	prefix_logname = demodb 
+	ismedia_crash = 0 
+
+Time: 11/07/24 21:03:27.070 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/07/24 21:03:27.070 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/07/24 21:03:27.086 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1500
+log_initialize_internal: end of log initializaton, append_lsa = (821|312) 
+
+Time: 11/07/24 21:03:27.103 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 993  CODE = -1190, Tran = -1, EID = 1
+Stand-alone vacuum execution is started.
+
+Time: 11/07/24 21:03:27.103 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 994
+Stand-alone vacuum start.
+
+Time: 11/07/24 21:03:27.106 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 1086  CODE = -1191, Tran = -1, EID = 2
+Stand-alone vacuum execution is ended.
+
+Time: 11/07/24 21:03:27.106 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 1087
+Stand-alone vacuum end.
+
+Time: 11/07/24 21:03:27.106 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/partition.c, line 717
+creating partition cache
+
+Time: 11/07/24 21:03:27.106 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 238  CODE = -973, Tran = -1, EID = 3
+Server status is UP.
+
+Time: 11/07/24 21:03:27.115 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_t32766
+
+Time: 11/07/24 21:03:27.128 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_t32766
+
+Time: 11/07/24 21:03:27.129 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/page_buffer.c, line 9970
+flushing page 0|193 to disk without logging.
+
+Time: 11/07/24 21:03:27.129 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/page_buffer.c, line 9970
+flushing page 0|1345 to disk without logging.
+
+Time: 11/07/24 21:03:27.129 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/page_buffer.c, line 9970
+flushing page 0|1473 to disk without logging.
+
+Time: 11/07/24 21:03:27.129 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/page_buffer.c, line 9970
+flushing page 0|1665 to disk without logging.
+
+Time: 11/07/24 21:03:27.143 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/07/24 21:03:27.143 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 238  CODE = -973, Tran = 1, EID = 5
+Server status is DOWN.
+
+Time: 11/07/24 21:03:27.143 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/partition.c, line 752
+deleting partition cache
+
+Time: 11/07/24 21:03:53.313 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_cl.c, line 1119
+boot_restart_client: register client { type 2 db demodb user dba password (null) program csql login vimkim host iusewslbtw pid 1853084 }
+
+Time: 11/07/24 21:03:53.622 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/07/24 21:03:53.623 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1060
+LOG INITIALIZE
+	db_fullname = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb 
+	logpath = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb 
+	prefix_logname = demodb 
+	ismedia_crash = 0 
+
+Time: 11/07/24 21:03:53.817 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/07/24 21:03:53.817 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/07/24 21:03:53.830 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1500
+log_initialize_internal: end of log initializaton, append_lsa = (821|12760) 
+
+Time: 11/07/24 21:03:53.847 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 993  CODE = -1190, Tran = -1, EID = 1
+Stand-alone vacuum execution is started.
+
+Time: 11/07/24 21:03:53.847 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 994
+Stand-alone vacuum start.
+
+Time: 11/07/24 21:03:53.857 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 1086  CODE = -1191, Tran = -1, EID = 2
+Stand-alone vacuum execution is ended.
+
+Time: 11/07/24 21:03:53.857 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 1087
+Stand-alone vacuum end.
+
+Time: 11/07/24 21:03:53.857 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/partition.c, line 717
+creating partition cache
+
+Time: 11/07/24 21:03:53.857 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 238  CODE = -973, Tran = -1, EID = 3
+Server status is UP.
+
+Time: 11/07/24 21:03:53.867 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_t32766
+
+Time: 11/07/24 21:03:53.889 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_t32766
+
+Time: 11/07/24 21:03:53.890 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/page_buffer.c, line 9970
+flushing page 0|193 to disk without logging.
+
+Time: 11/07/24 21:03:53.890 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/page_buffer.c, line 9970
+flushing page 0|1345 to disk without logging.
+
+Time: 11/07/24 21:03:53.890 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/page_buffer.c, line 9970
+flushing page 0|1473 to disk without logging.
+
+Time: 11/07/24 21:03:53.890 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/page_buffer.c, line 9970
+flushing page 0|1665 to disk without logging.
+
+Time: 11/07/24 21:03:53.900 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/07/24 21:03:53.900 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 238  CODE = -973, Tran = 1, EID = 5
+Server status is DOWN.
+
+Time: 11/07/24 21:03:53.900 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/partition.c, line 752
+deleting partition cache
+
+Time: 11/07/24 21:04:20.637 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_cl.c, line 1119
+boot_restart_client: register client { type 2 db demodb user dba password (null) program csql login vimkim host iusewslbtw pid 1855860 }
+
+Time: 11/07/24 21:04:20.887 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/07/24 21:04:20.888 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1060
+LOG INITIALIZE
+	db_fullname = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb 
+	logpath = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb 
+	prefix_logname = demodb 
+	ismedia_crash = 0 
+
+Time: 11/07/24 21:04:21.017 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/07/24 21:04:21.017 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/07/24 21:04:21.030 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1500
+log_initialize_internal: end of log initializaton, append_lsa = (822|11200) 
+
+Time: 11/07/24 21:04:21.044 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 993  CODE = -1190, Tran = -1, EID = 1
+Stand-alone vacuum execution is started.
+
+Time: 11/07/24 21:04:21.044 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 994
+Stand-alone vacuum start.
+
+Time: 11/07/24 21:04:21.046 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 1086  CODE = -1191, Tran = -1, EID = 2
+Stand-alone vacuum execution is ended.
+
+Time: 11/07/24 21:04:21.046 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 1087
+Stand-alone vacuum end.
+
+Time: 11/07/24 21:04:21.046 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/partition.c, line 717
+creating partition cache
+
+Time: 11/07/24 21:04:21.046 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 238  CODE = -973, Tran = -1, EID = 3
+Server status is UP.
+
+Time: 11/07/24 21:04:23.871 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_tran_table.c, line 2762  CODE = -982, Tran = 1, EID = 5
+Set interrupt to the transaction 1.
+
+Time: 11/07/24 21:04:24.582 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_tran_table.c, line 2762  CODE = -982, Tran = 1, EID = 6
+Set interrupt to the transaction 1.
+
+Time: 11/07/24 21:04:25.101 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/07/24 21:04:25.102 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 238  CODE = -973, Tran = 1, EID = 7
+Server status is DOWN.
+
+Time: 11/07/24 21:04:25.102 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/partition.c, line 752
+deleting partition cache
+
+Time: 11/07/24 21:04:45.018 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_cl.c, line 1119
+boot_restart_client: register client { type 2 db demodb user dba password (null) program csql login vimkim host iusewslbtw pid 1857920 }
+
+Time: 11/07/24 21:04:45.274 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/07/24 21:04:45.275 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1060
+LOG INITIALIZE
+	db_fullname = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb 
+	logpath = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb 
+	prefix_logname = demodb 
+	ismedia_crash = 0 
+
+Time: 11/07/24 21:04:45.426 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/07/24 21:04:45.426 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/07/24 21:04:45.437 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1500
+log_initialize_internal: end of log initializaton, append_lsa = (822|11368) 
+
+Time: 11/07/24 21:04:45.451 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 993  CODE = -1190, Tran = -1, EID = 1
+Stand-alone vacuum execution is started.
+
+Time: 11/07/24 21:04:45.451 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 994
+Stand-alone vacuum start.
+
+Time: 11/07/24 21:04:45.462 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 1086  CODE = -1191, Tran = -1, EID = 2
+Stand-alone vacuum execution is ended.
+
+Time: 11/07/24 21:04:45.462 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 1087
+Stand-alone vacuum end.
+
+Time: 11/07/24 21:04:45.462 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/partition.c, line 717
+creating partition cache
+
+Time: 11/07/24 21:04:45.462 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 238  CODE = -973, Tran = -1, EID = 3
+Server status is UP.
+
+Time: 11/07/24 21:04:45.470 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_t32766
+
+Time: 11/07/24 21:04:45.483 - SYNTAX ERROR *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/compat/db_vdb.c, line 1050 ERROR CODE = -492, Tran = 1, EID = 5
+In line 6, column 1 before '; '
+Syntax error: unexpected ')', expecting CHECK or FOREIGN or PRIMARY or UNIQUE
+
+Time: 11/07/24 21:04:45.483 - SYNTAX ERROR *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/parser/query_result.c, line 372 ERROR CODE = -493, Tran = 1, EID = 6
+Syntax: before ' ; '
+Unknown class "dba.vt". show  columns from [dba.vt]
+
+Time: 11/07/24 21:04:45.483 - SYNTAX ERROR *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/compat/db_vdb.c, line 1050 ERROR CODE = -492, Tran = 1, EID = 7
+before ' ; '
+Unknown class "dba.vt".
+
+Time: 11/07/24 21:04:45.485 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_t32766
+
+Time: 11/07/24 21:04:45.493 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/07/24 21:04:45.494 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 238  CODE = -973, Tran = 1, EID = 8
+Server status is DOWN.
+
+Time: 11/07/24 21:04:45.494 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/partition.c, line 752
+deleting partition cache
+
+Time: 11/07/24 21:04:57.555 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_cl.c, line 1119
+boot_restart_client: register client { type 2 db demodb user dba password (null) program csql login vimkim host iusewslbtw pid 1859243 }
+
+Time: 11/07/24 21:04:57.812 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/07/24 21:04:57.814 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1060
+LOG INITIALIZE
+	db_fullname = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb 
+	logpath = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb 
+	prefix_logname = demodb 
+	ismedia_crash = 0 
+
+Time: 11/07/24 21:04:57.968 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/07/24 21:04:57.968 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/07/24 21:04:57.982 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1500
+log_initialize_internal: end of log initializaton, append_lsa = (823|1568) 
+
+Time: 11/07/24 21:04:57.998 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 993  CODE = -1190, Tran = -1, EID = 1
+Stand-alone vacuum execution is started.
+
+Time: 11/07/24 21:04:57.998 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 994
+Stand-alone vacuum start.
+
+Time: 11/07/24 21:04:57.000 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 1086  CODE = -1191, Tran = -1, EID = 2
+Stand-alone vacuum execution is ended.
+
+Time: 11/07/24 21:04:57.000 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 1087
+Stand-alone vacuum end.
+
+Time: 11/07/24 21:04:57.000 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/partition.c, line 717
+creating partition cache
+
+Time: 11/07/24 21:04:57.000 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 238  CODE = -973, Tran = -1, EID = 3
+Server status is UP.
+
+Time: 11/07/24 21:04:58.014 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/page_buffer.c, line 9970
+flushing page 0|193 to disk without logging.
+
+Time: 11/07/24 21:04:58.015 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/page_buffer.c, line 9970
+flushing page 0|1345 to disk without logging.
+
+Time: 11/07/24 21:04:58.015 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/page_buffer.c, line 9970
+flushing page 0|1473 to disk without logging.
+
+Time: 11/07/24 21:04:58.015 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/page_buffer.c, line 9970
+flushing page 0|1665 to disk without logging.
+
+Time: 11/07/24 21:04:58.032 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/07/24 21:04:58.033 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 238  CODE = -973, Tran = 1, EID = 5
+Server status is DOWN.
+
+Time: 11/07/24 21:04:58.033 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/partition.c, line 752
+deleting partition cache
+
+Time: 11/07/24 21:05:04.874 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_cl.c, line 1119
+boot_restart_client: register client { type 2 db demodb user dba password (null) program csql login vimkim host iusewslbtw pid 1860126 }
+
+Time: 11/07/24 21:05:05.143 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/07/24 21:05:05.144 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1060
+LOG INITIALIZE
+	db_fullname = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb 
+	logpath = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb 
+	prefix_logname = demodb 
+	ismedia_crash = 0 
+
+Time: 11/07/24 21:05:05.325 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/07/24 21:05:05.325 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/07/24 21:05:05.337 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1500
+log_initialize_internal: end of log initializaton, append_lsa = (823|9296) 
+
+Time: 11/07/24 21:05:05.353 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 993  CODE = -1190, Tran = -1, EID = 1
+Stand-alone vacuum execution is started.
+
+Time: 11/07/24 21:05:05.353 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 994
+Stand-alone vacuum start.
+
+Time: 11/07/24 21:05:05.363 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 1086  CODE = -1191, Tran = -1, EID = 2
+Stand-alone vacuum execution is ended.
+
+Time: 11/07/24 21:05:05.363 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 1087
+Stand-alone vacuum end.
+
+Time: 11/07/24 21:05:05.363 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/partition.c, line 717
+creating partition cache
+
+Time: 11/07/24 21:05:05.363 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 238  CODE = -973, Tran = -1, EID = 3
+Server status is UP.
+
+Time: 11/07/24 21:05:28.612 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/07/24 21:05:28.612 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 238  CODE = -973, Tran = 1, EID = 5
+Server status is DOWN.
+
+Time: 11/07/24 21:05:28.612 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/partition.c, line 752
+deleting partition cache
+
+Time: 11/07/24 21:06:17.413 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_cl.c, line 1119
+boot_restart_client: register client { type 2 db demodb user dba password (null) program csql login vimkim host iusewslbtw pid 1866398 }
+
+Time: 11/07/24 21:06:17.669 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/07/24 21:06:17.670 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1060
+LOG INITIALIZE
+	db_fullname = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb 
+	logpath = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb 
+	prefix_logname = demodb 
+	ismedia_crash = 0 
+
+Time: 11/07/24 21:06:17.793 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/07/24 21:06:17.793 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/07/24 21:06:17.805 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1500
+log_initialize_internal: end of log initializaton, append_lsa = (823|9584) 
+
+Time: 11/07/24 21:06:17.819 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 993  CODE = -1190, Tran = -1, EID = 1
+Stand-alone vacuum execution is started.
+
+Time: 11/07/24 21:06:17.819 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 994
+Stand-alone vacuum start.
+
+Time: 11/07/24 21:06:17.821 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 1086  CODE = -1191, Tran = -1, EID = 2
+Stand-alone vacuum execution is ended.
+
+Time: 11/07/24 21:06:17.821 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 1087
+Stand-alone vacuum end.
+
+Time: 11/07/24 21:06:17.821 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/partition.c, line 717
+creating partition cache
+
+Time: 11/07/24 21:06:17.821 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 238  CODE = -973, Tran = -1, EID = 3
+Server status is UP.
+
+Time: 11/07/24 21:06:22.947 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/07/24 21:06:22.948 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 238  CODE = -973, Tran = 1, EID = 5
+Server status is DOWN.
+
+Time: 11/07/24 21:06:22.948 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/partition.c, line 752
+deleting partition cache
+
+Time: 11/08/24 11:36:34.197 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_cl.c, line 1119
+boot_restart_client: register client { type 2 db demodb user dba password (null) program csql login vimkim host iusewslbtw pid 1965460 }
+
+Time: 11/08/24 11:36:34.582 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/08/24 11:36:34.583 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1060
+LOG INITIALIZE
+	db_fullname = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb 
+	logpath = /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb 
+	prefix_logname = demodb 
+	ismedia_crash = 0 
+
+Time: 11/08/24 11:36:34.813 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/08/24 11:36:34.813 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2179
+Created volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_lgar_t
+
+Time: 11/08/24 11:36:34.835 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/log_manager.c, line 1500
+log_initialize_internal: end of log initializaton, append_lsa = (825|1928) 
+
+Time: 11/08/24 11:36:34.879 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 993  CODE = -1190, Tran = -1, EID = 1
+Stand-alone vacuum execution is started.
+
+Time: 11/08/24 11:36:34.879 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 994
+Stand-alone vacuum start.
+
+Time: 11/08/24 11:36:34.890 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 1086  CODE = -1191, Tran = -1, EID = 2
+Stand-alone vacuum execution is ended.
+
+Time: 11/08/24 11:36:34.890 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/vacuum.c, line 1087
+Stand-alone vacuum end.
+
+Time: 11/08/24 11:36:34.890 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/partition.c, line 717
+creating partition cache
+
+Time: 11/08/24 11:36:34.890 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 238  CODE = -973, Tran = -1, EID = 3
+Server status is UP.
+
+Time: 11/08/24 11:36:34.944 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/storage/file_io.c, line 2743
+Destroyed volume /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/databases.out/myprofile/demodb/demodb_dwb
+
+Time: 11/08/24 11:36:34.947 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 238  CODE = -973, Tran = 1, EID = 5
+Server status is DOWN.
+
+Time: 11/08/24 11:36:34.947 - DEBUG *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/query/partition.c, line 752
+deleting partition cache

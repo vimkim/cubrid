@@ -2,7 +2,7 @@ del
 br csql_execute_statements
 # b pt_compile
 # b do_prepare_select
-# b pt_fillin_type_size
+b pt_fillin_type_size
 # b mq_optimize
 
 # compat/db_macro.c

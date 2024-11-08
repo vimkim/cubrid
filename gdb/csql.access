@@ -1,0 +1,132 @@
+
+Time: 11/06/24 13:18:59.838 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 3339  CODE = -972, Tran = -1, EID = 15
+Program '/home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/install.out/myprofile/bin/csql' (pid 229572) was connected from the host 'iusewslbtw'. (transaction index 1)
+
+*** The previous error message is the last one. ***
+
+
+Time: 11/06/24 16:04:03.017 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 3339  CODE = -972, Tran = -1, EID = 15
+Program 'csql' (pid 69596) was connected from the host 'iusewslbtw'. (transaction index 1)
+
+*** The previous error message is the last one. ***
+
+
+Time: 11/06/24 16:04:19.000 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 3339  CODE = -972, Tran = -1, EID = 4
+Program '/home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/install.out/myprofile/bin/csql' (pid 70511) was connected from the host 'iusewslbtw'. (transaction index 1)
+
+*** The previous error message is the last one. ***
+
+
+Time: 11/06/24 18:09:09.576 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 3339  CODE = -972, Tran = -1, EID = 15
+Program '/home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/install.out/myprofile/bin/csql' (pid 367438) was connected from the host 'iusewslbtw'. (transaction index 1)
+
+*** The previous error message is the last one. ***
+
+
+Time: 11/06/24 18:13:50.002 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 3339  CODE = -972, Tran = -1, EID = 15
+Program '/home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/install.out/myprofile/bin/csql' (pid 410007) was connected from the host 'iusewslbtw'. (transaction index 1)
+
+*** The previous error message is the last one. ***
+
+
+Time: 11/06/24 18:20:25.186 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 3339  CODE = -972, Tran = -1, EID = 15
+Program '/home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/install.out/myprofile/bin/csql' (pid 435205) was connected from the host 'iusewslbtw'. (transaction index 1)
+
+*** The previous error message is the last one. ***
+
+
+Time: 11/06/24 18:51:24.495 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 3339  CODE = -972, Tran = -1, EID = 15
+Program '/home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/install.out/myprofile/bin/csql' (pid 527883) was connected from the host 'iusewslbtw'. (transaction index 1)
+
+*** The previous error message is the last one. ***
+
+
+Time: 11/06/24 18:51:40.478 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 3339  CODE = -972, Tran = -1, EID = 4
+Program '/home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/install.out/myprofile/bin/csql' (pid 528676) was connected from the host 'iusewslbtw'. (transaction index 1)
+
+*** The previous error message is the last one. ***
+
+
+Time: 11/06/24 18:55:23.974 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 3339  CODE = -972, Tran = -1, EID = 15
+Program '/home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/install.out/myprofile/bin/csql' (pid 538144) was connected from the host 'iusewslbtw'. (transaction index 1)
+
+*** The previous error message is the last one. ***
+
+
+Time: 11/07/24 20:08:04.664 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 3339  CODE = -972, Tran = -1, EID = 15
+Program '/home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/install.out/myprofile/bin/csql' (pid 1655502) was connected from the host 'iusewslbtw'. (transaction index 1)
+
+*** The previous error message is the last one. ***
+
+
+Time: 11/07/24 20:16:27.618 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 3339  CODE = -972, Tran = -1, EID = 4
+Program '/home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/install.out/myprofile/bin/csql' (pid 1688053) was connected from the host 'iusewslbtw'. (transaction index 1)
+
+*** The previous error message is the last one. ***
+
+
+Time: 11/07/24 20:23:13.805 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 3339  CODE = -972, Tran = -1, EID = 15
+Program 'csql' (pid 1705593) was connected from the host 'iusewslbtw'. (transaction index 1)
+
+*** The previous error message is the last one. ***
+
+
+Time: 11/07/24 20:33:26.993 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 3339  CODE = -972, Tran = -1, EID = 4
+Program 'csql' (pid 1743951) was connected from the host 'iusewslbtw'. (transaction index 1)
+
+*** The previous error message is the last one. ***
+
+
+Time: 11/07/24 21:00:56.413 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 3339  CODE = -972, Tran = -1, EID = 4
+Program 'csql' (pid 1837600) was connected from the host 'iusewslbtw'. (transaction index 1)
+
+*** The previous error message is the last one. ***
+
+
+Time: 11/07/24 21:03:27.106 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 3339  CODE = -972, Tran = -1, EID = 4
+Program 'csql' (pid 1850509) was connected from the host 'iusewslbtw'. (transaction index 1)
+
+*** The previous error message is the last one. ***
+
+
+Time: 11/07/24 21:03:53.857 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 3339  CODE = -972, Tran = -1, EID = 4
+Program 'csql' (pid 1853084) was connected from the host 'iusewslbtw'. (transaction index 1)
+
+*** The previous error message is the last one. ***
+
+
+Time: 11/07/24 21:04:21.046 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 3339  CODE = -972, Tran = -1, EID = 4
+Program 'csql' (pid 1855860) was connected from the host 'iusewslbtw'. (transaction index 1)
+
+*** The previous error message is the last one. ***
+
+
+Time: 11/07/24 21:04:45.462 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 3339  CODE = -972, Tran = -1, EID = 4
+Program 'csql' (pid 1857920) was connected from the host 'iusewslbtw'. (transaction index 1)
+
+*** The previous error message is the last one. ***
+
+
+Time: 11/07/24 21:04:57.000 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 3339  CODE = -972, Tran = -1, EID = 4
+Program 'csql' (pid 1859243) was connected from the host 'iusewslbtw'. (transaction index 1)
+
+*** The previous error message is the last one. ***
+
+
+Time: 11/07/24 21:05:05.363 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 3339  CODE = -972, Tran = -1, EID = 4
+Program 'csql' (pid 1860126) was connected from the host 'iusewslbtw'. (transaction index 1)
+
+*** The previous error message is the last one. ***
+
+
+Time: 11/07/24 21:06:17.821 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 3339  CODE = -972, Tran = -1, EID = 4
+Program 'csql' (pid 1866398) was connected from the host 'iusewslbtw'. (transaction index 1)
+
+*** The previous error message is the last one. ***
+
+
+Time: 11/08/24 11:36:34.890 - NOTIFICATION *** file /home/vimkim/github/vimkim/cubrid/feature/cubvec-survey/src/transaction/boot_sr.c, line 3339  CODE = -972, Tran = -1, EID = 4
+Program 'csql' (pid 1965460) was connected from the host 'iusewslbtw'. (transaction index 1)
+
+*** The previous error message is the last one. ***
+
