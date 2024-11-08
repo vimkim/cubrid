@@ -1641,7 +1641,7 @@ PR_TYPE tp_Sequence = {
 PR_TYPE *tp_Type_sequence = &tp_Sequence;
 
 PR_TYPE tp_Vector = {
-  "sequence", DB_TYPE_SEQUENCE, 1, sizeof (SETOBJ *), 0, 4,
+  "vector", DB_TYPE_VECTOR, 1, sizeof (SETOBJ *), 0, 4,
   mr_initmem_set,
   mr_initval_sequence,
   mr_setmem_set,
@@ -1663,7 +1663,7 @@ PR_TYPE tp_Vector = {
   mr_cmpval_sequence
 };
 
-PR_TYPE *tp_Type_vector = &tp_Sequence;
+PR_TYPE *tp_Type_vector = &tp_Vector;
 
 
 PR_TYPE tp_Midxkey = {
@@ -2008,6 +2008,7 @@ pr_clear_value (DB_VALUE * value)
     case DB_TYPE_SET:
     case DB_TYPE_MULTISET:
     case DB_TYPE_SEQUENCE:
+    case DB_TYPE_VECTOR:
     case DB_TYPE_VOBJ:
       set_free (db_get_set (value));
       value->data.set = NULL;
@@ -6984,6 +6985,9 @@ mr_setval_set_internal (DB_VALUE * dest, const DB_VALUE * src, bool copy, DB_TYP
 	case DB_TYPE_SEQUENCE:
 	  db_make_sequence (dest, ref);
 	  break;
+	case DB_TYPE_VECTOR:
+	  db_make_vector (dest, ref);
+	  break;
 	default:
 	  break;
 	}
@@ -7008,6 +7012,9 @@ err_set:
       break;
     case DB_TYPE_SEQUENCE:
       db_make_sequence (dest, NULL);
+      break;
+    case DB_TYPE_VECTOR:
+      db_make_vector (dest, NULL);
       break;
     default:
       break;
@@ -7287,6 +7294,9 @@ mr_data_readval_set (OR_BUF * buf, DB_VALUE * value, TP_DOMAIN * domain, int siz
 		    case DB_TYPE_SEQUENCE:
 		      db_make_sequence (value, ref);
 		      break;
+		    case DB_TYPE_VECTOR:
+		      db_make_vector (value, ref);
+		      break;
 		    default:
 		      break;
 		    }
@@ -7347,6 +7357,9 @@ mr_data_readval_set (OR_BUF * buf, DB_VALUE * value, TP_DOMAIN * domain, int siz
 		  break;
 		case DB_TYPE_SEQUENCE:
 		  db_make_sequence (value, ref);
+		  break;
+		case DB_TYPE_VECTOR:
+		  db_make_vector (value, ref);
 		  break;
 		default:
 		  break;

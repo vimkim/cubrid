@@ -2682,6 +2682,10 @@ pt_db_to_type_enum (const DB_TYPE t)
       // pt_type = PT_TYPE_VECTOR; // TODO
       pt_type = PT_TYPE_SEQUENCE;
       break;
+    case DB_TYPE_VECTOR:
+      // pt_type = PT_TYPE_VECTOR; // TODO
+      pt_type = PT_TYPE_VECTOR;
+      break;
 
     case DB_TYPE_CHAR:
       pt_type = PT_TYPE_CHAR;
@@ -2891,6 +2895,7 @@ pt_bind_helper (PARSER_CONTEXT * parser, PT_NODE * node, DB_VALUE * val, int *da
     case DB_TYPE_SET:
     case DB_TYPE_MULTISET:
     case DB_TYPE_SEQUENCE:
+    case DB_TYPE_VECTOR:
       dt = pt_bind_set_type (parser, node, val, data_type_added);
       break;
 
