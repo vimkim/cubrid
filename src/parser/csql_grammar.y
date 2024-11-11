@@ -1319,6 +1319,7 @@ static char *g_plcsql_text;
 %token Null
 %token NULLIF
 %token NUMERIC
+%token VECTOR
 %token OBJECT
 %token OCTET_LENGTH
 %token OF
@@ -21671,6 +21672,34 @@ primitive_type
 			  }
 
 		DBG_PRINT}}
+  | VECTOR opt_prec_2
+    {{
+      container_2 ctn;
+      PT_TYPE_ENUM typ;
+      PT_NODE *prec, *scale, *dt;
+      prec = CONTAINER_AT_0 ($2);
+      scale = CONTAINER_AT_1 ($2);
+
+      dt = parser_new_node(this_parser, PT_DATA_TYPE);
+      typ = PT_TYPE_VECTOR;
+
+      if (dt)
+        {
+			    dt->type_enum = typ;
+			    dt->info.data_type.precision = prec ? prec->info.value.data_value.i : 2000;
+			    dt->info.data_type.dec_precision =
+			      scale ? scale->info.value.data_value.i : 2000;
+        }
+
+			SET_CONTAINER_2 (ctn, FROM_NUMBER (typ), dt);
+			$$ = ctn;
+
+			if (prec)
+			  parser_free_node (this_parser, prec);
+			if (scale)
+			  parser_free_node (this_parser, scale);
+
+    }}
 	| NUMERIC opt_prec_2
 		{{ DBG_TRACE_GRAMMAR(primitive_type, | NUMERIC opt_prec_2 );
 

@@ -683,6 +683,8 @@ IDL       [a-zA-Z0-9_]
 										return NTILE; }
 [nN][uU][lL][lL][iI][fF]						{ begin_token(yytext);   return NULLIF; }
 [nN][uU][mM][eE][rR][iI][cC]						{ begin_token(yytext);   return NUMERIC; }
+vector { begin_token(yytext); return VECTOR; }
+VECTOR { begin_token(yytext); return VECTOR; }
 [nN][uU][lL][lL]							{ begin_token(yytext);   return Null; }
 [nN][uU][lL][lL][sS]							{ begin_token(yytext);
 										csql_yylval.cptr = pt_makename(yytext);
