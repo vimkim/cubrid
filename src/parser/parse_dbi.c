@@ -1612,7 +1612,7 @@ pt_type_enum_to_db_domain (const PT_TYPE_ENUM t)
     case DB_TYPE_NUMERIC:
       retval = tp_domain_construct (domain_type, NULL, DB_DEFAULT_NUMERIC_PRECISION, DB_DEFAULT_NUMERIC_SCALE, NULL);
       break;
-
+    case DB_TYPE_VECTOR:
     case DB_TYPE_CHAR:
     case DB_TYPE_NCHAR:
     case DB_TYPE_BIT:
@@ -2403,6 +2403,11 @@ pt_type_enum_to_db (const PT_TYPE_ENUM t)
     case PT_TYPE_NUMERIC:
       db_type = DB_TYPE_NUMERIC;
       break;
+
+    case PT_TYPE_VECTOR:
+      db_type = DB_TYPE_VECTOR;
+      break;
+
     case PT_TYPE_NCHAR:
       db_type = DB_TYPE_NCHAR;
       break;
