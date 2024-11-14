@@ -223,6 +223,9 @@ void db_value_printer::describe_type (const db_value *value)
 	case DB_TYPE_OID:
 	  m_buf ("OID");
 	  break;
+	case DB_TYPE_VECTOR:
+	  m_buf ("VECTOR");
+	  break;
 	case DB_TYPE_NUMERIC:
 	  m_buf ("NUMERIC");
 	  break;
@@ -442,6 +445,10 @@ void db_value_printer::describe_data (const db_value *value)
 
     case DB_TYPE_DOUBLE:
       m_buf ("%e", (double) db_get_double (value));
+      break;
+
+    case DB_TYPE_VECTOR:
+      m_buf ("%s", numeric_db_value_print (value, line));
       break;
 
     case DB_TYPE_NUMERIC:

@@ -170,6 +170,8 @@ db_value_domain_init (DB_VALUE * value, const DB_TYPE type, const int precision,
 
   switch (type)
     {
+    case DB_TYPE_VECTOR:
+      break;
     case DB_TYPE_NUMERIC:
       if (precision == DB_DEFAULT_PRECISION)
 	{
@@ -511,6 +513,7 @@ db_value_domain_min (DB_VALUE * value, const DB_TYPE type,
       value->domain.general_info.is_null = 0;
       break;
       /* case DB_TYPE_DB_VALUE: special for esql */
+    case DB_TYPE_VECTOR:
     case DB_TYPE_NUMERIC:
       {
 	char str[DB_MAX_NUMERIC_PRECISION + 2];
@@ -789,6 +792,7 @@ db_value_domain_default (DB_VALUE * value, const DB_TYPE type,
     case DB_TYPE_DOUBLE:
     case DB_TYPE_SHORT:
     case DB_TYPE_MONETARY:
+    case DB_TYPE_VECTOR:
     case DB_TYPE_NUMERIC:
       assert (false);
       break;
@@ -1738,6 +1742,7 @@ db_type_to_db_domain (const DB_TYPE type)
     case DB_TYPE_MONETARY:
     case DB_TYPE_SHORT:
     case DB_TYPE_BIGINT:
+    case DB_TYPE_VECTOR:
     case DB_TYPE_NUMERIC:
     case DB_TYPE_CHAR:
     case DB_TYPE_NCHAR:
@@ -2795,6 +2800,7 @@ db_value_get (DB_VALUE * value, const DB_TYPE_C c_type, void *buf, const int buf
       }				/* DB_TYPE_DATE */
       break;
 
+    case DB_TYPE_VECTOR:
     case DB_TYPE_NUMERIC:
       {
 	switch (c_type)
@@ -3171,6 +3177,7 @@ coerce_numeric_to_dbvalue (DB_VALUE * value, char *buf, const DB_TYPE_C c_type)
 
 	switch (db_type)
 	  {
+	  case DB_TYPE_VECTOR:
 	  case DB_TYPE_NUMERIC:
 	    {
 	      DB_DATA_STATUS data_status;

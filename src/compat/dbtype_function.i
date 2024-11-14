@@ -46,6 +46,7 @@ STATIC_INLINE DB_MONETARY *db_get_monetary (const DB_VALUE * value) __attribute_
 STATIC_INLINE int db_get_error (const DB_VALUE * value) __attribute__ ((ALWAYS_INLINE));
 STATIC_INLINE DB_ELO *db_get_elo (const DB_VALUE * value) __attribute__ ((ALWAYS_INLINE));
 STATIC_INLINE DB_C_NUMERIC db_get_numeric (const DB_VALUE * value) __attribute__ ((ALWAYS_INLINE));
+STATIC_INLINE DB_C_VECTOR db_get_vector (const DB_VALUE * value) __attribute__ ((ALWAYS_INLINE));
 STATIC_INLINE DB_CONST_C_BIT db_get_bit (const DB_VALUE * value, int *length) __attribute__ ((ALWAYS_INLINE));
 STATIC_INLINE DB_CONST_C_CHAR db_get_char (const DB_VALUE * value, int *length) __attribute__ ((ALWAYS_INLINE));
 STATIC_INLINE DB_CONST_C_NCHAR db_get_nchar (const DB_VALUE * value, int *length) __attribute__ ((ALWAYS_INLINE));
@@ -541,6 +542,23 @@ db_get_numeric (const DB_VALUE * value)
     }
 }
 
+DB_C_VECTOR
+db_get_vector (const DB_VALUE * value)
+{
+#if defined (API_ACTIVE_CHECKS)
+  CHECK_1ARG_ZERO (value);
+#endif
+
+  if (value->domain.general_info.is_null || value->domain.general_info.type == DB_TYPE_ERROR)
+    {
+      return NULL;
+    }
+  else
+    {
+      return (DB_C_VECTOR) (value->data.num.d.buf);
+    }
+}
+
 /*
  * db_get_bit() -
  * return :
@@ -898,6 +916,7 @@ db_value_precision (const DB_VALUE * value)
   switch (value->domain.general_info.type)
     {
     case DB_TYPE_NUMERIC:
+    case DB_TYPE_VECTOR:
     case DB_TYPE_SHORT:
     case DB_TYPE_INTEGER:
     case DB_TYPE_BIGINT:

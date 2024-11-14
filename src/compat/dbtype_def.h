@@ -806,6 +806,15 @@ extern "C"
     } d;
   };
 
+  typedef struct db_vector DB_VECTOR;
+  struct db_vector {
+    union
+    {
+      unsigned char *digits;
+      unsigned char buf[DB_NUMERIC_BUF_SIZE];
+    } d;
+  };
+
   /* Structure used for the representation of monetary amounts. */
   typedef enum
   {
@@ -1079,6 +1088,7 @@ extern "C"
     int error;
     DB_IDENTIFIER oid;
     DB_NUMERIC num;
+    DB_VECTOR vector;
     DB_CHAR ch;
     DB_RESULTSET rset;
     DB_ENUM_ELEMENT enumeration;
@@ -1224,6 +1234,7 @@ extern "C"
   typedef DB_TIMESTAMPTZ DB_C_TIMESTAMPTZ;
   typedef DB_MONETARY DB_C_MONETARY;
   typedef unsigned char *DB_C_NUMERIC;
+  typedef unsigned char *DB_C_VECTOR;
   typedef void *DB_C_POINTER;
   typedef DB_IDENTIFIER DB_C_IDENTIFIER;
 
