@@ -659,6 +659,7 @@ pt_dbval_to_value (PARSER_CONTEXT * parser, const DB_VALUE * val)
 	    }
 	}
       break;
+    case DB_TYPE_VECTOR:
     case DB_TYPE_NUMERIC:
       numeric_db_value_print (val, buf);
       result->info.value.data_value.str = pt_append_nulstring (parser, (PARSER_VARCHAR *) NULL, (const char *) buf);
@@ -675,7 +676,6 @@ pt_dbval_to_value (PARSER_CONTEXT * parser, const DB_VALUE * val)
 	  result->data_type->info.data_type.dec_precision = db_value_scale (val);
 	}
       break;
-
     case DB_TYPE_VARNCHAR:
     case DB_TYPE_NCHAR:
     case DB_TYPE_VARCHAR:
@@ -1299,6 +1299,7 @@ pt_data_type_init_value (const PT_NODE * node, DB_VALUE * value_out)
       value_out->domain.char_info.length = node_data_type->info.data_type.precision;
       break;
 
+    case DB_TYPE_VECTOR:
     case DB_TYPE_NUMERIC:
       value_out->domain.numeric_info.precision = node_data_type->info.data_type.precision;
       value_out->domain.numeric_info.scale = node_data_type->info.data_type.dec_precision;
@@ -1449,6 +1450,9 @@ pt_type_enum_to_db_domain_name (const PT_TYPE_ENUM t)
       break;
     case PT_TYPE_NUMERIC:
       name = "numeric";
+      break;
+    case PT_TYPE_VECTOR:
+      name = "vector";
       break;
     case PT_TYPE_FLOAT:
       name = "float";
@@ -1609,10 +1613,10 @@ pt_type_enum_to_db_domain (const PT_TYPE_ENUM t)
       retval = tp_domain_construct (domain_type, (DB_OBJECT *) 0, 0, 0, (TP_DOMAIN *) 0);
       break;
 
+    case DB_TYPE_VECTOR:
     case DB_TYPE_NUMERIC:
       retval = tp_domain_construct (domain_type, NULL, DB_DEFAULT_NUMERIC_PRECISION, DB_DEFAULT_NUMERIC_SCALE, NULL);
       break;
-    case DB_TYPE_VECTOR:
     case DB_TYPE_CHAR:
     case DB_TYPE_NCHAR:
     case DB_TYPE_BIT:
@@ -1914,6 +1918,7 @@ pt_data_type_to_db_domain (PARSER_CONTEXT * parser, PT_NODE * dt, const char *cl
       codeset = dt->info.data_type.units;
       break;
 
+    case DB_TYPE_VECTOR:
     case DB_TYPE_NUMERIC:
       precision = dt->info.data_type.precision;
       scale = dt->info.data_type.dec_precision;
@@ -2135,6 +2140,7 @@ pt_node_data_type_to_db_domain (PARSER_CONTEXT * parser, PT_NODE * dt, PT_TYPE_E
       collation_flag = dt->info.data_type.collation_flag;
       break;
 
+    case DB_TYPE_VECTOR:
     case DB_TYPE_NUMERIC:
       precision = dt->info.data_type.precision;
       scale = dt->info.data_type.dec_precision;
@@ -2621,6 +2627,9 @@ pt_db_to_type_enum (const DB_TYPE t)
     case DB_TYPE_NUMERIC:
       pt_type = PT_TYPE_NUMERIC;
       break;
+    case DB_TYPE_VECTOR:
+      pt_type = PT_TYPE_VECTOR;
+      break;
     case DB_TYPE_SHORT:
       pt_type = PT_TYPE_SMALLINT;
       break;
@@ -2902,6 +2911,7 @@ pt_bind_helper (PARSER_CONTEXT * parser, PT_NODE * node, DB_VALUE * val, int *da
 	}
       break;
 
+    case DB_TYPE_VECTOR:
     case DB_TYPE_NUMERIC:
       dt = parser_new_node (parser, PT_DATA_TYPE);
       if (dt)
@@ -3309,6 +3319,7 @@ pt_db_value_initialize (PARSER_CONTEXT * parser, PT_NODE * value, DB_VALUE * db_
       db_make_float (db_value, value->info.value.data_value.f);
       break;
 
+    case PT_TYPE_VECTOR:
     case PT_TYPE_NUMERIC:
       if (numeric_coerce_string_to_num ((const char *) value->info.value.data_value.str->bytes,
 					value->info.value.data_value.str->length, codeset, db_value) != NO_ERROR)
@@ -3319,7 +3330,6 @@ pt_db_value_initialize (PARSER_CONTEXT * parser, PT_NODE * value, DB_VALUE * db_
 	}
       *more_type_info_needed = (value->data_type == NULL);
       break;
-
     case PT_TYPE_DOUBLE:
       db_make_double (db_value, value->info.value.data_value.d);
       break;
