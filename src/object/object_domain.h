@@ -166,6 +166,7 @@ extern TP_DOMAIN tp_Error_domain;
 extern TP_DOMAIN tp_Short_domain;
 extern TP_DOMAIN tp_Vobj_domain;
 extern TP_DOMAIN tp_Oid_domain;
+extern TP_DOMAIN tp_Vector_domain;
 extern TP_DOMAIN tp_Numeric_domain;
 extern TP_DOMAIN tp_Char_domain;
 extern TP_DOMAIN tp_NChar_domain;

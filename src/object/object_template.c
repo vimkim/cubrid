@@ -509,6 +509,7 @@ quick_validate (SM_VALIDATION * valid, DB_VALUE * value)
 	}
       break;
 
+    case DB_TYPE_VECTOR:
     case DB_TYPE_NUMERIC:
       if (type == valid->last_type && DB_GET_NUMERIC_PRECISION (value) == valid->last_precision
 	  && DB_GET_NUMERIC_SCALE (value) == valid->last_scale)
@@ -599,6 +600,7 @@ cache_validation (SM_VALIDATION * valid, DB_VALUE * value)
       valid->last_scale = 0;
       break;
 
+    case DB_TYPE_VECTOR:
     case DB_TYPE_NUMERIC:
       valid->last_type = type;
       valid->last_precision = db_value_precision (value);

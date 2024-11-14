@@ -2755,6 +2755,7 @@ or_packed_domain_size (TP_DOMAIN * domain, int include_classoids)
       switch (id)
 	{
 
+	case DB_TYPE_VECTOR:
 	case DB_TYPE_NUMERIC:
 	  precision = d->precision;
 	  scale = d->scale;
@@ -2928,6 +2929,7 @@ or_put_domain (OR_BUF * buf, TP_DOMAIN * domain, int include_classoids, int is_n
       switch (id)
 	{
 
+	case DB_TYPE_VECTOR:
 	case DB_TYPE_NUMERIC:
 	  /* second byte contains scale, third & fourth bytes have precision */
 
@@ -3261,6 +3263,7 @@ unpack_domain_2 (OR_BUF * buf, int *is_null)
 	      precision = tp_get_fixed_precision (type);
 	      break;
 
+	    case DB_TYPE_VECTOR:
 	    case DB_TYPE_NUMERIC:
 	      precision = (carrier & OR_DOMAIN_PRECISION_MASK) >> OR_DOMAIN_PRECISION_SHIFT;
 	      scale = (carrier & OR_DOMAIN_SCALE_MASK) >> OR_DOMAIN_SCALE_SHIFT;
@@ -3598,6 +3601,7 @@ unpack_domain (OR_BUF * buf, int *is_null)
 	      dom = tp_domain_find_noparam (type, is_desc);
 	      break;
 
+	    case DB_TYPE_VECTOR:
 	    case DB_TYPE_NUMERIC:
 	      /* get precision and scale */
 	      precision = (carrier & OR_DOMAIN_PRECISION_MASK) >> OR_DOMAIN_PRECISION_SHIFT;

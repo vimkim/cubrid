@@ -21,6 +21,7 @@
  * This module primarily defines support for domain structures.
  */
 
+#include "dbtype_def.h"
 #ident "$Id$"
 
 
@@ -304,6 +305,10 @@ TP_DOMAIN tp_Numeric_domain = { NULL, NULL, &tp_Numeric, DB_DEFAULT_NUMERIC_PREC
   DOMAIN_INIT2 (0, 0)
 };
 
+TP_DOMAIN tp_Vector_domain = { NULL, NULL, &tp_Vector, DB_DEFAULT_NUMERIC_PRECISION, DB_DEFAULT_NUMERIC_SCALE,
+  DOMAIN_INIT2 (0, 0)
+};
+
 TP_DOMAIN tp_Bit_domain = { NULL, NULL, &tp_Bit, TP_FLOATING_PRECISION_VALUE, 0,
   DOMAIN_INIT2 (INTL_CODESET_RAW_BITS, 0)
 };
@@ -355,6 +360,7 @@ static TP_DOMAIN *tp_Domains[] = {
   &tp_Oid_domain,		/* does this make sense? shouldn't we share tp_Object_domain */
   &tp_Null_domain,		/* current position of DB_TYPE_DB_VALUE */
   &tp_Numeric_domain,
+  &tp_Vector_domain,
   &tp_Bit_domain,
   &tp_VarBit_domain,
   &tp_Char_domain,
@@ -1451,6 +1457,7 @@ tp_value_slam_domain (DB_VALUE * value, const DB_DOMAIN * domain)
       value->domain.char_info.length = domain->precision;
       break;
 
+    case DB_TYPE_VECTOR:
     case DB_TYPE_NUMERIC:
       value->domain.numeric_info.type = TP_DOMAIN_TYPE (domain);
       value->domain.numeric_info.precision = domain->precision;
@@ -1831,6 +1838,7 @@ tp_domain_match_internal (const TP_DOMAIN * dom1, const TP_DOMAIN * dom2, TP_MAT
 	}
       break;
 
+    case DB_TYPE_VECTOR:
     case DB_TYPE_NUMERIC:
       /*
        * note that we never allow inexact matches here because the
@@ -2451,6 +2459,7 @@ tp_is_domain_cached (TP_DOMAIN * dlist, TP_DOMAIN * transient, TP_MATCH exact, T
 	}
       break;
 
+    case DB_TYPE_VECTOR:
     case DB_TYPE_NUMERIC:
       /*
        * The first domain is a default domain for numeric type,
@@ -3401,6 +3410,7 @@ tp_domain_resolve_value (const DB_VALUE * val, TP_DOMAIN * dbuf)
 	      domain = tp_domain_cache (domain);
 	    }
 	  break;
+	case DB_TYPE_VECTOR:
 
 	case DB_TYPE_POINTER:
 	case DB_TYPE_ERROR:
@@ -3754,6 +3764,7 @@ tp_domain_drop (TP_DOMAIN ** dlist, TP_DOMAIN * domain)
 	      found = d;
 	      break;
 
+	    case DB_TYPE_VECTOR:
 	    case DB_TYPE_NUMERIC:
 	      if (d->precision == domain->precision && d->scale == domain->scale)
 		{
@@ -5951,6 +5962,7 @@ tp_value_coerce_strict (const DB_VALUE * src, DB_VALUE * dest, const TP_DOMAIN *
 	    db_make_short (target, (short) i);
 	    break;
 	  }
+	case DB_TYPE_VECTOR:
 	case DB_TYPE_NUMERIC:
 	  err = numeric_db_value_coerce_from_num_strict ((DB_VALUE *) src, target);
 	  break;
@@ -6051,6 +6063,7 @@ tp_value_coerce_strict (const DB_VALUE * src, DB_VALUE * dest, const TP_DOMAIN *
 	    db_make_int (target, (int) i);
 	    break;
 	  }
+	case DB_TYPE_VECTOR:
 	case DB_TYPE_NUMERIC:
 	  err = numeric_db_value_coerce_from_num_strict ((DB_VALUE *) src, target);
 	  break;
@@ -6146,6 +6159,7 @@ tp_value_coerce_strict (const DB_VALUE * src, DB_VALUE * dest, const TP_DOMAIN *
 	    db_make_bigint (target, (DB_BIGINT) i);
 	    break;
 	  }
+	case DB_TYPE_VECTOR:
 	case DB_TYPE_NUMERIC:
 	  err = numeric_db_value_coerce_from_num_strict ((DB_VALUE *) src, target);
 	  break;
@@ -6192,6 +6206,7 @@ tp_value_coerce_strict (const DB_VALUE * src, DB_VALUE * dest, const TP_DOMAIN *
 	case DB_TYPE_BIGINT:
 	  db_make_float (target, (float) db_get_bigint (src));
 	  break;
+	case DB_TYPE_VECTOR:
 	case DB_TYPE_NUMERIC:
 	  err = numeric_db_value_coerce_from_num_strict ((DB_VALUE *) src, target);
 	  break;
@@ -6241,6 +6256,7 @@ tp_value_coerce_strict (const DB_VALUE * src, DB_VALUE * dest, const TP_DOMAIN *
 	case DB_TYPE_MONETARY:
 	  db_make_double (target, db_get_monetary (src)->amount);
 	  break;
+	case DB_TYPE_VECTOR:
 	case DB_TYPE_NUMERIC:
 	  err = numeric_db_value_coerce_from_num_strict ((DB_VALUE *) src, target);
 	  break;
@@ -7262,6 +7278,7 @@ tp_value_cast_internal (const DB_VALUE * src, DB_VALUE * dest, const TP_DOMAIN *
 	{			/* is parameterized domain */
 	  switch (desired_type)
 	    {
+	    case DB_TYPE_VECTOR:
 	    case DB_TYPE_NUMERIC:
 	      if (desired_domain->precision == DB_VALUE_PRECISION (src)
 		  && desired_domain->scale == DB_VALUE_SCALE (src))
@@ -11419,6 +11436,7 @@ tp_valid_indextype (DB_TYPE type)
     case DB_TYPE_SHORT:
     case DB_TYPE_BIGINT:
     case DB_TYPE_OID:
+    case DB_TYPE_VECTOR:
     case DB_TYPE_NUMERIC:
     case DB_TYPE_BIT:
     case DB_TYPE_VARBIT:

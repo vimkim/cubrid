@@ -292,6 +292,7 @@ void object_printer::describe_domain (/*const*/tp_domain &domain, class_descript
 	    }
 	  break;
 
+	case DB_TYPE_VECTOR:
 	case DB_TYPE_NUMERIC:
 	  strcpy (temp_buffer, temp_domain->type->name);
 	  m_buf ("%s(%d,%d)", ustr_upper (temp_buffer), temp_domain->precision, temp_domain->scale);

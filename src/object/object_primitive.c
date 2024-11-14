@@ -22,6 +22,7 @@
  *                      the disk representation.
  */
 
+#include "dbtype_def.h"
 #ident "$Id$"
 
 #include "config.h"
@@ -1715,6 +1716,31 @@ PR_TYPE tp_Numeric = {
 
 PR_TYPE *tp_Type_numeric = &tp_Numeric;
 
+PR_TYPE tp_Vector = {
+  "vector", DB_TYPE_VECTOR, 0, 0, 0, 1,
+  mr_initmem_numeric,
+  mr_initval_numeric,
+  mr_setmem_numeric,
+  mr_getmem_numeric,
+  mr_setval_numeric,
+  mr_data_lengthmem_numeric,
+  mr_data_lengthval_numeric,
+  mr_data_writemem_numeric,
+  mr_data_readmem_numeric,
+  mr_data_writeval_numeric,
+  mr_data_readval_numeric,
+  mr_index_lengthmem_numeric,
+  mr_index_lengthval_numeric,
+  mr_index_writeval_numeric,
+  mr_index_readval_numeric,
+  mr_index_cmpdisk_numeric,
+  NULL,				/* freemem */
+  mr_data_cmpdisk_numeric,
+  mr_cmpval_numeric
+};
+
+PR_TYPE *tp_Type_vector = &tp_Vector;
+
 PR_TYPE tp_Enumeration = {
   "enum", DB_TYPE_ENUMERATION, 0, sizeof (unsigned short), sizeof (unsigned short), sizeof (unsigned short),
   mr_initmem_enumeration,
@@ -1790,6 +1816,7 @@ PR_TYPE *tp_Type_id_map[] = {
   &tp_Datetimetz,
   &tp_Datetimeltz,
   &tp_Json,
+  &tp_Vector,
 };
 
 PR_TYPE tp_ResultSet = {
