@@ -24951,6 +24951,9 @@ qexec_schema_get_type_name_from_id (DB_TYPE id)
     case DB_TYPE_NUMERIC:
       return "NUMERIC";
 
+    case DB_TYPE_VECTOR:
+      return "VECTOR";
+
     case DB_TYPE_FLOAT:
       return "FLOAT";
 
@@ -25055,6 +25058,7 @@ qexec_schema_get_type_desc (DB_TYPE id, TP_DOMAIN * domain, DB_VALUE * result)
 
   switch (id)
     {
+    case DB_TYPE_VECTOR:
     case DB_TYPE_NUMERIC:
       scale = domain->scale;
       /* fall through */

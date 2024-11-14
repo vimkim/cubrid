@@ -7045,6 +7045,8 @@ validate_attribute_domain (PARSER_CONTEXT * parser, PT_NODE * attribute, const b
 				   DB_MAX_NUMERIC_PRECISION);
 		    }
 		  break;
+		case PT_TYPE_VECTOR:
+		  break;
 
 		case PT_TYPE_BIT:
 		  if (p != DB_DEFAULT_PRECISION
