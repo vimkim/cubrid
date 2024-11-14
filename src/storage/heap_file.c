@@ -17536,6 +17536,7 @@ heap_object_upgrade_domain (THREAD_ENTRY * thread_p, HEAP_SCANCACHE * upd_scanca
 		case DB_TYPE_DOUBLE:
 		  is_positive = ((db_get_double (&value->dbvalue) >= 0) ? 1 : 0);
 		  break;
+		case DB_TYPE_VECTOR:
 		case DB_TYPE_NUMERIC:
 		  is_positive = numeric_db_value_is_positive (&value->dbvalue);
 		  break;

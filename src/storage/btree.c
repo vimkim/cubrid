@@ -21011,6 +21011,7 @@ key_type_to_string (char *buf, int buf_size, TP_DOMAIN * key_type)
       snprintf (buf, buf_size, "%s(%d)", pr_type_name (TP_DOMAIN_TYPE (key_type)), key_type->precision);
       break;
 
+    case DB_TYPE_VECTOR:
     case DB_TYPE_NUMERIC:
       snprintf (buf, buf_size, "%s(%d,%d)", pr_type_name (TP_DOMAIN_TYPE (key_type)), key_type->precision,
 		key_type->scale);

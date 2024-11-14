@@ -963,6 +963,7 @@ stats_dump_class_statistics (CLASS_STATS * class_stats, FILE * fpp)
 	  fprintf (fpp, "DB_TYPE_NULL \n");
 	  break;
 
+	case DB_TYPE_VECTOR:
 	case DB_TYPE_NUMERIC:
 	  fprintf (fpp, "DB_TYPE_NUMERIC \n");
 	  break;

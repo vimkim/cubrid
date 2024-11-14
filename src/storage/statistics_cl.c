@@ -580,7 +580,7 @@ stats_make_select_list_for_ndv (const MOP class_mop, ATTR_NDV ** attr_ndv)
     {
       /* check if type is varchar or lob or json. */
       dom = db_attribute_domain (att);
-      if (TP_IS_LOB_TYPE (TP_DOMAIN_TYPE (dom)) || TP_DOMAIN_TYPE (dom) == DB_TYPE_JSON ||
+      if (TP_IS_LOB_TYPE (TP_DOMAIN_TYPE (dom)) || TP_DOMAIN_TYPE (dom) == DB_TYPE_JSON || TP_DOMAIN_TYPE(dom) == DB_TYPE_VECTOR ||
 	  (TP_IS_CHAR_TYPE (TP_DOMAIN_TYPE (dom)) && dom->precision > STATS_MAX_PRECISION))
 	{
 	  /* These types are not gathered for statistics. */
@@ -589,7 +589,12 @@ stats_make_select_list_for_ndv (const MOP class_mop, ATTR_NDV ** attr_ndv)
       else
 	{
 	  /* make column */
+
+	  // print dom
+	  printf("%d\n", dom->type->id);
+
 	  snprintf (column, DB_MAX_IDENTIFIER_LENGTH + 20, "count(distinct [%s]), ", db_attribute_name (att));
+	  printf("%s\n", column);
 	}
 
       /* alloc memory */
