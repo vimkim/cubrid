@@ -597,6 +597,7 @@ mht_valhash (const void *key, const unsigned int ht_size)
 	case DB_TYPE_DOUBLE:
 	  hash = (unsigned int) db_get_double (val);
 	  break;
+	case DB_TYPE_VECTOR:
 	case DB_TYPE_NUMERIC:
 	  hash = mht_1str_pseudo_key (db_get_numeric (val), -1);
 	  break;

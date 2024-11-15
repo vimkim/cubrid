@@ -497,6 +497,8 @@ stats_get_ndv_by_query (const MOP class_mop, CLASS_ATTR_NDV * class_attr_ndv, FI
       fprintf (file_p, "Query : %s\n", query_buf);
     }
 
+  printf("query_buf: %s\n", query_buf);
+
   /* execute sampling SQL */
   error = db_compile_and_execute_local (query_buf, &query_result, &query_error);
   if (error < NO_ERROR)
@@ -511,16 +513,19 @@ stats_get_ndv_by_query (const MOP class_mop, CLASS_ATTR_NDV * class_attr_ndv, FI
       goto end;
     }
 
+  printf("attr_cnt: %d\n", class_attr_ndv->attr_cnt);
+
   /* get NDV from tuple */
   for (i = 0; i < class_attr_ndv->attr_cnt; i++)
     {
+      printf("attr_cnt: %d\n", class_attr_ndv->attr_cnt);
       error = db_query_get_tuple_value (query_result, i, &value);
       if (error != NO_ERROR)
 	{
 	  goto end;
 	}
       /* if NDV is 0, it is all null values. */
-      class_attr_ndv->attr_ndv[i].ndv = DB_GET_BIGINT (&value) == 0 ? 1 : DB_GET_BIGINT (&value);
+      // class_attr_ndv->attr_ndv[i].ndv = DB_GET_BIGINT (&value) == 0 ? 1 : DB_GET_BIGINT (&value);
     }
 
   /* get count(*) */

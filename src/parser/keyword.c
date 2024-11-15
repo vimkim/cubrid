@@ -322,6 +322,7 @@ static KEYWORD_RECORD keywords[] = {
   {NULLIF, "NULLIF", 0},
   {NULLS, "NULLS", 1},
   {NUMERIC, "NUMERIC", 0},
+  {VECTOR, "VECTOR", 0},
   {OBJECT, "OBJECT", 0},
   {OCTET_LENGTH, "OCTET_LENGTH", 0},
   {OF, "OF", 0},

@@ -1512,6 +1512,7 @@ csql_db_value_as_string (DB_VALUE * value, int *length, const CSQL_ARGUMENT * cs
 	  len = strlen (result);
 	}
       break;
+    case DB_TYPE_VECTOR:
     case DB_TYPE_NUMERIC:
       result = numeric_to_string (value, default_numeric_profile.commas);
       if (result)

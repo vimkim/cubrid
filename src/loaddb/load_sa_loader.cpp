@@ -5317,6 +5317,13 @@ ldr_act_add_attr (LDR_CONTEXT *context, const char *attr_name, size_t len)
       attdesc->setter[LDR_FLOAT] = &ldr_real_db_double;
       break;
 
+    case DB_TYPE_VECTOR:
+      attdesc->setter[LDR_INT] = &ldr_int_db_generic;
+      attdesc->setter[LDR_NUMERIC] = &ldr_numeric_db_generic;
+      attdesc->setter[LDR_DOUBLE] = &ldr_real_db_generic;
+      attdesc->setter[LDR_FLOAT] = &ldr_real_db_generic;
+      break;
+
     case DB_TYPE_NUMERIC:
       attdesc->setter[LDR_INT] = &ldr_int_db_generic;
       attdesc->setter[LDR_NUMERIC] = &ldr_numeric_db_generic;

@@ -21672,24 +21672,55 @@ primitive_type
 			  }
 
 		DBG_PRINT}}
-  | VECTOR opt_prec_2
-    {{
-      container_2 ctn;
-      PT_TYPE_ENUM typ;
-      PT_NODE *prec, *scale, *dt;
-      prec = CONTAINER_AT_0 ($2);
-      scale = CONTAINER_AT_1 ($2);
+	| VECTOR opt_prec_2
+		{{ DBG_TRACE_GRAMMAR(primitive_type, | NUMERIC opt_prec_2 );
 
-      dt = parser_new_node(this_parser, PT_DATA_TYPE);
-      typ = PT_TYPE_VECTOR;
+			container_2 ctn;
+			PT_TYPE_ENUM typ;
+			PT_NODE *prec, *scale, *dt;
+			prec = CONTAINER_AT_0 ($2);
+			scale = CONTAINER_AT_1 ($2);
 
-      if (dt)
-        {
+			dt = parser_new_node (this_parser, PT_DATA_TYPE);
+			typ = PT_TYPE_NUMERIC;
+
+			if (dt)
+			  {
 			    dt->type_enum = typ;
-			    dt->info.data_type.precision = prec ? prec->info.value.data_value.i : 2000;
+			    dt->info.data_type.precision = prec ? prec->info.value.data_value.i : 15;
 			    dt->info.data_type.dec_precision =
-			      scale ? scale->info.value.data_value.i : 2000;
-        }
+			      scale ? scale->info.value.data_value.i : 0;
+
+                            if(is_in_sp_func_type && prec)
+                            {                                
+                                PT_ERRORm (this_parser, dt, MSGCAT_SET_PARSER_SYNTAX, MSGCAT_SYNTAX_NO_PRECISION_IN_SP_FUNCTION);
+                            }
+                            else
+                            {
+                                if (scale && prec)
+                                {
+                                    if (scale->info.value.data_value.i > prec->info.value.data_value.i)
+                                      {
+                                        PT_ERRORmf2 (this_parser, dt,
+                                                MSGCAT_SET_PARSER_SEMANTIC,
+                                                MSGCAT_SEMANTIC_INV_PREC_SCALE,
+                                                prec->info.value.data_value.i,
+                                                scale->info.value.data_value.i);
+                                      }
+                                    }
+                                if (prec)
+                                {
+                                    if (prec->info.value.data_value.i > DB_MAX_NUMERIC_PRECISION)
+                                      {
+                                        PT_ERRORmf2 (this_parser, dt,
+                                                MSGCAT_SET_PARSER_SEMANTIC,
+                                                MSGCAT_SEMANTIC_PREC_TOO_BIG,
+                                                prec->info.value.data_value.i,
+                                                DB_MAX_NUMERIC_PRECISION);
+                                      }
+                                }
+                            }
+			  }
 
 			SET_CONTAINER_2 (ctn, FROM_NUMBER (typ), dt);
 			$$ = ctn;
@@ -21699,7 +21730,7 @@ primitive_type
 			if (scale)
 			  parser_free_node (this_parser, scale);
 
-    }}
+		DBG_PRINT}}
 	| NUMERIC opt_prec_2
 		{{ DBG_TRACE_GRAMMAR(primitive_type, | NUMERIC opt_prec_2 );
 

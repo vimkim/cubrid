@@ -1556,7 +1556,7 @@ db_make_numeric (DB_VALUE * value, const DB_C_NUMERIC num, const int precision, 
   CHECK_1ARG_ERROR (value);
 #endif
 
-  error = db_value_domain_init (value, DB_TYPE_NUMERIC, precision, scale);
+  error = db_value_domain_init (value, DB_TYPE_VECTOR, precision, scale);
   if (error != NO_ERROR)
     {
       return error;

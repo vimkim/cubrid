@@ -171,7 +171,6 @@ db_value_domain_init (DB_VALUE * value, const DB_TYPE type, const int precision,
   switch (type)
     {
     case DB_TYPE_VECTOR:
-      break;
     case DB_TYPE_NUMERIC:
       if (precision == DB_DEFAULT_PRECISION)
 	{

@@ -267,6 +267,7 @@ typedef enum tp_match
   (((typeid) == DB_TYPE_INTEGER) || ((typeid) == DB_TYPE_FLOAT) \
    || ((typeid) == DB_TYPE_DOUBLE)  || ((typeid) == DB_TYPE_SMALLINT) \
    || ((typeid) == DB_TYPE_NUMERIC) || ((typeid) == DB_TYPE_MONETARY) \
+   || ((typeid) == DB_TYPE_VECTOR) \
    || ((typeid) == DB_TYPE_BIGINT))
 
 #define TP_IS_DOUBLE_ALIGN_TYPE(typeid) \

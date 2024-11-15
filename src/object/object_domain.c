@@ -360,7 +360,6 @@ static TP_DOMAIN *tp_Domains[] = {
   &tp_Oid_domain,		/* does this make sense? shouldn't we share tp_Object_domain */
   &tp_Null_domain,		/* current position of DB_TYPE_DB_VALUE */
   &tp_Numeric_domain,
-  &tp_Vector_domain,
   &tp_Bit_domain,
   &tp_VarBit_domain,
   &tp_Char_domain,
@@ -382,6 +381,7 @@ static TP_DOMAIN *tp_Domains[] = {
   &tp_Datetimetz_domain,
   &tp_Datetimeltz_domain,
   &tp_Json_domain,
+  &tp_Vector_domain,
   &tp_Null_domain,
   &tp_Null_domain,
   &tp_Null_domain,
@@ -3372,6 +3372,7 @@ tp_domain_resolve_value (const DB_VALUE * val, TP_DOMAIN * dbuf)
 	   */
 	  domain = tp_domain_resolve_default (value_type);
 	  break;
+	case DB_TYPE_VECTOR:
 	case DB_TYPE_NUMERIC:
 	  /* must find one with a matching precision and scale */
 	  if (dbuf == NULL)
@@ -3410,7 +3411,6 @@ tp_domain_resolve_value (const DB_VALUE * val, TP_DOMAIN * dbuf)
 	      domain = tp_domain_cache (domain);
 	    }
 	  break;
-	case DB_TYPE_VECTOR:
 
 	case DB_TYPE_POINTER:
 	case DB_TYPE_ERROR:
