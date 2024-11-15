@@ -857,15 +857,21 @@ static DB_VALUE_COMPARE_RESULT mr_cmpval_vobj (DB_VALUE * value1, DB_VALUE * val
 					       int *start_colp, int collation);
 static void mr_initmem_numeric (void *memptr, TP_DOMAIN * domain);
 static int mr_setmem_numeric (void *mem, TP_DOMAIN * domain, DB_VALUE * value);
+static int mr_getmem_vector (void *mem, TP_DOMAIN * domain, DB_VALUE * value, bool copy);
 static int mr_getmem_numeric (void *mem, TP_DOMAIN * domain, DB_VALUE * value, bool copy);
 static int mr_data_lengthmem_numeric (void *mem, TP_DOMAIN * domain, int disk);
 static int mr_index_lengthmem_numeric (void *mem, TP_DOMAIN * domain);
 static void mr_data_writemem_numeric (OR_BUF * buf, void *mem, TP_DOMAIN * domain);
 static void mr_data_readmem_numeric (OR_BUF * buf, void *mem, TP_DOMAIN * domain, int size);
+static void mr_initval_vector (DB_VALUE * value, int precision, int scale);
 static void mr_initval_numeric (DB_VALUE * value, int precision, int scale);
+static int mr_setval_vector (DB_VALUE * dest, const DB_VALUE * src, bool copy);
 static int mr_setval_numeric (DB_VALUE * dest, const DB_VALUE * src, bool copy);
 static int mr_data_lengthval_numeric (DB_VALUE * value, int disk);
+static int mr_data_writeval_vector (OR_BUF * buf, DB_VALUE * value);
 static int mr_data_writeval_numeric (OR_BUF * buf, DB_VALUE * value);
+static int mr_data_readval_vector (OR_BUF * buf, DB_VALUE * value, TP_DOMAIN * domain, int size, bool copy,
+				    char *copy_buf, int copy_buf_len);
 static int mr_data_readval_numeric (OR_BUF * buf, DB_VALUE * value, TP_DOMAIN * domain, int size, bool copy,
 				    char *copy_buf, int copy_buf_len);
 static int mr_index_lengthval_numeric (DB_VALUE * value);
@@ -1719,16 +1725,16 @@ PR_TYPE *tp_Type_numeric = &tp_Numeric;
 PR_TYPE tp_Vector = {
   "vector", DB_TYPE_VECTOR, 0, 0, 0, 1,
   mr_initmem_numeric,
-  mr_initval_numeric,
+  mr_initval_vector,
   mr_setmem_numeric,
-  mr_getmem_numeric,
-  mr_setval_numeric,
+  mr_getmem_vector,
+  mr_setval_vector,
   mr_data_lengthmem_numeric,
   mr_data_lengthval_numeric,
   mr_data_writemem_numeric,
   mr_data_readmem_numeric,
-  mr_data_writeval_numeric,
-  mr_data_readval_numeric,
+  mr_data_writeval_vector,
+  mr_data_readval_vector,
   mr_index_lengthmem_numeric,
   mr_index_lengthval_numeric,
   mr_index_writeval_numeric,
@@ -8426,6 +8432,24 @@ mr_setmem_numeric (void *mem, TP_DOMAIN * domain, DB_VALUE * value)
 }
 
 static int
+mr_getmem_vector (void *mem, TP_DOMAIN * domain, DB_VALUE * value, bool copy)
+{
+  int error = NO_ERROR;
+  DB_C_NUMERIC num;
+
+  if (value == NULL)
+    {
+      return error;
+    }
+
+  num = (DB_C_NUMERIC) mem;
+  error = db_make_vector (value, num, domain->precision, domain->scale);
+  value->need_clear = false;
+
+  return error;
+}
+
+static int
 mr_getmem_numeric (void *mem, TP_DOMAIN * domain, DB_VALUE * value, bool copy)
 {
   int error = NO_ERROR;
@@ -8507,9 +8531,50 @@ mr_data_lengthmem_numeric (void *mem, TP_DOMAIN * domain, int disk)
 }
 
 static void
+mr_initval_vector (DB_VALUE * value, int precision, int scale)
+{
+  db_value_domain_init (value, DB_TYPE_VECTOR, precision, scale);
+}
+
+static void
 mr_initval_numeric (DB_VALUE * value, int precision, int scale)
 {
   db_value_domain_init (value, DB_TYPE_NUMERIC, precision, scale);
+}
+
+static int
+mr_setval_vector (DB_VALUE * dest, const DB_VALUE * src, bool copy)
+{
+  int error = NO_ERROR;
+  int src_precision, src_scale;
+  DB_C_NUMERIC src_numeric;
+
+  assert (!db_value_is_corrupted (src));
+  if (src == NULL || DB_IS_NULL (src))
+    {
+      db_value_domain_init (dest, DB_TYPE_VECTOR, DB_DEFAULT_PRECISION, DB_DEFAULT_SCALE);
+    }
+  else
+    {
+      src_precision = db_value_precision (src);
+      src_scale = db_value_scale (src);
+      src_numeric = (DB_C_NUMERIC) db_get_vector (src);
+
+      if (DB_IS_NULL (src) || src_numeric == NULL)
+	{
+	  db_value_domain_init (dest, DB_TYPE_VECTOR, src_precision, src_scale);
+	}
+      else
+	{
+	  /*
+	   * Because numerics are stored in an inline buffer, there is no
+	   * difference between the copy and non-copy operations, this may
+	   * need to change.
+	   */
+	  error = db_make_vector (dest, src_numeric, src_precision, src_scale);
+	}
+    }
+  return error;
 }
 
 static int
@@ -8582,6 +8647,26 @@ mr_index_writeval_numeric (OR_BUF * buf, DB_VALUE * value)
 }
 
 static int
+mr_data_writeval_vector (OR_BUF * buf, DB_VALUE * value)
+{
+  DB_C_NUMERIC numeric;
+  int precision, disk_size;
+  int rc = NO_ERROR;
+
+  if (value != NULL)
+    {
+      numeric = db_get_vector (value);
+      if (numeric != NULL)
+	{
+	  precision = db_value_precision (value);
+	  disk_size = OR_NUMERIC_SIZE (precision);
+	  rc = or_put_data (buf, (char *) numeric, disk_size);
+	}
+    }
+  return rc;
+}
+
+static int
 mr_data_writeval_numeric (OR_BUF * buf, DB_VALUE * value)
 {
   DB_C_NUMERIC numeric;
@@ -8606,6 +8691,52 @@ mr_index_readval_numeric (OR_BUF * buf, DB_VALUE * value, TP_DOMAIN * domain, in
 			  int copy_buf_len)
 {
   return mr_data_readval_numeric (buf, value, domain, size, copy, copy_buf, copy_buf_len);
+}
+
+static int
+mr_data_readval_vector (OR_BUF * buf, DB_VALUE * value, TP_DOMAIN * domain, int size, bool copy, char *copy_buf,
+			 int copy_buf_len)
+{
+  int rc = NO_ERROR;
+
+  if (domain == NULL)
+    {
+      return ER_FAILED;
+    }
+
+  /*
+   * If size is -1, the caller doesn't know the size and we must determine
+   * it from the domain.
+   */
+  if (size == -1)
+    {
+      size = OR_NUMERIC_SIZE (domain->precision);
+    }
+
+  if (size == 1)
+    {
+      size = OR_NUMERIC_SIZE (domain->precision);
+    }
+
+  if (value == NULL)
+    {
+      if (size)
+	{
+	  rc = or_advance (buf, size);
+	}
+    }
+  else
+    {
+      /*
+       * the copy and no copy cases are identical because db_make_numeric
+       * will copy the bits into its internal buffer.
+       */
+      (void) db_make_vector (value, (DB_C_NUMERIC) buf->ptr, domain->precision, domain->scale);
+      value->need_clear = false;
+      rc = or_advance (buf, size);
+    }
+
+  return rc;
 }
 
 static int
