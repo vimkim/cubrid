@@ -93,6 +93,8 @@ STATIC_INLINE int db_make_short (DB_VALUE * value, const DB_C_SHORT num) __attri
 STATIC_INLINE int db_make_bigint (DB_VALUE * value, const DB_BIGINT num) __attribute__ ((ALWAYS_INLINE));
 STATIC_INLINE int db_make_numeric (DB_VALUE * value, const DB_C_NUMERIC num, const int precision, const int scale)
   __attribute__ ((ALWAYS_INLINE));
+STATIC_INLINE int db_make_vector (DB_VALUE * value, const DB_C_NUMERIC num, const int precision, const int scale)
+  __attribute__ ((ALWAYS_INLINE));
 STATIC_INLINE int db_make_bit (DB_VALUE * value, const int bit_length, DB_CONST_C_BIT bit_str,
 			       const int bit_str_bit_size) __attribute__ ((ALWAYS_INLINE));
 STATIC_INLINE int db_make_varbit (DB_VALUE * value, const int max_bit_length, DB_CONST_C_BIT bit_str,
@@ -1549,6 +1551,41 @@ db_make_bigint (DB_VALUE * value, const DB_BIGINT num)
  */
 int
 db_make_numeric (DB_VALUE * value, const DB_C_NUMERIC num, const int precision, const int scale)
+{
+  int error = NO_ERROR;
+
+#if defined (API_ACTIVE_CHECKS)
+  CHECK_1ARG_ERROR (value);
+#endif
+
+  error = db_value_domain_init (value, DB_TYPE_NUMERIC, precision, scale);
+  if (error != NO_ERROR)
+    {
+      return error;
+    }
+
+  if (num)
+    {
+      value->domain.general_info.is_null = 0;
+      memcpy (value->data.num.d.buf, num, DB_NUMERIC_BUF_SIZE);
+    }
+  else
+    {
+      value->domain.general_info.is_null = 1;
+    }
+  return error;
+}
+
+/*
+ * db_make_vector() -
+ * return :
+ * value(out) :
+ * num(in):
+ * precision(in):
+ * scale(in):
+ */
+int
+db_make_vector (DB_VALUE * value, const DB_C_VECTOR num, const int precision, const int scale)
 {
   int error = NO_ERROR;
 

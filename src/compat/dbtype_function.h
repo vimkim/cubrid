@@ -360,6 +360,7 @@ extern "C"
   extern int db_make_short (DB_VALUE * value, const DB_C_SHORT num);
   extern int db_make_bigint (DB_VALUE * value, const DB_BIGINT num);
   extern int db_make_numeric (DB_VALUE * value, const DB_C_NUMERIC num, const int precision, const int scale);
+  extern int db_make_vector (DB_VALUE * value, const DB_C_VECTOR num, const int precision, const int scale);
   extern int db_make_bit (DB_VALUE * value, const int bit_length, DB_CONST_C_BIT bit_str, const int bit_str_bit_size);
   extern int db_make_varbit (DB_VALUE * value, const int max_bit_length, DB_CONST_C_BIT bit_str,
 			     const int bit_str_bit_size);

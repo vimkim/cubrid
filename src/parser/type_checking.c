@@ -13183,6 +13183,9 @@ pt_evaluate_db_value_expr (PARSER_CONTEXT * parser, PT_NODE * expr, PT_OP_TYPE o
 	  db_make_double (result, -db_get_double (arg1));
 	  break;
 
+	// case DB_TYPE_VECTOR:
+	//   db_make_vector (result, db_get_vector(arg1), DB_VALUE_PRECISION(arg1), DB_VALUE_SCALE(arg1));
+	//   break;
 	case DB_TYPE_NUMERIC:
 	  if (numeric_db_value_negate (arg1) != NO_ERROR)
 	    {
