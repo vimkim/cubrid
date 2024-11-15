@@ -21682,7 +21682,7 @@ primitive_type
 			scale = CONTAINER_AT_1 ($2);
 
 			dt = parser_new_node (this_parser, PT_DATA_TYPE);
-			typ = PT_TYPE_NUMERIC;
+			typ = PT_TYPE_VECTOR;
 
 			if (dt)
 			  {
