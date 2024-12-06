@@ -22,6 +22,7 @@
  *            functions
  */
 
+#include "dbtype_def.h"
 #ident "$Id$"
 
 #include "config.h"
@@ -608,6 +609,10 @@ pt_dbval_to_value (PARSER_CONTEXT * parser, const DB_VALUE * val)
       pt_add_type_to_set (parser, result->info.value.data_value.set, &result->data_type);
       break;
     case DB_TYPE_MULTISET:
+      result->info.value.data_value.set = pt_set_elements_to_value (parser, val);
+      pt_add_type_to_set (parser, result->info.value.data_value.set, &result->data_type);
+      break;
+    case DB_TYPE_SEQ_VECTOR:
       result->info.value.data_value.set = pt_set_elements_to_value (parser, val);
       pt_add_type_to_set (parser, result->info.value.data_value.set, &result->data_type);
       break;
@@ -1608,6 +1613,7 @@ pt_type_enum_to_db_domain (const PT_TYPE_ENUM t)
     case DB_TYPE_OBJECT:
     case DB_TYPE_SET:
     case DB_TYPE_MULTISET:
+    case DB_TYPE_SEQ_VECTOR:
     case DB_TYPE_SEQUENCE:
     case DB_TYPE_MIDXKEY:
     case DB_TYPE_ENUMERATION:
@@ -2265,6 +2271,7 @@ pt_node_to_db_domain (PARSER_CONTEXT * parser, PT_NODE * node, const char *class
 	{
 	case DB_TYPE_SET:
 	case DB_TYPE_MULTISET:
+	case DB_TYPE_SEQ_VECTOR:
 	case DB_TYPE_SEQUENCE:
 	case DB_TYPE_MIDXKEY:
 	  /* Recursively build the setdomain */
@@ -2333,7 +2340,8 @@ pt_type_enum_to_db (const PT_TYPE_ENUM t)
       break;
 
     case PT_TYPE_VIMKIM:
-      db_type = DB_TYPE_VIMKIM;
+      // db_type = DB_TYPE_VIMKIM;
+      db_type = DB_TYPE_SEQ_VECTOR;
       break;
 
     case PT_TYPE_BIGINT:
@@ -2617,7 +2625,10 @@ pt_db_to_type_enum (const DB_TYPE t)
 
   switch (t)
     {
-    case DB_TYPE_VIMKIM:
+    // case DB_TYPE_VIMKIM:
+    //   pt_type = PT_TYPE_VIMKIM;
+    //   break;
+    case DB_TYPE_SEQ_VECTOR:
       pt_type = PT_TYPE_VIMKIM;
       break;
     case DB_TYPE_INTEGER:

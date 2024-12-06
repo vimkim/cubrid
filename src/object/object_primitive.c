@@ -823,6 +823,7 @@ static int mr_data_lengthmem_set (void *memptr, TP_DOMAIN * domain, int disk);
 static void mr_data_writemem_set (OR_BUF * buf, void *memptr, TP_DOMAIN * domain);
 static void mr_data_readmem_set (OR_BUF * buf, void *memptr, TP_DOMAIN * domain, int size);
 static int mr_data_lengthval_set (DB_VALUE * value, int disk);
+static int mr_data_writeval_seq_vector (OR_BUF * buf, DB_VALUE * value);
 static int mr_data_writeval_set (OR_BUF * buf, DB_VALUE * value);
 static int mr_data_readval_set (OR_BUF * buf, DB_VALUE * value, TP_DOMAIN * domain, int size, bool copy, char *copy_buf,
 				int copy_buf_len);
@@ -834,8 +835,10 @@ static DB_VALUE_COMPARE_RESULT mr_cmpval_set (DB_VALUE * value1, DB_VALUE * valu
 static void mr_initval_multiset (DB_VALUE * value, int precision, int scale);
 static int mr_getmem_multiset (void *memptr, TP_DOMAIN * domain, DB_VALUE * value, bool copy);
 static int mr_setval_multiset (DB_VALUE * dest, const DB_VALUE * src, bool copy);
+static void mr_initval_seq_vector (DB_VALUE * value, int precision, int scale);
 static void mr_initval_sequence (DB_VALUE * value, int precision, int scale);
 static int mr_getmem_sequence (void *memptr, TP_DOMAIN * domain, DB_VALUE * value, bool copy);
+static int mr_setval_seq_vector (DB_VALUE * dest, const DB_VALUE * src, bool copy);
 static int mr_setval_sequence (DB_VALUE * dest, const DB_VALUE * src, bool copy);
 static DB_VALUE_COMPARE_RESULT mr_data_cmpdisk_sequence (void *mem1, void *mem2, TP_DOMAIN * domain, int do_coercion,
 							 int total_order, int *start_colp);
@@ -1656,6 +1659,31 @@ PR_TYPE tp_Multiset = {
 
 PR_TYPE *tp_Type_multiset = &tp_Multiset;
 
+PR_TYPE tp_Seq_vector = {
+  "seq_vector", DB_TYPE_SEQ_VECTOR, 1, sizeof (SETOBJ *), 0, 4,
+  NULL,
+  mr_initval_seq_vector,
+  NULL,
+  NULL,
+  mr_setval_seq_vector,
+  mr_data_lengthmem_set,
+  mr_data_lengthval_set,
+  NULL,
+  NULL,
+  mr_data_writeval_set,
+  mr_data_readval_set,
+  NULL,				/* index_lengthmem */
+  NULL,				/* index_lengthval */
+  mr_data_writeval_set,
+  mr_data_readval_set,
+  NULL,				/* index_cmpdisk */
+  mr_freemem_set,
+  NULL,
+  NULL,
+};
+
+PR_TYPE *tp_Type_seq_vector = &tp_Seq_vector;
+
 PR_TYPE tp_Sequence = {
   "sequence", DB_TYPE_SEQUENCE, 1, sizeof (SETOBJ *), 0, 4,
   mr_initmem_set,
@@ -1832,6 +1860,7 @@ PR_TYPE *tp_Type_id_map[] = {
   &tp_Datetimeltz,
   &tp_Json,
   &tp_Vimkim,
+  &tp_Seq_vector,
 };
 
 PR_TYPE tp_ResultSet = {
@@ -7214,6 +7243,9 @@ mr_setval_set_internal (DB_VALUE * dest, const DB_VALUE * src, bool copy, DB_TYP
 	case DB_TYPE_MULTISET:
 	  db_make_multiset (dest, ref);
 	  break;
+	case DB_TYPE_SEQ_VECTOR:
+	  db_make_seq_vector (dest, ref);
+	  break;
 	case DB_TYPE_SEQUENCE:
 	  db_make_sequence (dest, ref);
 	  break;
@@ -7316,6 +7348,7 @@ mr_data_lengthval_set (DB_VALUE * value, int disk)
 	    }
 	}
     }
+  // assert(size != 0);
   return size;
 }
 
@@ -7329,6 +7362,11 @@ mr_data_writemem_set (OR_BUF * buf, void *memptr, TP_DOMAIN * domain)
       /* note that we don't have to pin the object here since that will have been handled above this leve. */
       or_put_set (buf, *mem, 0);
     }
+}
+
+static int
+mr_data_writeval_seq_vector(OR_BUF * buf, DB_VALUE * value){
+    mr_data_writeval_set(buf, value);
 }
 
 static int
@@ -7692,6 +7730,13 @@ mr_setval_multiset (DB_VALUE * dest, const DB_VALUE * src, bool copy)
  */
 
 static void
+mr_initval_seq_vector (DB_VALUE * value, int precision, int scale)
+{
+  db_value_domain_init (value, DB_TYPE_SEQ_VECTOR, precision, scale);
+  db_make_seq_vector (value, NULL);
+}
+
+static void
 mr_initval_sequence (DB_VALUE * value, int precision, int scale)
 {
   db_value_domain_init (value, DB_TYPE_SEQUENCE, precision, scale);
@@ -7731,6 +7776,12 @@ mr_getmem_sequence (void *memptr, TP_DOMAIN * domain, DB_VALUE * value, bool cop
    */
 
   return error;
+}
+
+static int
+mr_setval_seq_vector (DB_VALUE * dest, const DB_VALUE * src, bool copy)
+{
+  return mr_setval_set_internal (dest, src, copy, DB_TYPE_SEQ_VECTOR);
 }
 
 static int
