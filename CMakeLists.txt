@@ -327,8 +327,17 @@ set(CSQL_GRAMMAR_INPUT ${CMAKE_CURRENT_BINARY_DIR}/csql_grammar.yy)
 # whenever csql_grammar.y is modified, bison and flex will be
 # run to create new outputs
 
+# Set debug flags based on build type
+set(BISON_DEBUG_FLAGS "")
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    set(BISON_DEBUG_FLAGS "--debug")
+endif()
+
+# Combine debug flags with existing flags
+set(BISON_COMPILE_FLAGS "--no-lines --name-prefix=csql_yy -d -r all ${BISON_DEBUG_FLAGS}")
+
 bison_target(csql_grammar ${CSQL_GRAMMAR_INPUT} ${CSQL_GRAMMAR_OUTPUT}
-  COMPILE_FLAGS "--no-lines --name-prefix=csql_yy -d -r all")
+  COMPILE_FLAGS ${BISON_COMPILE_FLAGS})
 flex_target(csql_lexer ${CSQL_LEXER_INPUT} ${CSQL_LEXER_OUTPUT}
   COMPILE_FLAGS "--noline --never-interactive --prefix=csql_yy")
 add_flex_bison_dependency(csql_lexer csql_grammar)

@@ -25397,6 +25397,7 @@ opt_alter_synonym
 
 %%
 
+extern int yydebug = 0;
 
 extern FILE *yyin;
 
