@@ -135,7 +135,7 @@ int csql_Line_lwm = -1;
 
 /* default environment command names */
 char csql_Print_cmd[PATH_MAX] = "lpr";
-char csql_Pager_cmd[PATH_MAX] = "more";	/* PAGER does not work on WINDOWS */
+char csql_Pager_cmd[PATH_MAX] = "bat -l sql -p";	/* PAGER does not work on WINDOWS */
 #if defined(WINDOWS)
 char csql_Editor_cmd[PATH_MAX] = "notepad";
 #else
