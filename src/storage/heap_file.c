@@ -10504,7 +10504,8 @@ heap_attrvalue_point_variable (RECDES * recdes, HEAP_CACHE_ATTRINFO * attr_info,
       VFID oos_vfid;
       THREAD_ENTRY *thread_p = thread_get_thread_entry_info ();
       assert (thread_p);
-      if (oos_read (thread_p, oos_vfid, oos_oid, *raw) != NO_ERROR)
+      // if (oos_read (thread_p, oos_vfid, oos_oid, *raw) != NO_ERROR)
+      if (oos_read (thread_p, oos_oid, *raw) != NO_ERROR)
 	{
 	  assert_release (false);
 	}
