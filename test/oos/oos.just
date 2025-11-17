@@ -1,3 +1,7 @@
+prepare:
+  test/oos/prepare-heap.sh
+  test/oos/prepare-ovf.sh
+
 gen:
   test/oos/gen-test.sh 10
   test/oos/gen-test.sh 20

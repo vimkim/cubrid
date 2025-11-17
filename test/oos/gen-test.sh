@@ -29,7 +29,8 @@ EOF
     for _ in $(seq 1 "$ITER"); do
       echo "EXECUTE stmt;"
     done
-  } >"${RUN_NAME}".sql
+  } >"${RUN_NAME}"
+  echo "$RUN_NAME 생성 완료"
 
   # 측정
   # /usr/bin/time -f "$NAME: %E" \
@@ -37,7 +38,7 @@ EOF
   echo
 }
 
-# csql.sh -c 'show tables'
+csql.sh -c 'show tables'
 
 gen_test "ovf_id_txt1" "SELECT id, txt1 FROM t_oos_ovf"
 
