@@ -15,5 +15,5 @@ else
   exit 1
 fi
 
-csql.sh -c 'select count(*) from t_oos_heap'
-csql.sh -c 'select count(*) from t_oos_ovf'
+csql.sh -c 'show create table t_oos_heap; select count(*) from t_oos_heap; show create table t_oos_ovf; select count(*) from t_oos_ovf;' -t
+
