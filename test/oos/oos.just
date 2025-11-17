@@ -15,3 +15,6 @@ clean:
 
 run-test-interactive:
   fda 'run_' 'test/oos' | fzf | test/oos/run-test.sh $in
+
+run-test-all:
+  test/oos/run-test-all.sh
