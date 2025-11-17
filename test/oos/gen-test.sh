@@ -42,16 +42,12 @@ csql.sh -c 'show tables'
 
 gen_test "ovf_id_only" "SELECT id FROM t_oos_ovf"
 
-gen_test "ovf_id_txt1" "SELECT id, txt1 FROM t_oos_ovf"
-
-gen_test "ovf_txt2" "SELECT txt2 FROM t_oos_ovf"
+gen_test "ovf_txt" "SELECT txt FROM t_oos_ovf"
 
 gen_test "ovf_all" "SELECT * FROM t_oos_ovf"
 
 gen_test "heap_id_only" "SELECT id FROM t_oos_heap"
 
-gen_test "heap_id_txt1" "SELECT id, txt1 FROM t_oos_heap"
-
-gen_test "heap_txt2" "SELECT txt2 FROM t_oos_heap"
+gen_test "heap_txt" "SELECT txt FROM t_oos_heap"
 
 gen_test "heap_all" "SELECT * FROM t_oos_heap"

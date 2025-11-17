@@ -3,7 +3,7 @@
 
 # heap
 # test/oos/run-test.sh test/oos/run_heap_id_only_10.sql
-test/oos/run-test.sh test/oos/run_heap_id_only_20.sql
+test/oos/run-test.sh test/oos/run_heap_id_only_100.sql
 
 # test/oos/run-test.sh test/oos/run_heap_id_txt1_10.sql
 test/oos/run-test.sh test/oos/run_heap_id_txt1_20.sql
@@ -16,7 +16,7 @@ test/oos/run-test.sh test/oos/run_heap_all_10.sql
 
 # ovf
 # test/oos/run-test.sh test/oos/run_ovf_id_only_10.sql
-test/oos/run-test.sh test/oos/run_ovf_id_only_20.sql
+test/oos/run-test.sh test/oos/run_ovf_id_only_100.sql
 
 # test/oos/run-test.sh test/oos/run_ovf_id_txt1_10.sql
 test/oos/run-test.sh test/oos/run_ovf_id_txt1_20.sql

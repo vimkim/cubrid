@@ -9,6 +9,8 @@ prepare-data:
 gen:
   test/oos/gen-test.sh 10
   test/oos/gen-test.sh 20
+  test/oos/gen-test.sh 100
+  test/oos/gen-test.sh 200
 
 clean:
   rm test/oos/run_*
