@@ -1,7 +1,8 @@
 check-oos-server:
   test/oos/check-oos-server.sh
 
-prepare:
+prepare-data:
+  echo "always prepare oos server before run!"
   test/oos/prepare-heap.sh
   test/oos/prepare-ovf.sh
 
