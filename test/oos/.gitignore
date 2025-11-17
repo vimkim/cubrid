@@ -1,2 +1,7 @@
+# auto-generated for tests
 run_*
+load_*
+
+# test results
 *.txt
+
