@@ -1,3 +1,5 @@
+set working-directory := '../..'
+
 check-oos-server:
   test/oos/check-oos-server.sh
 
@@ -7,6 +9,7 @@ prepare-data:
   test/oos/prepare-ovf.sh
 
 gen:
+  pwd
   test/oos/gen-test.sh 10
   test/oos/gen-test.sh 20
   test/oos/gen-test.sh 100
