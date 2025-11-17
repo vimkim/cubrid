@@ -16,8 +16,8 @@ EOF
 
 # 2) 1 ~ 100000까지 반복해서 INSERT 구문 생성
 #    txt1: 'A' 400개
-#    txt2: 'B' 12000개(12KB 근처)
-for i in $(seq 1 10000); do
+#    txt2: 'B' 1700개
+for i in $(seq 1 100000); do
   printf "INSERT INTO t_oos_heap (id, txt1, txt2) VALUES (%d, RPAD('A', 400, 'A'), RPAD('B', 1700, 'B'));\n" "$i"
 done >> $LOADFILE
 

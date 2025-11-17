@@ -17,8 +17,8 @@ EOF
 # 2) 1 ~ 100000까지 반복해서 INSERT 구문 생성
 #    txt1: 'A' 400개
 #    txt2: 'B' 12000개(12KB 근처)
-for i in $(seq 1 10000); do
-  printf "INSERT INTO t_oos_ovf (id, txt1, txt2) VALUES (%d, RPAD('A', 400, 'A'), RPAD('B', 12000, 'B'));\n" "$i"
+for i in $(seq 1 100000); do
+  printf "INSERT INTO t_oos_ovf (id, txt1, txt2) VALUES (%d, RPAD('A', 400, 'A'), RPAD('B', 13000, 'B'));\n" "$i"
 done >> $LOADFILE
 
 # 3) CUBRID csql로 실행
