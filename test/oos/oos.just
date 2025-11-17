@@ -1,4 +1,5 @@
 set working-directory := '../..'
+set shell := ["nu", "-c"]
 
 check-oos-server:
   test/oos/check-oos-server.sh
@@ -19,7 +20,7 @@ clean:
   rm test/oos/run_*
 
 run-test-interactive:
-  fda 'run_' 'test/oos' | fzf | test/oos/run-test.sh $in
+  fd -H -I 'run_' 'test/oos' | fzf | test/oos/run-test.sh $in
 
 run-test-all:
   test/oos/run-test-all.sh
