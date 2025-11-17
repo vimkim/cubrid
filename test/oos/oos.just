@@ -1,3 +1,6 @@
+check-oos-server:
+  test/oos/check-oos-server.sh
+
 prepare:
   test/oos/prepare-heap.sh
   test/oos/prepare-ovf.sh
