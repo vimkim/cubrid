@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS t_oos_heap (
 );
 EOF
 
-for i in $(seq 1 100000); do
+for i in $(seq 1 1000000); do
   printf "INSERT INTO t_oos_heap (id, txt) VALUES (%d, RPAD('B', 13000, 'B'));\n" "$i"
 done >> $LOADFILE
 
