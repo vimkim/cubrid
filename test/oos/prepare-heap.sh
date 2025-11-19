@@ -15,7 +15,7 @@ LOADFILE=$TESTDIR/load_oos_heap.sql
 
 # 1) SQL 스크립트 파일 만들기 (테이블 생성 포함)
 cat > $LOADFILE << 'EOF'
-DROP TABLE IF EXISTS t_oos_heap;
+-- DROP TABLE IF EXISTS t_oos_heap;
 CREATE TABLE IF NOT EXISTS t_oos_heap (
     id   INT,
     txt VARCHAR(13000)

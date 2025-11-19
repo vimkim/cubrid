@@ -15,7 +15,7 @@ LOADFILE=$TESTDIR/load_oos_ovf.sql
 
 # 1) SQL 스크립트 파일 만들기 (테이블 생성 포함)
 cat > $LOADFILE << 'EOF'
-DROP TABLE IF EXISTS t_oos_ovf;
+-- DROP TABLE IF EXISTS t_oos_ovf;
 CREATE TABLE IF NOT EXISTS t_oos_ovf (
     id   INT,
     txt VARCHAR(17000)
