@@ -25,7 +25,7 @@
 #include "scope_exit.hpp"
 #include "slotted_page.h"
 #include "storage_common.h"
-#include "page_buffer_support.hpp"
+#include "page_buffer_util.hpp"
 
 #include "oos_file.hpp"
 #include "oos_log.hpp"
@@ -160,12 +160,6 @@ int oos_insert (THREAD_ENTRY *thread_p, const VFID &oos_vfid, RECDES &recdes, OI
 
   // TODO: otherwise spage assert type <= REC_UNKNOWN fails
   assert (recdes.type == REC_HOME);
-
-  if (err != NO_ERROR)
-    {
-      return err;
-    }
-
   assert (recdes.length > 0);
 
   if (recdes.length <= oos_get_max_chunk_size_within_page ())
@@ -302,7 +296,6 @@ static int oos_read_across_pages (THREAD_ENTRY *thread_p, const OID &oid,
 				  const OOS_RECORD_HEADER &first_chunk_header, RECDES &recdes)
 {
   int err = NO_ERROR;
-  const auto header = first_chunk_header;
   const int total_size = first_chunk_header.total_size;
   assert (first_chunk_header.chunk_index == 0);
 
@@ -310,11 +303,11 @@ static int oos_read_across_pages (THREAD_ENTRY *thread_p, const OID &oid,
   oos_trace ("total_size=%d", total_size);
 
   err = recdes_allocate_data_area (&recdes, total_size);
-
   if (err != NO_ERROR)
     {
       return err;
     }
+
   recdes.type = REC_HOME;
   recdes.length = total_size;
 
