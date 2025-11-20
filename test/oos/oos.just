@@ -10,10 +10,10 @@ prepare-data:
 
 gen:
   pwd
-  test/oos/gen-test.sh 10
-  test/oos/gen-test.sh 20
-  test/oos/gen-test.sh 100
-  test/oos/gen-test.sh 200
+  test/oos/gen-test-ng.sh 10 300000
+  test/oos/gen-test-ng.sh 20 300000
+  test/oos/gen-test-ng.sh 100 300000
+  test/oos/gen-test-ng.sh 200 300000
 
 clean:
   rm test/oos/run_*

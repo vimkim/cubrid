@@ -1,8 +1,13 @@
 #!/usr/bin/env bash
 
 DB=testdb
-ITER="${1:-1}"         # how many times to run the hot query
-LIMIT="${2:-1000000}"  # default LIMIT if not provided
+ITER="${1}"
+LIMIT="${2}"
+
+if [ -z "$LIMIT" ]; then
+  echo "LIMIT not specified."
+  exit 1
+fi
 
 if [ -z "$ITER" ]; then
   echo "Usage: $0 ITER [LIMIT]" >&2
@@ -22,7 +27,7 @@ gen_test() {
   local COLS="$2"
   local TABLENAME="$3"
 
-  local RUN_NAME="run_${NAME}_${ITER}.sql"
+  local RUN_NAME="run_${NAME}_${ITER}_${LIMIT}.sql"
 
   echo "===== $NAME ====="
 
