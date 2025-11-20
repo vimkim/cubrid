@@ -6,7 +6,7 @@ check-oos-server:
 
 prepare-data:
   echo "always prepare oos server before run!"
-  test/oos/prepare-all-datasets.sh
+  test/oos/prepare-all-datasets.sh 300000
 
 gen:
   pwd
