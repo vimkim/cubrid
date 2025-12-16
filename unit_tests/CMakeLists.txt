@@ -21,6 +21,7 @@
 # - some: cmake -DUNIT_TEST_ABC=ON -DUNIT_TEST_XYZ=ON <path>
 
 project(Test)
+enable_testing()
 
 set(TEST_COMMON_DIR ${CMAKE_CURRENT_SOURCE_DIR}/common)
 
@@ -56,6 +57,13 @@ externalproject_add(${CATCH2_TARGET}
 set (CATCH2_DIR ${CMAKE_BINARY_DIR}/unit_tests/catch2-prefix/src/catch2)
 include_directories(${CATCH2_DIR}/single_include)
 list(APPEND TESTS_EXTERNAL_TARGETS ${CATCH2_TARGET})
+
+include(FetchContent)
+FetchContent_Declare(
+  googletest
+  URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
+)
+FetchContent_MakeAvailable(googletest)
 
 message("   common")
 add_subdirectory(common)
@@ -102,6 +110,11 @@ if (UNIT_TESTS OR UNIT_TEST_MONITOR)
   message("    monitor")
   add_subdirectory(monitor)
 endif(UNIT_TESTS OR UNIT_TEST_MONITOR)
+
+if (UNIT_TESTS OR UNIT_TEST_PAGE_BUFFER)
+  message("    page_buffer")
+  add_subdirectory(page_buffer)
+endif(UNIT_TESTS OR UNIT_TEST_PAGE_BUFFER)
 
 #[[
 TODO compilation fails
