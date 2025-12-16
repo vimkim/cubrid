@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 // #include "page_buffer.h"
+#include "disk_manager.h"
 #include "test_page_buffer_common.hpp"
 #include "page_buffer.c"
 
@@ -47,9 +48,8 @@ TEST (PageBufferTest, CompareVpid)
 
 TEST (PageBufferTest, IsValidPage)
 {
-  bool is_valid = pgbuf_is_valid_page (thread_p, &vpid_Null_vpid, true);
-
-  EXPECT_FALSE (is_valid);
+  DISK_ISVALID is_valid = pgbuf_is_valid_page (thread_p, &vpid_Null_vpid, true);
+  EXPECT_EQ (is_valid, DISK_INVALID);
 }
 
 
