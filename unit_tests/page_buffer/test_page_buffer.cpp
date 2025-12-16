@@ -77,10 +77,15 @@ TEST (PageBufferTest, FixDebugOldPage)
 
 TEST (PageBufferTest, FixNewPage)
 {
-  // asserts that VPID {0,0} should not be NEW_PAGE
   // auto page_ptr = pgbuf_fix (thread_p, &vpid_zero_vpid, PAGE_FETCH_MODE::NEW_PAGE, PGBUF_LATCH_MODE::PGBUF_LATCH_READ,
   // 	     PGBUF_LATCH_CONDITION::PGBUF_UNCONDITIONAL_LATCH);
   printf ("Skipping FixNewPage test as VPID {0,0} should not be NEW_PAGE\n");
+
+  VPID vpid_new_page = { 999, 0 };
+  auto page_ptr = pgbuf_fix (thread_p, &vpid_new_page, PAGE_FETCH_MODE::NEW_PAGE, PGBUF_LATCH_MODE::PGBUF_LATCH_READ,
+			     PGBUF_LATCH_CONDITION::PGBUF_UNCONDITIONAL_LATCH);
+  EXPECT_NE (page_ptr, nullptr);
+  pgbuf_unfix (thread_p, page_ptr);
 }
 
 TEST (PageBufferTest, FixOldPageIfInBuffer)
