@@ -1,8 +1,11 @@
 #include <gtest/gtest.h>
 // #include "page_buffer.h"
 #include "disk_manager.h"
+#include "page_buffer.h"
 #include "test_page_buffer_common.hpp"
 #include "page_buffer.c"
+
+const VPID vpid_zero_vpid = { 0, 0 };
 
 // Demonstrate some basic assertions.
 TEST (HelloTest, BasicAssertions)
@@ -48,28 +51,75 @@ TEST (PageBufferTest, CompareVpid)
 
 TEST (PageBufferTest, IsValidPage)
 {
-  DISK_ISVALID is_valid = pgbuf_is_valid_page (thread_p, &vpid_Null_vpid, true);
+  DISK_ISVALID is_valid;
+  is_valid = pgbuf_is_valid_page (thread_p, &vpid_Null_vpid, true);
   EXPECT_EQ (is_valid, DISK_INVALID);
-}
 
+  is_valid = pgbuf_is_valid_page (thread_p, &vpid_zero_vpid, true);
+  EXPECT_EQ (is_valid, DISK_VALID);
+}
 
 TEST (PageBufferTest, FixDebugOldPage)
 {
-  // auto page_ptr = pgbuf_fix (thread_p, &vpid_Null_vpid, PAGE_FETCH_MODE::OLD_PAGE, PGBUF_LATCH_MODE::PGBUF_LATCH_READ,
-  // 	     PGBUF_LATCH_CONDITION::PGBUF_UNCONDITIONAL_LATCH);
+  PAGE_PTR page_ptr;
+  page_ptr = pgbuf_fix (thread_p, &vpid_zero_vpid, PAGE_FETCH_MODE::OLD_PAGE, PGBUF_LATCH_MODE::PGBUF_LATCH_READ,
+			PGBUF_LATCH_CONDITION::PGBUF_UNCONDITIONAL_LATCH);
+  printf ("page_ptr=%p\n", page_ptr);
+  EXPECT_NE (page_ptr, nullptr);
+  pgbuf_unfix (thread_p, page_ptr);
+
+  page_ptr = pgbuf_fix (thread_p, &vpid_zero_vpid, PAGE_FETCH_MODE::OLD_PAGE, PGBUF_LATCH_MODE::PGBUF_LATCH_READ,
+			PGBUF_LATCH_CONDITION::PGBUF_UNCONDITIONAL_LATCH);
+  printf ("page_ptr=%p\n", page_ptr);
+  EXPECT_NE (page_ptr, nullptr);
+  pgbuf_unfix (thread_p, page_ptr);
 }
 
 TEST (PageBufferTest, FixNewPage)
 {
-  // auto page_ptr = pgbuf_fix (thread_p, &vpid_Null_vpid, PAGE_FETCH_MODE::NEW_PAGE, PGBUF_LATCH_MODE::PGBUF_LATCH_READ,
+  // asserts that VPID {0,0} should not be NEW_PAGE
+  // auto page_ptr = pgbuf_fix (thread_p, &vpid_zero_vpid, PAGE_FETCH_MODE::NEW_PAGE, PGBUF_LATCH_MODE::PGBUF_LATCH_READ,
   // 	     PGBUF_LATCH_CONDITION::PGBUF_UNCONDITIONAL_LATCH);
+  printf ("Skipping FixNewPage test as VPID {0,0} should not be NEW_PAGE\n");
 }
 
 TEST (PageBufferTest, FixOldPageIfInBuffer)
 {
-  auto page_ptr = pgbuf_fix (thread_p, &vpid_Null_vpid, PAGE_FETCH_MODE::OLD_PAGE_IF_IN_BUFFER,
-  	     PGBUF_LATCH_MODE::PGBUF_LATCH_READ, PGBUF_LATCH_CONDITION::PGBUF_UNCONDITIONAL_LATCH);
-  EXPECT_EQ (page_ptr, nullptr);
+  auto page_ptr = pgbuf_fix (thread_p, &vpid_zero_vpid, PAGE_FETCH_MODE::OLD_PAGE_IF_IN_BUFFER,
+			     PGBUF_LATCH_MODE::PGBUF_LATCH_READ, PGBUF_LATCH_CONDITION::PGBUF_UNCONDITIONAL_LATCH);
+  printf ("page_ptr=%p\n", page_ptr);
+  EXPECT_NE (page_ptr, nullptr);
+
+  pgbuf_unfix (thread_p, page_ptr);
+}
+
+TEST (PageBufferTest, DoubleFixAndUnfix)
+{
+  PAGE_PTR page_ptr;
+  page_ptr = pgbuf_fix (thread_p, &vpid_zero_vpid, PAGE_FETCH_MODE::OLD_PAGE, PGBUF_LATCH_MODE::PGBUF_LATCH_READ,
+			PGBUF_LATCH_CONDITION::PGBUF_UNCONDITIONAL_LATCH);
+  page_ptr = pgbuf_fix (thread_p, &vpid_zero_vpid, PAGE_FETCH_MODE::OLD_PAGE, PGBUF_LATCH_MODE::PGBUF_LATCH_READ,
+			PGBUF_LATCH_CONDITION::PGBUF_UNCONDITIONAL_LATCH);
+  printf ("page_ptr=%p\n", page_ptr);
+  EXPECT_NE (page_ptr, nullptr);
+
+  pgbuf_unfix (thread_p, page_ptr);
+  pgbuf_unfix (thread_p, page_ptr);
+}
+
+TEST (PageBufferTest, DoubleFixVpid_1_0)
+{
+  PAGE_PTR page_ptr;
+  VPID vpid = { .pageid = 1, .volid = 0 };
+  page_ptr = pgbuf_fix (thread_p, &vpid, PAGE_FETCH_MODE::OLD_PAGE, PGBUF_LATCH_MODE::PGBUF_LATCH_READ,
+			PGBUF_LATCH_CONDITION::PGBUF_UNCONDITIONAL_LATCH);
+  page_ptr = pgbuf_fix (thread_p, &vpid, PAGE_FETCH_MODE::OLD_PAGE, PGBUF_LATCH_MODE::PGBUF_LATCH_READ,
+			PGBUF_LATCH_CONDITION::PGBUF_UNCONDITIONAL_LATCH);
+  printf ("page_ptr=%p\n", page_ptr);
+  EXPECT_NE (page_ptr, nullptr);
+
+  pgbuf_unfix (thread_p, page_ptr);
+  pgbuf_unfix (thread_p, page_ptr);
 }
 
 int main (int argc, char **argv)
