@@ -7909,11 +7909,11 @@ heap_get_record_data_when_all_ready (THREAD_ENTRY * thread_p, HEAP_GET_CONTEXT *
       scan =
 	spage_get_record (thread_p, context->home_page_watcher.pgptr, context->oid_p->slotid, context->recdes_p,
 			  context->ispeeking);
+      return scan;
       if (scan != S_SUCCESS)
 	{
 	  return scan;
 	}
-
       return heap_record_replace_oos_oids_with_values_if_exists (thread_p, context);
     default:
       break;
