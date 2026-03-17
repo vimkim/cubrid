@@ -14559,6 +14559,7 @@ heap_attrvalue_get_key (THREAD_ENTRY * thread_p, int btid_index, HEAP_CACHE_ATTR
 	    {
 	      continue;
 	    }
+
 	  /* Returns 0 on error or if attribute is not OOS; safe to accumulate. */
 	  midxkey_size += heap_midxkey_get_oos_extra_size (recdes, index->atts[oos_i]);
 	}
