@@ -4967,12 +4967,20 @@ hb_cluster_initialize (const char *nodes, const char *replicas)
       pthread_mutex_init (&hb_Cluster->lock, NULL);
     }
 
-  if (GETHOSTNAME (host_name, sizeof (host_name)))
-    {
-      MASTER_ER_SET_WITH_OSERROR (ER_ERROR_SEVERITY, ARG_FILE_LINE, ER_BO_UNABLE_TO_FIND_HOSTNAME, 2, host_name,
-				  HOSTS_FILE);
-      return ER_BO_UNABLE_TO_FIND_HOSTNAME;
-    }
+  {
+    const char *configured_node_name = prm_get_string_value (PRM_ID_HA_NODE_NAME);
+    if (configured_node_name != NULL && configured_node_name[0] != '\0')
+      {
+	strncpy (host_name, configured_node_name, sizeof (host_name) - 1);
+	host_name[sizeof (host_name) - 1] = '\0';
+      }
+    else if (GETHOSTNAME (host_name, sizeof (host_name)))
+      {
+	MASTER_ER_SET_WITH_OSERROR (ER_ERROR_SEVERITY, ARG_FILE_LINE, ER_BO_UNABLE_TO_FIND_HOSTNAME, 2, host_name,
+				    HOSTS_FILE);
+	return ER_BO_UNABLE_TO_FIND_HOSTNAME;
+      }
+  }
 
   rv = pthread_mutex_lock (&hb_Cluster->lock);
   hb_Cluster->shutdown = false;

@@ -352,6 +352,8 @@ static const char sysprm_ha_conf_file_name[] = "cubrid_ha.conf";
 
 #define PRM_NAME_HA_NODE_LIST "ha_node_list"
 
+#define PRM_NAME_HA_NODE_NAME "ha_node_name"
+
 #define PRM_NAME_HA_REPLICA_LIST "ha_replica_list"
 
 #define PRM_NAME_HA_DB_LIST "ha_db_list"
@@ -5174,6 +5176,17 @@ SYSPRM_PARAM prm_Def[] = {
    {false, {.b = false}},
    NULL_SYSPRM_PARAM_VALUE,
    NULL_SYSPRM_PARAM_VALUE,
+   (char *) NULL,
+   (DUP_PRM_FUNC) NULL,
+   (DUP_PRM_FUNC) NULL},
+  {PRM_ID_HA_NODE_NAME,
+   PRM_NAME_HA_NODE_NAME,
+   (PRM_FOR_SERVER | PRM_FOR_CLIENT | PRM_FOR_HA),
+   PRM_STRING,
+   PRM_CLEAR_DYNAMIC_FLAG,
+   {false, {.str = NULL}},
+   {false, {.str = (char *) ""}},
+   NULL_SYSPRM_PARAM_VALUE, NULL_SYSPRM_PARAM_VALUE,
    (char *) NULL,
    (DUP_PRM_FUNC) NULL,
    (DUP_PRM_FUNC) NULL}
