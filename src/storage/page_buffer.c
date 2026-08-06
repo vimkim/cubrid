@@ -847,6 +847,55 @@ static PGBUF_BATCH_FLUSH_HELPER pgbuf_Flush_helper;
 
 HFID *pgbuf_ordered_null_hfid = NULL;
 
+/* ---------------------------------------------------------------------------------------------
+ * Seminar tracing for quizzes/12-trace-a-page-journey (pgbuf-analysis branch lab code only).
+ * Enabled when the server process starts with CUBRID_PGBUF_TRACE_VPID="<volid>|<pageid>".
+ * Events of that single page are appended to CUBRID_PGBUF_TRACE_FILE
+ * (default /tmp/pgbuf_quiz_trace.log).
+ * --------------------------------------------------------------------------------------------- */
+static void
+pgbuf_quiz_trace (const char *event, const VPID * vpid, const char *detail)
+{
+  static volatile int trace_state = -1;	/* -1: unknown, 0: off, 1: on */
+  static VPID trace_vpid;
+  static const char *trace_file = NULL;
+  static volatile int trace_seq = 0;
+
+  if (trace_state == -1)
+    {
+      const char *env = getenv ("CUBRID_PGBUF_TRACE_VPID");
+      int volid_int = 0, pageid_int = 0;
+
+      if (env != NULL && sscanf (env, "%d|%d", &volid_int, &pageid_int) == 2)
+	{
+	  trace_vpid.volid = (short) volid_int;
+	  trace_vpid.pageid = pageid_int;
+	  trace_file = getenv ("CUBRID_PGBUF_TRACE_FILE");
+	  if (trace_file == NULL)
+	    {
+	      trace_file = "/tmp/pgbuf_quiz_trace.log";
+	    }
+	  trace_state = 1;
+	}
+      else
+	{
+	  trace_state = 0;
+	}
+    }
+
+  if (trace_state == 1 && vpid != NULL && VPID_EQ (vpid, &trace_vpid))
+    {
+      FILE *fp = fopen (trace_file, "a");
+
+      if (fp != NULL)
+	{
+	  fprintf (fp, "#%04d %s %d|%d %s\n", ATOMIC_INC_32 (&trace_seq, 1), event, (int) vpid->volid,
+		   (int) vpid->pageid, detail != NULL ? detail : "");
+	  fclose (fp);
+	}
+    }
+}
+
 #if defined(CUBRID_DEBUG)
 /* A buffer guard to detect over runs .. */
 static char pgbuf_Guard[8] = { MEM_REGION_GUARD_MARK, MEM_REGION_GUARD_MARK, MEM_REGION_GUARD_MARK,
@@ -2323,6 +2372,7 @@ try_again:
 #endif /* ENABLE_SYSTEMTAP */
 
 	  show_status->num_hit++;
+	  pgbuf_quiz_trace ("FIX_HIT", vpid, "lockfree-read");
 	  goto fast_path;
 	}
     }
@@ -2344,6 +2394,7 @@ try_again:
 #endif /* ENABLE_SYSTEMTAP */
 
       show_status->num_hit++;
+      pgbuf_quiz_trace ("FIX_HIT", vpid, "hash-hit");
 
       if (fetch_mode == NEW_PAGE)
 	{
@@ -6906,6 +6957,7 @@ pgbuf_unlatch_void_zone_bcb (THREAD_ENTRY * thread_p, PGBUF_BCB * bcb, int threa
 	  /* add to top of current private list */
 	  pgbuf_lru_add_new_bcb_to_top (thread_p, bcb, thread_private_lru_index);
 	  perfmon_inc_stat (thread_p, PSTAT_PB_UNFIX_VOID_TO_PRIVATE_TOP_VAC);
+	  pgbuf_quiz_trace ("ENTER_LRU", &bcb->vpid, "private-top-vacuum");
 	  return;
 	}
 
@@ -6914,6 +6966,7 @@ pgbuf_unlatch_void_zone_bcb (THREAD_ENTRY * thread_p, PGBUF_BCB * bcb, int threa
 	  /* add to top of current private list */
 	  pgbuf_lru_add_new_bcb_to_top (thread_p, bcb, thread_private_lru_index);
 	  perfmon_inc_stat (thread_p, PSTAT_PB_UNFIX_VOID_TO_PRIVATE_TOP);
+	  pgbuf_quiz_trace ("ENTER_LRU", &bcb->vpid, "private-top");
 	  pgbuf_bcb_register_hit_for_lru (bcb);
 	  return;
 	}
@@ -6923,6 +6976,7 @@ pgbuf_unlatch_void_zone_bcb (THREAD_ENTRY * thread_p, PGBUF_BCB * bcb, int threa
 	  /* add to middle of current private list */
 	  pgbuf_lru_add_new_bcb_to_middle (thread_p, bcb, thread_private_lru_index);
 	  perfmon_inc_stat (thread_p, PSTAT_PB_UNFIX_VOID_TO_PRIVATE_MID);
+	  pgbuf_quiz_trace ("ENTER_LRU", &bcb->vpid, "private-middle");
 	  pgbuf_bcb_register_hit_for_lru (bcb);
 	  return;
 	}
@@ -6932,6 +6986,7 @@ pgbuf_unlatch_void_zone_bcb (THREAD_ENTRY * thread_p, PGBUF_BCB * bcb, int threa
   /* add to middle of shared list. */
   pgbuf_lru_add_new_bcb_to_middle (thread_p, bcb, pgbuf_get_shared_lru_index_for_add ());
   perfmon_inc_stat (thread_p, PSTAT_PB_UNFIX_VOID_TO_SHARED_MID);
+  pgbuf_quiz_trace ("ENTER_LRU", &bcb->vpid, "shared-middle");
   if (!PGBUF_VACUUM_SHOULD_IGNORE_UNFIX (thread_p))
     {
       pgbuf_bcb_register_hit_for_lru (bcb);
@@ -8441,6 +8496,7 @@ pgbuf_claim_bcb_for_fix (THREAD_ENTRY * thread_p, const VPID * vpid, PAGE_FETCH_
       /* Record number of reads in statistics */
       perfmon_inc_stat (thread_p, PSTAT_PB_NUM_IOREADS);
       show_status->num_pages_read++;
+      pgbuf_quiz_trace ("READ_FROM_DISK", vpid, NULL);
 
 #if defined(ENABLE_SYSTEMTAP)
       query_id = qmgr_get_current_query_id (thread_p);
@@ -10053,6 +10109,8 @@ pgbuf_lru_fall_bcb_to_zone_3 (THREAD_ENTRY * thread_p, PGBUF_BCB * bcb, PGBUF_LR
   /* not assigned directly */
 #endif /* SERVER_MODE */
 
+  pgbuf_quiz_trace ("FALL_TO_ZONE3", &bcb->vpid, NULL);
+
   /* tick_lru3 */
   bcb->tick_lru3 = lru_list->tick_lru3;
   if (++lru_list->tick_lru3 >= DB_INT32_MAX)
@@ -10109,6 +10167,8 @@ pgbuf_lru_boost_bcb (THREAD_ENTRY * thread_p, PGBUF_BCB * bcb)
       perfmon_inc_stat (thread_p,
 			is_private ? PSTAT_PB_UNFIX_LRU_THREE_PRV_TO_TOP : PSTAT_PB_UNFIX_LRU_THREE_SHR_TO_TOP);
     }
+
+  pgbuf_quiz_trace ("BOOST_TO_TOP", &bcb->vpid, zone == PGBUF_LRU_2_ZONE ? "from-zone2" : "from-zone3");
 
   /* lock list */
   pthread_mutex_lock (&lru_list->mutex);
@@ -10421,6 +10481,8 @@ pgbuf_add_vpid_to_aout_list (THREAD_ENTRY * thread_p, const VPID * vpid, const i
   PGBUF_AOUT_LIST *list;
   PGBUF_AOUT_BUF *aout_buf;
   int hash_idx = 0;
+
+  pgbuf_quiz_trace ("EVICTED", vpid, "left-the-buffer-pool");
 
   if (pgbuf_Pool.buf_AOUT_list.max_count <= 0)
     {
@@ -10888,6 +10950,8 @@ copy_unflushed_lsa:
 	}
 #endif
     }
+
+  pgbuf_quiz_trace ("FLUSHED_TO_DISK", &bufptr->vpid, NULL);
 
   if (perfmon_is_perf_tracking_and_active (PERFMON_ACTIVATION_FLAG_PB_VICTIMIZATION))
     {
@@ -15971,6 +16035,8 @@ pgbuf_bcb_set_dirty (THREAD_ENTRY * thread_p, PGBUF_BCB * bcb)
   /* note: we usually use pgbuf_bcb_update_flags function. we do an exception for pgbuf_bcb_set_dirty to since it is the
    *       most used case and the code should be as optimal as possible. */
   int old_flags;
+
+  pgbuf_quiz_trace ("SET_DIRTY", &bcb->vpid, NULL);
 
   do
     {
