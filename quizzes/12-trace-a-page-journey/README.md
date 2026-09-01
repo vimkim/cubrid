@@ -20,7 +20,8 @@
 
 > 참고: `CUBRID_PGBUF_TRACE_VPID=all`로 지정하면 단일 페이지 대신 **모든 페이지**의 이벤트를
 > timestamp/thread index와 추가 이벤트(FIX_DONE/UNFIX/PROMOTE/WAL_SYNC 등)까지 기록하는 whole-pool
-> 모드가 된다 — `analysis/monitoring/run-monitor.sh` 참고. 이 퀴즈의 단일 페이지 로그 형식은 그대로다.
+> 모드가 된다 — 드라이버와 분석 리포트는 my-cubrid-docs의
+> `pgbuf-analysis/f799e05_claude/analysis/monitoring/` 참고. 이 퀴즈의 단일 페이지 로그 형식은 그대로다.
 
 ## 시나리오
 
