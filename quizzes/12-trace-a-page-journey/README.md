@@ -18,6 +18,10 @@
 | `SET_DIRTY` | 페이지가 dirty로 표시됨 (`pgbuf_bcb_set_dirty`) |
 | `FLUSHED_TO_DISK` | dirty 페이지가 디스크에 써짐 (`pgbuf_bcb_flush_with_wal`) |
 
+> 참고: `CUBRID_PGBUF_TRACE_VPID=all`로 지정하면 단일 페이지 대신 **모든 페이지**의 이벤트를
+> timestamp/thread index와 추가 이벤트(FIX_DONE/UNFIX/PROMOTE/WAL_SYNC 등)까지 기록하는 whole-pool
+> 모드가 된다 — `analysis/monitoring/run-monitor.sh` 참고. 이 퀴즈의 단일 페이지 로그 형식은 그대로다.
+
 ## 시나리오
 
 t_trace 테이블의 데이터 페이지 하나를 추적 대상으로 지정하고:

@@ -28,6 +28,8 @@
 #include <stddef.h>
 #include <string.h>
 #include <assert.h>
+#include <stdarg.h>
+#include <time.h>
 #include <atomic>
 
 #include "page_buffer.h"
@@ -848,51 +850,148 @@ static PGBUF_BATCH_FLUSH_HELPER pgbuf_Flush_helper;
 HFID *pgbuf_ordered_null_hfid = NULL;
 
 /* ---------------------------------------------------------------------------------------------
- * Seminar tracing for quizzes/12-trace-a-page-journey (pgbuf-analysis branch lab code only).
- * Enabled when the server process starts with CUBRID_PGBUF_TRACE_VPID="<volid>|<pageid>".
- * Events of that single page are appended to CUBRID_PGBUF_TRACE_FILE
- * (default /tmp/pgbuf_quiz_trace.log).
+ * Seminar tracing (pgbuf-analysis branch lab code only). Two modes:
+ *
+ * Mode 1 - single page (quizzes/12): CUBRID_PGBUF_TRACE_VPID="<volid>|<pageid>".
+ *   Events of that single page are appended to CUBRID_PGBUF_TRACE_FILE
+ *   (default /tmp/pgbuf_quiz_trace.log) in the original quiz-12 line format.
+ *
+ * Mode 2 - whole pool (analysis/monitoring): CUBRID_PGBUF_TRACE_VPID="all".
+ *   Every traced event of every page is appended with a monotonic timestamp and the thread
+ *   entry index, and extra path events (FIX_DONE/UNFIX/NEW_PAGE_INIT/WAL_SYNC_BEFORE_WRITE)
+ *   are emitted so the page-buffer path of a simple SQL can be reconstructed offline.
  * --------------------------------------------------------------------------------------------- */
+static volatile int pgbuf_Quiz_trace_state = -1;	/* -1: unknown, 0: off, 1: single-vpid, 2: all */
+static VPID pgbuf_Quiz_trace_vpid;
+static const char *pgbuf_Quiz_trace_file = NULL;
+static volatile int pgbuf_Quiz_trace_seq = 0;
+
+static void
+pgbuf_quiz_trace_check_init (void)
+{
+  const char *env;
+  int volid_int = 0, pageid_int = 0;
+
+  if (pgbuf_Quiz_trace_state != -1)
+    {
+      return;
+    }
+
+  env = getenv ("CUBRID_PGBUF_TRACE_VPID");
+  if (env == NULL)
+    {
+      pgbuf_Quiz_trace_state = 0;
+      return;
+    }
+
+  pgbuf_Quiz_trace_file = getenv ("CUBRID_PGBUF_TRACE_FILE");
+  if (pgbuf_Quiz_trace_file == NULL)
+    {
+      pgbuf_Quiz_trace_file = "/tmp/pgbuf_quiz_trace.log";
+    }
+
+  if (strcmp (env, "all") == 0)
+    {
+      pgbuf_Quiz_trace_state = 2;
+    }
+  else if (sscanf (env, "%d|%d", &volid_int, &pageid_int) == 2)
+    {
+      pgbuf_Quiz_trace_vpid.volid = (short) volid_int;
+      pgbuf_Quiz_trace_vpid.pageid = pageid_int;
+      pgbuf_Quiz_trace_state = 1;
+    }
+  else
+    {
+      pgbuf_Quiz_trace_state = 0;
+    }
+}
+
 static void
 pgbuf_quiz_trace (const char *event, const VPID * vpid, const char *detail)
 {
-  static volatile int trace_state = -1;	/* -1: unknown, 0: off, 1: on */
-  static VPID trace_vpid;
-  static const char *trace_file = NULL;
-  static volatile int trace_seq = 0;
+  FILE *fp;
 
-  if (trace_state == -1)
+  pgbuf_quiz_trace_check_init ();
+
+  if (pgbuf_Quiz_trace_state <= 0 || vpid == NULL)
     {
-      const char *env = getenv ("CUBRID_PGBUF_TRACE_VPID");
-      int volid_int = 0, pageid_int = 0;
-
-      if (env != NULL && sscanf (env, "%d|%d", &volid_int, &pageid_int) == 2)
-	{
-	  trace_vpid.volid = (short) volid_int;
-	  trace_vpid.pageid = pageid_int;
-	  trace_file = getenv ("CUBRID_PGBUF_TRACE_FILE");
-	  if (trace_file == NULL)
-	    {
-	      trace_file = "/tmp/pgbuf_quiz_trace.log";
-	    }
-	  trace_state = 1;
-	}
-      else
-	{
-	  trace_state = 0;
-	}
+      return;
+    }
+  if (pgbuf_Quiz_trace_state == 1 && !VPID_EQ (vpid, &pgbuf_Quiz_trace_vpid))
+    {
+      return;
     }
 
-  if (trace_state == 1 && vpid != NULL && VPID_EQ (vpid, &trace_vpid))
+  fp = fopen (pgbuf_Quiz_trace_file, "a");
+  if (fp == NULL)
     {
-      FILE *fp = fopen (trace_file, "a");
+      return;
+    }
 
-      if (fp != NULL)
-	{
-	  fprintf (fp, "#%04d %s %d|%d %s\n", ATOMIC_INC_32 (&trace_seq, 1), event, (int) vpid->volid,
-		   (int) vpid->pageid, detail != NULL ? detail : "");
-	  fclose (fp);
-	}
+  if (pgbuf_Quiz_trace_state == 1)
+    {
+      /* keep the exact quiz-12 line format */
+      fprintf (fp, "#%04d %s %d|%d %s\n", ATOMIC_INC_32 (&pgbuf_Quiz_trace_seq, 1), event, (int) vpid->volid,
+	       (int) vpid->pageid, detail != NULL ? detail : "");
+    }
+  else
+    {
+      struct timespec ts;
+      THREAD_ENTRY *thread_p = thread_get_thread_entry_info ();
+
+      clock_gettime (CLOCK_MONOTONIC, &ts);
+      fprintf (fp, "#%06d %ld.%06ld thr=%03d %s %d|%d %s\n", ATOMIC_INC_32 (&pgbuf_Quiz_trace_seq, 1),
+	       (long) ts.tv_sec, ts.tv_nsec / 1000, thread_p != NULL ? thread_p->index : -1, event,
+	       (int) vpid->volid, (int) vpid->pageid, detail != NULL ? detail : "");
+    }
+  fclose (fp);
+}
+
+/* Whole-pool-mode-only event with printf-style detail; no-op unless CUBRID_PGBUF_TRACE_VPID="all",
+ * so the quiz-12 single-page trace output stays byte-identical to the original format. */
+static void
+pgbuf_quiz_trace_all (const char *event, const VPID * vpid, const char *fmt, ...)
+{
+  char detail[256];
+  va_list ap;
+
+  pgbuf_quiz_trace_check_init ();
+  if (pgbuf_Quiz_trace_state != 2)
+    {
+      return;
+    }
+
+  detail[0] = '\0';
+  if (fmt != NULL)
+    {
+      va_start (ap, fmt);
+      vsnprintf (detail, sizeof (detail), fmt, ap);
+      va_end (ap);
+    }
+  pgbuf_quiz_trace (event, vpid, detail);
+}
+
+static const char *
+pgbuf_quiz_fetch_mode_name (PAGE_FETCH_MODE fetch_mode)
+{
+  switch (fetch_mode)
+    {
+    case OLD_PAGE:
+      return "OLD_PAGE";
+    case NEW_PAGE:
+      return "NEW_PAGE";
+    case OLD_PAGE_IF_IN_BUFFER:
+      return "OLD_PAGE_IF_IN_BUFFER";
+    case OLD_PAGE_PREVENT_DEALLOC:
+      return "OLD_PAGE_PREVENT_DEALLOC";
+    case OLD_PAGE_DEALLOCATED:
+      return "OLD_PAGE_DEALLOCATED";
+    case OLD_PAGE_MAYBE_DEALLOCATED:
+      return "OLD_PAGE_MAYBE_DEALLOCATED";
+    case RECOVERY_PAGE:
+      return "RECOVERY_PAGE";
+    default:
+      return "UNKNOWN_FETCH_MODE";
     }
 }
 
@@ -2681,6 +2780,11 @@ fast_path:
 
   PGBUF_BCB_CHECK_MUTEX_LEAKS ();
 
+  pgbuf_quiz_trace_all ("FIX_DONE", vpid, "%s %s%s ptype=%d fcnt=%d", pgbuf_quiz_fetch_mode_name (fetch_mode),
+			request_mode == PGBUF_LATCH_WRITE ? "WRITE" : "READ",
+			condition == PGBUF_CONDITIONAL_LATCH ? "-cond" : "",
+			(int) bufptr->iopage_buffer->iopage.prv.ptype, get_fcnt (&bufptr->atomic_latch));
+
   return pgptr;
 }
 
@@ -3031,6 +3135,8 @@ pgbuf_promote_read_latch_release (THREAD_ENTRY * thread_p, PAGE_PTR * pgptr_p, P
 end:
   assert (rv == NO_ERROR || rv == ER_PAGE_LATCH_PROMOTE_FAIL);
 
+  pgbuf_quiz_trace_all ("PROMOTE_READ_TO_WRITE", &vpid, "%s", rv == NO_ERROR ? "success" : "fail");
+
   /* performance tracking */
   if (is_perf_tracking)
     {
@@ -3157,6 +3263,9 @@ pgbuf_unfix (THREAD_ENTRY * thread_p, PAGE_PTR pgptr)
 		    bufptr->vpid.pageid, fileio_get_volume_label (bufptr->vpid.volid, PEEK));
     }
 #endif /* CUBRID_DEBUG */
+
+  pgbuf_quiz_trace_all ("UNFIX", &bufptr->vpid, "%s%s", pgbuf_bcb_is_dirty (bufptr) ? "dirty" : "clean",
+			get_fcnt (&bufptr->atomic_latch) == 1 ? " last-fix" : "");
 
   is_perf_tracking = perfmon_is_perf_tracking ();
   if (is_perf_tracking)
@@ -8605,6 +8714,7 @@ pgbuf_claim_bcb_for_fix (THREAD_ENTRY * thread_p, const VPID * vpid, PAGE_FETCH_
 #endif /* CUBRID_DEBUG */
 
       /* Don't need to read page from disk since it is a new page. */
+      pgbuf_quiz_trace_all ("NEW_PAGE_INIT", vpid, "no-disk-read");
       if (pgbuf_is_temporary_volume (vpid->volid) == true)
 	{
 	  pgbuf_init_temp_page_lsa (&bufptr->iopage_buffer->iopage, IO_PAGESIZE);
@@ -10845,6 +10955,7 @@ copy_unflushed_lsa:
     {
       /* confirm WAL protocol */
       /* force log record to disk */
+      pgbuf_quiz_trace_all ("WAL_SYNC_BEFORE_WRITE", &bufptr->vpid, "page-lsa=%lld|%d", LSA_AS_ARGS (&lsa));
       logpb_flush_log_for_wal (thread_p, &lsa);
     }
   else
