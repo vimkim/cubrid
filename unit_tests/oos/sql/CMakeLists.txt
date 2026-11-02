@@ -74,3 +74,19 @@ set_tests_properties(
 
 # Expected-error tests also collect debug stack traces at allocation, storage and export failure boundaries.
 set_tests_properties(test_oos_sql_deferred_write PROPERTIES TIMEOUT 180)
+
+# a1 adversarial review repro (PR 8299)
+add_test(NAME test_oos_sql_a1_var_offsets COMMAND test_oos_sql_a1_var_offsets)
+set_tests_properties(test_oos_sql_a1_var_offsets PROPERTIES FIXTURES_REQUIRED OOS_DB RUN_SERIAL TRUE TIMEOUT 3000)
+
+# PR 8299 adversarial review: read-path memory lifetime, including pending records and the scalar scratch.
+add_test(NAME test_oos_sql_lifetime COMMAND test_oos_sql_lifetime)
+set_tests_properties(test_oos_sql_lifetime PROPERTIES FIXTURES_REQUIRED OOS_DB RUN_SERIAL TRUE TIMEOUT 1200)
+
+# PR 8299 adversarial review: canonical dump of values read through SQL, direct heap reads and index keys.
+add_test(NAME test_oos_sql_zz_readdiff COMMAND test_oos_sql_zz_readdiff)
+set_tests_properties(test_oos_sql_zz_readdiff PROPERTIES FIXTURES_REQUIRED OOS_DB RUN_SERIAL TRUE TIMEOUT 1500)
+
+# PR 8299 adversarial review: raw heap record dump compared between head and base.
+add_test(NAME test_oos_sql_zz_writediff COMMAND test_oos_sql_zz_writediff)
+set_tests_properties(test_oos_sql_zz_writediff PROPERTIES FIXTURES_REQUIRED OOS_DB RUN_SERIAL TRUE TIMEOUT 900)
